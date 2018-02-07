@@ -1,0 +1,12 @@
+body{
+    background-color: #ff0;
+    height:100%;
+    width:100%;
+}
+header{
+    background-color: #ccc;
+    position: relative;
+    padding-bottom: 2%;
+    box-shadow: 0 0 20px 2px #555;
+    margin-bottom: 2%
+}

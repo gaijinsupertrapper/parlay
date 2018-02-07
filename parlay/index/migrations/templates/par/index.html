@@ -1,0 +1,72 @@
+{% extends 'par/base.html' %}
+{% load staticfiles %}
+{% block title %} Parlay {% endblock %}
+{% block content %}
+    <div id="container" class = "container-fluid">
+
+        <div class="row  justify-content-center">
+                {% for book in books %}
+
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 content-col content">
+                        <img src="{% static 'img/agenda.png' %}" class="type"/>
+                        <h2 class = "title"> {{ book.title|truncatewords:5}} </h2>
+                        <br>
+                        <h3 class = "author"> {{ book.author}}</h3>
+                        <p class = "description"> {{ book.description|truncatewords:20}}</p>
+                         <a href ="{% url 'detail-book' book.id %}"> <div class="col details">Learn More </div> </a>
+                    </div>
+
+                {% endfor %}
+
+            </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+{% endblock %}
