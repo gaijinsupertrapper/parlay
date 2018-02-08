@@ -2,7 +2,7 @@
 {% load staticfiles %}
 {% block title %} Parlay {% endblock %}
 {% block content %}
-    <div id="container" class = "container-fluid">
+
 
         <div class="row  justify-content-center">
                 {% for book in books %}
@@ -69,4 +69,9 @@
     <br>
     <br>
     <br>
+    <form action="/your-name/" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Submit" />
+</form>
 {% endblock %}

@@ -14,10 +14,11 @@
     <title>{% block title %} {% endblock %}</title>
 </head>
 <body>
+
     <header>
         <div class="row container-fluid mx-auto">
             <div class = "col-6 d-none d-md-block">
-                serch
+                <a href = '{% url 'login' %}'>LOGIN</a>
             </div>
             <div class = "col d-block d-md-none">
                 smal sech
@@ -30,7 +31,7 @@
             </a>
 
             <div class = "col d-none d-lg-block">
-                dashbort
+                <a href = "{% url 'signup' %}">Register</a>
 
             </div>
             <div class = "col d-none d-lg-block profile">
@@ -47,9 +48,13 @@
             </div>
         </div>
     </header>
-
+    <div id="container" class = "container-fluid">
     {% block content %}
 
+
+
+
     {% endblock %}
+    </div>
 </body>
 </html>

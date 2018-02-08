@@ -27,18 +27,27 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+#some stuff
+
+SITE_ID = 1
+
+LOGIN_REDIRECT_URL = 'index'
 
 # Application definition
 
 INSTALLED_APPS = [
+    'django.contrib.auth',
+    'django.contrib.sites',
     'jet',
     'index.apps.IndexConfig',
     'django.contrib.admin',
-    'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
 ]
 
 MIDDLEWARE = [
@@ -64,6 +73,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
             ],
         },
     },
@@ -101,7 +111,15 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+#Authentification Backends
 
+AUTHENTICATION_BACKENDS = (
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+
+)
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
