@@ -1,6 +1,11 @@
 from django.db import models
 from django.db.models import TextField
 from django.forms import ModelForm
+from django.contrib.auth.forms import User
+
+class Token(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    tokens = models.IntegerField(default=100)
 
 class Book(models.Model):
     title = models.CharField(max_length = 150, default = r'Yet another book')

@@ -21,7 +21,11 @@ def signup(request):
 
 
 def index(request):
-    return render(request, 'par/index.html', {'books': Book.objects.all})
+    username = None
+    if request.user.is_authenticated:
+        username = request.user
+    return render(request, 'par/index.html', {'books': Book.objects.all,
+                                              'user': username})
 
 
 def bdetail(request,book_id):
