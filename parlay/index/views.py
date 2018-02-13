@@ -1,7 +1,8 @@
 from django.shortcuts import render,redirect
-from .models import Book
+from .models import Book, Token
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 
 from .forms import SignUpForm
 
@@ -24,10 +25,19 @@ def index(request):
     username = None
     if request.user.is_authenticated:
         username = request.user
+
     return render(request, 'par/index.html', {'books': Book.objects.all,
-                                              'user': username})
+                                              'user': username
+                                              })
 
 
 def bdetail(request,book_id):
     book = Book.objects.get(pk=book_id)
+
     return render(request, 'par/detail.html', {'book': book})
+
+def profile(request, user_id):
+    username = None
+    if request.user.is_authenticated:
+        username = User.objects.get(pk=user_id)
+    return render(request, 'par/profile.html', {'user': username, })

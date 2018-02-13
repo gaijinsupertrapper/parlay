@@ -1,0 +1,9 @@
+{% extends 'par/base.html' %}
+{% block title %} {{user.username}}'s profile {% endblock %}
+{% block content %}
+    <H1>{{ user.username }}</H1>
+    <p> {{ user.email }}</p>
+    <p> {{user.bio}}</p>
+
+
+{% endblock %}

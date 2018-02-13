@@ -27,7 +27,7 @@
 
 
 
-            {% if user.get_username == none %}
+            {% if user.get_username == none or not user.is_authenticated %}
 
                 <div class = "col-6 d-none d-md-block">
                     <a href = '{% url "login" %}'>LOGIN</a>
@@ -38,8 +38,8 @@
                 </div>
             {% else %}
                 <div class = "col d-none d-lg-block profile">
-                    <p> {{user.username}}</p>
-                    <p> {{user.token_amount}}</p>
+                    <a href="{% url 'profile' user.id %}"> {{user.username}}</a>
+                    <p> </p>
                 </div>
                 <div class = "col d-block ">
                     <a href = '{% url "logout" %}'> Log out</a>
@@ -47,6 +47,7 @@
             {% endif %}
         </div>
     </header>
+
     <div id="container" class = "container-fluid">
     {% block content %}
 
