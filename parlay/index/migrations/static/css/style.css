@@ -5,7 +5,7 @@ body{
     width:100%;
 
 }
-header{
+.navigation{
     background-color: #eee;
     display:flex;
     align-items:center;
@@ -92,4 +92,7 @@ header{
     box-shadow: 0 0 10px 1px #555;
     transition: all 0.5s ease;
     text-decoration: none;
+}
+#title{
+    text-align: center;
 }

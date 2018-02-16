@@ -1,12 +1,33 @@
 {% extends 'par/base.html' %}
-
+{% load static %}
 {% block title %} Login {% endblock %}
 
 {% block content %}
-  <h2>Login</h2>
+<div id = "" class ="container-fluid  ">
+  <h2 align="center">Login</h2>
+    <style> .navigation{ display:none;}
+            body{ background:url('{% static 'img/memphis-colorful.png' %}') repeat;
+
+            }
+            #container {background-color: #eee;
+            position: absolute;
+            top: 31%;
+            height:;
+            width:100%;
+            left:0;
+            padding-top: 3%;
+            padding-bottom:3%;
+
+            box-shadow: 0 0 100px 15px #888;
+            }
+  </style>
   <form method="post">
     {% csrf_token %}
+     <div class="form-group d-flex flex-column justify-content-center align-items-center signup">
     {{ form.as_p }}
-    <button type="submit">Login</button>
+
+    <button type="submit" class="btn btn-primary">Login</button>
+     </div>
   </form>
+</div>
 {% endblock %}

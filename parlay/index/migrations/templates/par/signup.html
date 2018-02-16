@@ -1,21 +1,46 @@
 {% extends 'par/base.html' %}
+{% load staticfiles %}
 {% block title %} Register {% endblock %}
-{% block content %}
-  <h2>Sign up</h2>
-  <form method="post">
-    {% csrf_token %}
-    {% for field in form %}
-      <p>
-        {{ field.label_tag }}<br>
-        {{ field }}
-        {% if field.help_text %}
 
-        {% endif %}
-        {% for error in field.errors %}
-          <p style="color: red">{{ error }}</p>
+{% block content %}
+<div id = "" class ="container-fluid  ">
+  <h2 align="center">Sign up</h2>
+  <style> .navigation{ display:none;}
+            body{ background:url('{% static 'img/memphis-colorful.png' %}') repeat;
+
+            }
+            #container {background-color: #eee;
+            position: absolute;
+            top: 20%;
+            height: 60%;
+            width:100%;
+            left:0;
+            padding-top: 1%;
+            padding-bottom:1%;
+
+            box-shadow: 0 0 100px 15px #888;
+            }
+  </style>
+  <form method="post">
+
+    {% csrf_token %}
+     <div class="form-group d-flex flex-column justify-content-center align-items-center signup">
+        {% for field in form %}
+
+            {{ field.label_tag }}
+            {{ field }}
+            {% if field.help_text %}
+
+            {% endif %}
+            {% for error in field.errors %}
+              <p style="color: red">{{ error }}</p>
+            {% endfor %}
         {% endfor %}
-      </p>
-    {% endfor %}
-    <button type="submit">Sign up</button>
+         <br>
+         <button type="submit" class="btn btn-primary">Sign up</button>
+    </div>
   </form>
+
+</div>
+
 {% endblock %}

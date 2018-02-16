@@ -1,12 +1,8 @@
 from django.db import models
-from django.db.models import TextField
-from django.forms import ModelForm
-from django.contrib.auth.forms import User
-from .forms import SignUpForm
+from django.contrib.auth.models import User
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
-class Token(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    tokens = models.IntegerField(default=100)
 
 
 class Book(models.Model):
@@ -16,3 +12,23 @@ class Book(models.Model):
     description = models.CharField(max_length = 500, default = r'Description for the book')
     def __str__(self):
         return self.title
+
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
+    bio = models.TextField(max_length=500, blank=True, default='')
+    tokens  = models.IntegerField(default=100)
+    books_read = list()
+
+
+@receiver(post_save, sender=User)
+def create_user_profile(sender, instance, created, **kwargs):
+    if created:
+        Profile.objects.create(user=instance)
+
+
+@receiver(post_save, sender=User)
+def save_user_profile(sender, instance, **kwargs):
+    instance.profile.save()
+
+
