@@ -1,1 +1,2 @@
 "# parlay" 
+"plugins jet, Pillow, "

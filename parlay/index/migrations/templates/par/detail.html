@@ -11,8 +11,8 @@
                 </div>
                 <div class="col-2">
                         {% if user.is_authenticated %}
-
-                                <a class="btn btn-primary" href="{% url 'add-book' book_id=book.id  %}">  Add book </a>
+                                {{ flash.already_in }}
+                                <a class="btn btn-outline-primary btn-block" href="{% url 'add-book' book_id=book.id  %}">  Add book </a>
                         {% endif %}
                 </div>
         </div>

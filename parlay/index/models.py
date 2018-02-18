@@ -18,6 +18,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
     bio = models.TextField(max_length=500, blank=True, default='')
     tokens  = models.IntegerField(default=100)
+    avatar = models.ImageField(upload_to='avatars/', blank=True)
     books_read = list()
 
 

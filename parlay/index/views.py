@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-
+from django.db.models import F
 
 
 from .forms import SignUpForm, ProfileForm

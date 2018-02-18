@@ -4,6 +4,7 @@
 {% block content %}
     <br>
 <div class = 'col container-fluid'>
+
     <H1 id = "username">{{ username.username }}</H1>
     {% if user.id == username.id %}
         <h3> {{username.profile.tokens}} <small> tokens </small></h3>
