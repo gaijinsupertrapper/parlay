@@ -3,6 +3,10 @@ from .models import Book
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from django.http import HttpResponseRedirect
+from django.urls import reverse
+
+
 
 from .forms import SignUpForm, ProfileForm
 
@@ -39,8 +43,20 @@ def bdetail(request,book_id):
 def profile(request, user_id):
     username = None
     if request.user.is_authenticated:
-        username = User.objects.get(pk=user_id)
-    return render(request, 'par/profile.html', {'username': username})
+        profile_user = User.objects.get(pk=user_id)
+    return render(request, 'par/profile.html', {'username': profile_user})
+
+
+@login_required
+def add_book(request, book_id):
+    user = request.user
+    if Book.objects.get(pk = book_id) in user.profile.books_read:
+        pass
+    else:
+        user.profile.books_read.append(Book.objects.get(pk = book_id))
+        user.profile.save()
+    # return redirect('detail-book', Book.objects.get(pk = book_id))
+    return HttpResponseRedirect(reverse('detail-book', args=(book_id,)))
 
 
 @login_required

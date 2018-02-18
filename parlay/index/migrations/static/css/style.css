@@ -23,9 +23,17 @@ body{
     width:45%;
 
 }
+#test_cont{
+    border:  1px solid #888;
+    box-shadow: 0 0 3px 1px #aaa;
+    margin:0;
+}
+.description_text{
+    text-indent: 10px;
+}
 .container{
     background-color:#f00;
-    border: 1px black
+    border:
 }
 #container{
     position:absolute; top: 10%; width:100%;

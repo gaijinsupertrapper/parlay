@@ -1,5 +1,5 @@
 {% extends 'par/base.html' %}
-{% load static %}
+{% load staticfiles %}
 {% block title %} {{user.username}}'s profile {% endblock %}
 {% block content %}
     <br>
@@ -8,9 +8,22 @@
     {% if user.id == username.id %}
         <h3> {{username.profile.tokens}} <small> tokens </small></h3>
         <a class="btn btn-primary" href="{% url 'edit-profile' user_id=user.id %}">  <i class="fas fa-pencil-alt"></i>  Edit profile </a>
-    {% else %}
-
+        <hr>
     {% endif %}
+        <h4> Books read:</h4>
+        <div class="container-fluid row " id="test_cont">
+            {% for book in username.profile.books_read %}
+                <div class="col">
+                    <a href="{% url 'detail-book' book_id=book.id %}"><h4> {{ book.title|truncatewords:8 }}</h4></a>
+                    <p> {{ book.author }}</p>
+
+                </div>
+            {% endfor %}
+        </div>
+
+
+
+
 </div>
 
     <hr>

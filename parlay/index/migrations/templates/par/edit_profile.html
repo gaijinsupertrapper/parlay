@@ -1,12 +1,16 @@
 {% extends 'par/base.html' %}
-{% load static %}
+{% load staticfiles %}
 
 {% block title %} Edit profile {% endblock %}
 
 {% block content %}
-    <form method="POST" class="post-form">{% csrf_token %}
-       {{ form.as_p }}
-       <button type="submit" class="save btn btn-default">Save</button>
-   </form>
+<br>
+    <div class="container-fluid d-flex justify-content-center">
+        <form method="POST" class="post-form form-group">{% csrf_token %}
+           {{ form.as_p }}
+           <button type="submit" class="save btn btn-outline-primary btn-block">Save</button>
+       </form>
+    </div>
+
 
 {% endblock %}
