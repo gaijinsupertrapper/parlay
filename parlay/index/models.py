@@ -19,7 +19,7 @@ class Profile(models.Model):
     bio = models.TextField(max_length=500, blank=True, default='')
     tokens  = models.IntegerField(default=100)
     avatar = models.ImageField(upload_to='avatars/', blank=True)
-    books_read = list()
+    books_read = models.ManyToManyField(Book)
 
 
 @receiver(post_save, sender=User)

@@ -50,10 +50,10 @@ def profile(request, user_id):
 @login_required
 def add_book(request, book_id):
     user = request.user
-    if Book.objects.get(pk = book_id) in user.profile.books_read:
+    if Book.objects.get(pk = book_id) in user.profile.books_read.all():
         pass
     else:
-        user.profile.books_read.append(Book.objects.get(pk = book_id))
+        user.profile.books_read.add(Book.objects.get(pk = book_id))
         user.profile.save()
     # return redirect('detail-book', Book.objects.get(pk = book_id))
     return HttpResponseRedirect(reverse('detail-book', args=(book_id,)))

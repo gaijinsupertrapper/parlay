@@ -13,7 +13,7 @@
     {% endif %}
         <h4> Books read:</h4>
         <div class="container-fluid row " id="test_cont">
-            {% for book in username.profile.books_read %}
+            {% for book in username.profile.books_read.all %}
                 <div class="col">
                     <a href="{% url 'detail-book' book_id=book.id %}"><h4> {{ book.title|truncatewords:8 }}</h4></a>
                     <p> {{ book.author }}</p>
