@@ -6,21 +6,21 @@
 
         <br>
         <div class ="row container-fluid">
-                <div class="col-10">
+                <div class="col-12 col-md-10 ">
                         <h1> {{book.title}} </h1>
                 </div>
-                <div class="col-2">
+
+        </div>
+        <div class="row container-fluid">
+                <div class = "col-12 col-md-10 container-fluid">
+                      <h3> {{book.author}} </h3>
+                </div>
+                <div class="col-10 col-md-2 container-fluid ">
                         {% if user.is_authenticated %}
-                                {{ flash.already_in }}
+
                                 <a class="btn btn-outline-primary btn-block" href="{% url 'add-book' book_id=book.id  %}">  Add book </a>
                         {% endif %}
                 </div>
-        </div>
-        <div class="row container-fluid">
-                <div class = "col-12">
-                      <h3> {{book.author}} </h3>
-                </div>
-
         </div>
         <div class="row container-fluid">
                 <div class = "col-12">

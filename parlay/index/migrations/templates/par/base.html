@@ -16,9 +16,20 @@
 <body>
     <nav class="navbar navbar-default navigation">
       <div class="container-fluid">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="{% url 'index' %}">Parlay</a>
+        <div class="navbar-header col-8 nav-link">
+          <a class="navbar-brand " href="{% url 'index' %}">Parlay</a>
+
         </div>
+        {% if user.is_authenticated %}
+            <div class ="d-inline-flex nav-link">
+                    <a href="{% url 'wagers' %}"> My wagers</a>
+
+            </div>
+            <div class="d-inline-flex nav-link">
+                <a href = "{% url 'add-wager' %}">Add wager</a>
+
+            </div>
+        {% endif %}
           {% if user.get_username == none or not user.is_authenticated %}
 
           <p><a href = '{% url "login" %}'>Log in</a> or <a href = "{% url 'signup' %}">Register</a> </p>

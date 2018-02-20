@@ -1,0 +1,24 @@
+{% extends 'par/base.html' %}
+{% load staticfiles %}
+{% block title %} Add wager {% endblock %}
+
+{% block content %}
+    <br>
+    <form class="form-group" method="post">
+        {% csrf_token %}
+        <div class=" container-fluid d-flex flex-column align-items-center select-group">
+            {% for field in form %}
+
+            {{ field.label_tag }}
+            {{ field }}
+            {% endfor %}
+            <br>
+        <button type = "submit" class = "save btn btn-outline-primary">Submit</button>
+
+        </div>
+
+    </form>
+
+
+
+{% endblock %}

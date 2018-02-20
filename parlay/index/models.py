@@ -19,8 +19,15 @@ class Profile(models.Model):
     bio = models.TextField(max_length=500, blank=True, default='')
     tokens  = models.IntegerField(default=100)
     avatar = models.ImageField(upload_to='avatars/', blank=True)
-    books_read = models.ManyToManyField(Book)
+    books_read = models.ManyToManyField(Book,)
+    friends = models.ManyToManyField(User,  related_name='+',)
 
+
+class Wager(models.Model):
+    to = models.ForeignKey(User, on_delete=models.CASCADE, related_name='getter')
+    sender = models.ForeignKey(User, on_delete=models.CASCADE, related_name='receiver')
+    book = models.ForeignKey(Book, on_delete=models.CASCADE)
+    status = models.CharField(max_length=10, default='none')
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):

@@ -24,9 +24,19 @@
   <form method="post">
     {% csrf_token %}
      <div class="form-group d-flex flex-column justify-content-center align-items-center signup">
-    {{ form.as_p }}
+         {% for field in form %}
 
-    <button type="submit" class="btn btn-primary">Login</button>
+            {{ field.label_tag }}
+            {{ field }}
+            {% if field.help_text %}
+
+            {% endif %}
+            {% for error in field.errors %}
+              <p style="color: red">{{ error }}</p>
+            {% endfor %}
+        {% endfor %}
+        <br>
+         <button type="submit" class="btn btn-primary">Login <i class="fas fa-arrow-right"></i></button>
      </div>
   </form>
 </div>
