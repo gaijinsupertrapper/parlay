@@ -6,10 +6,11 @@
 {% block content %}
 <br>
     <div class="container-fluid">
-        <form method="POST" class="post-form form-group">{% csrf_token %}
-            <textarea type="text"  name="{{ form.bio.name }}" value="{{ form.bio.value }}" class = "form-control" rows="10">{{ user.profile.bio}}</textarea>
-            <br>
-            <button type="submit" class="save btn btn-outline-primary btn-block">Save</button>
+        <form method="POST" class="container-fluid post-form form-group d-flex justify-content-center flex-column align-items-center">
+            {% csrf_token %}
+            <textarea class="textarea" type="text"  name="{{ form.bio.name }}" value="{{ form.bio.value }}" class = "form-control" rows="10">{{ user.profile.bio}}</textarea>
+            <br><br>
+            <button type="submit" class="save button btn btn-block bg-teal white">Save</button>
        </form>
     </div>
 

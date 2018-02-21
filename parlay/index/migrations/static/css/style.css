@@ -1,6 +1,5 @@
 
 body{
-    background-color: #fff;
     height:100%;
     width:100%;
 
@@ -29,34 +28,47 @@ select {
     padding: 16px 20px;
     border: none;
     border-radius: 4px;
-    background-color: #f1f1f1;
+    background-color: #fff;
+    box-shadow: 0 0 10px 4px rgba(0,0,0,0.15);
+}
+.button{
+    width:75%;
+    max-width:750px;
+    box-shadow: 0 0 10px 4px rgba(0,0,0,0.25);
+}
+.button:hover{
+    background: #0074D9;
+    transition: all 0.25s ease;
+    color: white;
 }
 .select-group label{
     font-size: 1.5em;
     text-align:center;
 }
-.navigation{
-    background-color: #eee;
-    display:flex;
-    align-items:center;
-    z-index: 1000;
-    position: fixed;
-    left:0;
-    height:10%;
-    width:100%;
-    border-bottom: 1px solid #aaa;
-    box-shadow: -2px 0px 5px 1px #555;
-    margin-bottom: 2%
+.textarea{
+    width: 75%;
+    max-width: 750px;
+    box-shadow: 0 0 10px 4px rgba(0,0,0,0.15);
+    border-radius: 2px;
 }
 .logo{
     position:relative;
     width:45%;
 
 }
-.test_cont{
-    border:  1px solid #888;
-    box-shadow: 0 0 3px 1px #aaa;
+.profile-list{
+
+    box-shadow: 0 0 3px 1px #aaa inset;
+    padding: 1%;
     margin:0;
+}
+.profile-list a{
+    color: black;
+}
+a:hover{
+    text-decoration: none;
+    color: #444;
+    transition: all 0.25s ease;
 }
 .description_text{
     text-indent: 10px;
@@ -106,7 +118,12 @@ select {
     padding-left: 1%;
 
 }
-
+.navigation{
+    box-shadow: 0 0 10px 4px rgba(0,0,0,0.35);
+}
+.navigation a{
+    color: white;
+}
 .type{
     position: relative;
     float:right;
@@ -117,19 +134,18 @@ select {
 .description{
     margin-bottom: 10%;
 }
-.details{
+.detail-button{
     position:absolute;
-    background-color: #bff;
-    color: black;
-    box-shadow: 0 0 2px 1px #555;
+    box-shadow: 0 0 10px 4px rgba(0,0,0,0.25);
     bottom: 0;
     left: 0;
     text-decoration: none;
 }
-.details:hover{
-    box-shadow: 0 0 10px 1px #555;
-    transition: all 0.5s ease;
+.detail-button:hover{
+
     text-decoration: none;
+    background: #0074D9;
+    transition: all 0.25s ease;
 }
 #title{
     text-align: center;

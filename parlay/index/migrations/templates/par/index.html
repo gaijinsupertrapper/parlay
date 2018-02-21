@@ -13,7 +13,7 @@
                         <br>
                         <h3 class = "author"> {{ book.author}}</h3>
                         <p class = "description"> {{ book.description|truncatewords:20}}</p>
-                         <a href ="{% url 'detail-book' book.id %}"> <div class="col details">Learn More </div> </a>
+                         <a href ="{% url 'detail-book' book.id %}"> <div class="col detail-button btn btn-block white bg-teal">Learn More </div> </a>
                     </div>
 
                 {% endfor %}

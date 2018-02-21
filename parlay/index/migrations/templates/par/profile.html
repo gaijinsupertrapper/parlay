@@ -5,10 +5,10 @@
     <br>
 <div class = 'col container-fluid'>
 
-    <H1 id = "username">{{ username.username }}</H1>
+    <H1 id = "username" class="display-1">{{ username.username }}</H1>
     {% if user.id == username.id %}
-        <h3> {{username.profile.tokens}} <small> tokens </small></h3>
-        <a class="btn btn-outline-primary" href="{% url 'edit-profile' user_id=user.id %}">  <i class="fas fa-pencil-alt"></i>  Edit profile </a>
+        <h3 > {{username.profile.tokens}} <small> tokens </small></h3>
+        <a class="button btn bg-teal white " href="{% url 'edit-profile' user_id=user.id %}">  <i class="fas fa-pencil-alt"></i>  Edit profile </a>
 
     {% else %}
         {% if username in user.profile.friends.all %}
@@ -20,8 +20,8 @@
     {% endif %}
         <hr>
         {% if username.profile.books_read.count %}
-            <h4> Books read:</h4>
-            <div class="container-fluid row test_cont">
+            <h4 class="display-4"> Books read:</h4>
+            <div class="container-fluid row profile-list bg-white">
                 {% for book in username.profile.books_read.all %}
                     <div class="col">
                         <a href="{% url 'detail-book' book_id=book.id %}"><h4> {{ book.title|truncatewords:8 }}</h4></a>
@@ -31,14 +31,14 @@
                 {% endfor %}
             </div>
         {% else %}
-            <h4> This user haven't read any books yet :(</h4>
+            <h4 class="display-2"> This user haven't read any books yet :(</h4>
         {% endif %}
         {% if username.profile.friends.count %}
-            <h4> Friends:</h4>
-            <div class="container-fluid row test_cont">
+            <h4 class="display-4"> Friends:</h4>
+            <div class="container-fluid row profile-list bg-white">
                 {% for friend in username.profile.friends.all %}
                     <div class="col">
-                        <a href="{% url 'profile' user_id=friend.id %}"><h4> {{ friend.username|truncatewords:8 }}, </h4></a>
+                       <h4> <a href="{% url 'profile' user_id=friend.id %}"> {{ friend.username|truncatewords:8 }}</a>, </h4>
 
                     </div>
                 {% endfor %}
@@ -50,7 +50,7 @@
 </div>
 
     <hr>
-    <h5> {{username.profile.bio}}</h5>
+    <h4 >{{username.profile.bio}}</h4>
 
 
 {% endblock %}
