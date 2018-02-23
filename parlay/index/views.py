@@ -122,12 +122,30 @@ def wagers(request):
 
 
 def accept_wager(request, wager_id):
-    Wager.objects.get(pk=wager_id).status = str('true')
-    Wager.objects.get(pk=wager_id).save()
+    wager = Wager.objects.get(pk=wager_id)
+    wager.status = 'true'
+    wager.save()
     return redirect('wagers')
 
 
 def decline_wager(request, wager_id):
-    Wager.objects.get(pk=wager_id).status = str('false')
-    Wager.objects.get(pk=wager_id).save()
+    wager = Wager.objects.get(pk=wager_id)
+    wager.status = 'false'
+    wager.save()
     return redirect('wagers')
+
+
+def end_wager(request, wager_id):
+    Wager.objects.get(pk=wager_id).delete()
+
+    return redirect('wagers')
+
+
+def friends_list(request, user_id):
+    user = User.objects.get(pk=user_id)
+    return render(request, 'par/friends.html', {'username': user})
+
+
+def books_list(request, user_id):
+    user = User.objects.get(pk=user_id)
+    return render(request, 'par/books.html', {'username': user})

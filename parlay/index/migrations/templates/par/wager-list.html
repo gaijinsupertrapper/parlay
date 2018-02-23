@@ -9,25 +9,33 @@
         <div class = "row">
             <div class = "test-cont container-fluid col-10">
                 <h4>
-                  Book: <a href="{% url 'detail-book' book_id=wager.book.id %}">{{ wager.book }}</a>
+                  Book: <a href="{% url 'detail-book' book_id=wager.book.id %}" class="info-anchors">{{ wager.book }}</a>
                 </h4>
 
-                <p> From: <a href = "{% url 'profile' user_id=wager.sender.id %}">{{ wager.sender }}</a> </p>
-                <p> To: <a href = "{% url 'profile' user_id=wager.to.id %}">{{ wager.to }}</a> </p>
+                <p class="lead"> From: <a href = "{% url 'profile' user_id=wager.sender.id %}" class="info-anchors">{{ wager.sender }}</a> </p>
+                <p class="lead"> To: <a href = "{% url 'profile' user_id=wager.to.id %}" class="info-anchors">{{ wager.to }}</a> </p>
             </div>
             <div class = "col">
                 {% if user.username == wager.sender.username %}
-                    <p>You sent this!</p>
+                    {% if wager.status == 'true' %}
+                        <p class="lead">Wager is accepted!</p>
+                    {% elif wager.status == 'false' %}
+                        <p class="lead">Wager is declined. <a href="{% url 'end-wager' wager_id=wager.id %}" class="btn btn-outline-success">Remove?</a></p>
+                     {% else %}
+                         <p class="lead">Receiver didn't checked it yet :(</p>
+
+                    {% endif %}
                 {% else %}
-                    <p>You got this!</p>
+
                     <br>
                     {% if wager.status == 'true' %}
-                        <p> You accepted this wager!</p>
+                        <a href="{% url 'end-wager' wager_id=wager.id %}" class="btn btn-outline-success">End wager</a>
                     {% elif wager.status == 'false' %}
-                        <p> You declined this wager!</p>
+                        <p>You declined this wager. <a href="{% url 'end-wager' wager_id=wager.id %}" class="btn btn-outline-success">Remove?</a> </p>
                      {% else %}
-                        <a href="{% url 'accept-wager' wager_id=wager.id  %}" class="btn btn-outline-success">Accept</a>
+                    <a href="{% url 'accept-wager' wager_id=wager.id  %}" class="btn btn-outline-success">Accept</a>
                      or <a href="{% url 'decline-wager' wager_id=wager.id  %}" class="btn btn-outline-danger">Decline</a>
+
                     {% endif %}
                 {% endif %}
             </div>

@@ -3,44 +3,133 @@ body{
     height:100%;
     width:100%;
 
+
 }
-.navbar-header{
-    color: #000;
+.navigation{
+    box-shadow: 0 0 10px 4px rgba(0,0,0,0.35);
+    z-index: 1000;
+}
+.navigation a{
+    color: white;
+}
+.navigation a:hover{
+    color: #39CCCC;
+}
+
+.logo{
+    height: 40px;
+    font-size: 1.25em;
+    padding: 1%;
+    color:white;
+    align-items-center;
+    border-radius:8px;
+    box-shadow: 0 0 20px 8px rgba(0,0,0,0.25);
+}
+footer{
+    padding:2%;
+    width: 100%;
+}
+.more-item{
+    margin-bottom: 2%;
+}
+.logo{
+    text-shadow: 0 1px 0px #378ab4,
+    1px 0 0px #5dabcd,
+    1px 2px 1px #378ab4,
+    2px 1px 1px #5dabcd,
+    2px 3px 2px #378ab4,
+    3px 2px 2px #5dabcd,
+    3px 4px 2px #378ab4,
+    4px 3px 3px #5dabcd,
+    4px 5px 3px #378ab4,
+    5px 4px 2px #5dabcd,
+    5px 6px 2px #378ab4,
+    6px 5px 2px #5dabcd,
+    6px 7px 1px #378ab4,
+    7px 6px 1px #5dabcd,
+    7px 8px 0px #378ab4,
+    8px 7px 0px #5dabcd;
+}
+.logo:hover{
+    transition: all 0.5s ease-out;
+    color: black;
+    background-color: #FF4136;
+    box-shadow: 0 0 40px 16px rgba(0,0,0,0.25);
+}
+
+#search{
+    max-width: 10000px;
+    width: 75%;
+    height: 40px;
 }
 input[type=text], input[type=email], input[type=password]{
                 width:75%;
                 max-width: 250px;
                 border: 1px solid #888;
                 border-radius: 25px;
-
-                padding-left: 1%;
+                transition: all 0.25s ease-in-out;
+                padding-left:1%;
                 padding-right:1%;
             }
 input[type=text]:focus, input[type=email]:focus, input[type=password]:focus{
                 box-shadow: 0 0 20px 8px #ccf;
-                transition: all 0.25s ease;
+
                 border-radius: 25px;
                  outline: none;
 }
 select {
+    outline: none;
     width:100%;
     max-width: 750px;
     padding: 16px 20px;
     border: none;
-    border-radius: 4px;
+    border-radius: 8px;
     background-color: #fff;
     box-shadow: 0 0 10px 4px rgba(0,0,0,0.15);
 }
+
 .button{
     width:75%;
     max-width:750px;
     box-shadow: 0 0 10px 4px rgba(0,0,0,0.25);
+    transition: all 0.25s ease-out;
+    border-radius: 8px;
+}
+.button-small{
+    transition: all 0.25s ease-out;
+    box-shadow: 0 0 10px 4px rgba(0,0,0,0.25);
+
+}
+.button-search{
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    text-align:left;
+}
+.more-button{
+    width:25%;
+    max-width:750px;
+    box-shadow: 0 0 10px 4px rgba(0,0,0,0.25);
+    transition: all 0.25s ease-out;
+    border-radius: 8px;
+}
+.more-button:hover{
+    background: #aaa;
+    color: #fff;
+}
+.button-search:hover{
+    background: #0074D9;
+    color: white;
 }
 .button:hover{
     background: #0074D9;
-    transition: all 0.25s ease;
     color: white;
 }
+ button-small:hover{
+    background: #0074D9;
+
+    color: white;
+ }
 .select-group label{
     font-size: 1.5em;
     text-align:center;
@@ -49,15 +138,11 @@ select {
     width: 75%;
     max-width: 750px;
     box-shadow: 0 0 10px 4px rgba(0,0,0,0.15);
-    border-radius: 2px;
+    border-radius: 8px;
 }
-.logo{
-    position:relative;
-    width:45%;
 
-}
 .profile-list{
-
+    border-radius: 4px;
     box-shadow: 0 0 3px 1px #aaa inset;
     padding: 1%;
     margin:0;
@@ -65,10 +150,14 @@ select {
 .profile-list a{
     color: black;
 }
+a{
+    transition: all 0.25s ease-out;
+}
+
 a:hover{
     text-decoration: none;
-    color: #444;
-    transition: all 0.25s ease;
+    color: #666;
+
 }
 .description_text{
     text-indent: 10px;
@@ -118,11 +207,9 @@ a:hover{
     padding-left: 1%;
 
 }
-.navigation{
-    box-shadow: 0 0 10px 4px rgba(0,0,0,0.35);
-}
-.navigation a{
-    color: white;
+
+.info-anchors{
+    color: black;
 }
 .type{
     position: relative;
@@ -140,12 +227,13 @@ a:hover{
     bottom: 0;
     left: 0;
     text-decoration: none;
+    transition: all 0.25s ease-out;
 }
 .detail-button:hover{
 
     text-decoration: none;
     background: #0074D9;
-    transition: all 0.25s ease;
+
 }
 #title{
     text-align: center;

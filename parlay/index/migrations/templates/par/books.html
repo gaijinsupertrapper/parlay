@@ -1,0 +1,20 @@
+{% extends 'par/base.html' %}
+{% load staticfiles %}
+
+{% block title %} {{ username.username }}'s books {% endblock %}
+
+{% block content %}
+    <br>
+    <h3 class="display-4 text-right"> :{{username.username}}'s books </h3>
+    <hr>
+    <div class="row container-fluid">
+    {% for book in username.profile.books_read.all %}
+    <div class="col-12 col-md-6 col-lg-4 text-right more-item">
+        <a href="{% url 'detail-book' book_id=book.id %}" class="display-4  black">{{ book.title }}</a>
+        <p class="lead text-center">{{book.author}}</p>
+
+    </div>
+        <br>
+    {% endfor %}
+    </div>
+{% endblock %}

@@ -1,3 +1,4 @@
+
 <!doctype html>
 {% load staticfiles %}
 
@@ -9,28 +10,46 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel=stylesheet href="https://s3-us-west-2.amazonaws.com/colors-css/2.2.0/colors.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
     <title>{% block title %} {% endblock %}</title>
 </head>
 <body class="bg-silver">
-    <nav class="navbar navbar-default navigation bg-maroon silver">
+    <nav class="navbar navbar-default navbar-expand-md text-center text-md-left navigation bg-maroon aqua">
       <div class="container-fluid">
-        <div class="navbar-header col-8 nav-link">
-          <a class="navbar-brand " href="{% url 'index' %}">Parlay</a>
+        <div class="navbar-header  col-8 col-md-2 nav-link d-flex">
+          <a class="navbar-brand container-fluid logo text-center border-white bg-aqua black" href="{% url 'index' %}">Parlay</a>
 
         </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".collapse" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span >Menu</span>
+          </button>
+
+      <div class="collapse navbar-collapse navbar-expand-lg">
+
         {% if user.is_authenticated %}
-            <div class ="d-inline-flex nav-link">
+            <div class=" col-12 col-md-6">
+                <input id="search" type="text" placeholder="Search">
+                <button type="submit" class="button-search btn bg-teal white "><i class="fas fa-search"></i></button>
+
+
+            </div>
+            <div class ="d-inline-flex nav-link col-12 col-md-2">
                     <a href="{% url 'wagers' %}"> My wagers</a>
 
             </div>
-            <div class="d-inline-flex nav-link">
+            <div class="d-inline-flex nav-link col-12 col-md-2">
                 <a href = "{% url 'add-wager' %}">Add wager</a>
 
             </div>
+        {% else %}
+            <div class="0 col-md-10"></div>
+
         {% endif %}
+          <div class="d-inline-flex nav-link col-12 col-md-2">
+
           {% if user.get_username == none or not user.is_authenticated %}
 
           <p><a href = '{% url "login" %}'>Log in</a> or <a href = "{% url 'signup' %}">Register</a> </p>
@@ -38,7 +57,8 @@
 
               <p>Hi, <a href="{% url 'profile' user.id %}"> {{user.username}}</a><br> <a href = '{% url "logout" %}'> Log out</a></p>
           {% endif %}
-
+          </div>
+        </div>
       </div>
     </nav>
 
@@ -50,6 +70,8 @@
 
 
     {% endblock %}
+    <br>
+
     </div>
 </body>
 </html>

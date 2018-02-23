@@ -8,40 +8,60 @@
     <H1 id = "username" class="display-1">{{ username.username }}</H1>
     {% if user.id == username.id %}
         <h3 > {{username.profile.tokens}} <small> tokens </small></h3>
+        <h4 >{{username.profile.bio}}</h4>
+
         <a class="button btn bg-teal white " href="{% url 'edit-profile' user_id=user.id %}">  <i class="fas fa-pencil-alt"></i>  Edit profile </a>
 
     {% else %}
         {% if username in user.profile.friends.all %}
-            <a class="btn btn-outline-danger" href="{% url 'remove-friend' user_id=username.id %}"> Remove friend </a>
+            <a class="btn btn-outline-danger remove-friend bg-red white" href="{% url 'remove-friend' user_id=username.id %}"> Remove friend </a>
         {% else %}
-            <a class="btn btn-primary" href="{% url 'add-friend' user_id=username.id %}"> Add friend </a>
+            <a class="btn btn-outline-success add-friend bg-green white" href="{% url 'add-friend' user_id=username.id %}"> Add friend </a>
 
         {% endif %}
     {% endif %}
+
+
         <hr>
         {% if username.profile.books_read.count %}
             <h4 class="display-4"> Books read:</h4>
-            <div class="container-fluid row profile-list bg-white">
-                {% for book in username.profile.books_read.all %}
-                    <div class="col">
-                        <a href="{% url 'detail-book' book_id=book.id %}"><h4> {{ book.title|truncatewords:8 }}</h4></a>
-                        <p> {{ book.author }}</p>
+            <div class="container-fluid  profile-list bg-white">
+                <div class="row">
+                    {% for book in username.profile.books_read.all|slice:":4" %}
+                        <div class="col">
+                            <a href="{% url 'detail-book' book_id=book.id %}"><h4> {{ book.title|truncatewords:8 }}</h4></a>
+                            <p> {{ book.author }}</p>
 
-                    </div>
-                {% endfor %}
+                        </div>
+                    {% endfor %}
+                </div>
+                <br>
+                <div class="row ">
+                    <a href="{% url 'books-list' user_id=username.id %}" class=" more-button container-fluid bg-silver black">View all </a>
+
+                </div>
+                <br>
             </div>
         {% else %}
             <h4 class="display-2"> This user haven't read any books yet :(</h4>
         {% endif %}
         {% if username.profile.friends.count %}
             <h4 class="display-4"> Friends:</h4>
-            <div class="container-fluid row profile-list bg-white">
-                {% for friend in username.profile.friends.all %}
-                    <div class="col">
-                       <h4> <a href="{% url 'profile' user_id=friend.id %}"> {{ friend.username|truncatewords:8 }}</a>, </h4>
+            <div class="container-fluid  profile-list bg-white">
+                <div class="row">
+                    {% for friend in username.profile.friends.all %}
+                        <div class="col">
+                           <h4> <a href="{% url 'profile' user_id=friend.id %}"> {{ friend.username|truncatewords:8 }}</a>; </h4>
 
-                    </div>
-                {% endfor %}
+                        </div>
+                    {% endfor %}
+                </div>
+                <br>
+                <div class="row ">
+                    <a href="{% url 'friends-list' user_id=username.id %}" class="more-button container-fluid bg-silver black">View all </a>
+
+                </div>
+                <br>
             </div>
         {% else %}
             <h4> This user has no friends :(</h4>
@@ -49,8 +69,7 @@
 
 </div>
 
-    <hr>
-    <h4 >{{username.profile.bio}}</h4>
+
 
 
 {% endblock %}
