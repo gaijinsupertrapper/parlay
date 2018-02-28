@@ -4,13 +4,14 @@
 
 {% block content %}
     <br>
-    <form class="form-group" method="post">
+    <form class="form-group card" method="post">
         {% csrf_token %}
-        <div class=" container-fluid d-flex flex-column align-items-center select-group">
+        <div class=" container-fluid d-flex flex-column align-items-center select-group ">
             {% for field in form %}
 
             {{ field.label_tag }}
             {{ field }}
+            <br>
             {% endfor %}
             <br>
         <button type = "submit" class = "save button btn btn-block bg-teal white">Submit <i class="fas fa-arrow-right"></i></button>

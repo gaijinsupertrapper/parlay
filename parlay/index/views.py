@@ -6,9 +6,11 @@ from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.db.models import Q
+from requests_html import session
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+import datetime
 
-
-from .forms import SignUpForm, ProfileForm, WagerForm
+from .forms import SignUpForm, ProfileForm, WagerForm, BookUrlForm
 
 def signup(request):
     if request.method == 'POST':
@@ -29,8 +31,11 @@ def index(request):
     username = None
     if request.user.is_authenticated:
         username = request.user
-
-    return render(request, 'par/index.html', {'books': Book.objects.all,
+    books_list = Book.objects.all()
+    paginate = Paginator(books_list,9)
+    page = request.GET.get('page')
+    books = paginate.get_page(page)
+    return render(request, 'par/index.html', {'books': books,
                                               'user': username
                                               })
 
@@ -107,6 +112,7 @@ def add_wager(request):
         form = WagerForm(request.POST)
         if form.is_valid():
             Wager = form.save(commit=False)
+            Wager.duration = form.cleaned_data['duration']*86400
             Wager.sender = sender
             Wager.save()
             return redirect('wagers')
@@ -149,3 +155,44 @@ def friends_list(request, user_id):
 def books_list(request, user_id):
     user = User.objects.get(pk=user_id)
     return render(request, 'par/books.html', {'username': user})
+
+
+def search(request):
+    if request.method == "GET":
+        q = request.GET.get('q')
+        if q:
+            return redirect('search-results', search_query=q)
+        else:
+            return redirect('index')
+    else:
+        return redirect('profile')
+
+
+def search_results(request, search_query):
+    users = User.objects.filter(username__icontains = search_query)[:5]
+    books = Book.objects.filter(title__icontains = search_query)[:5]
+    return render(request, 'par/search-results.html', {'users': users,
+                                              'books': books,
+                                            'q': search_query})
+
+
+def create_book(request):
+    if request.method == "POST":
+        form = BookUrlForm(request.POST)
+        if form.is_valid():
+
+            r = session.get(form.cleaned_data['url'])
+            title = r.html.find('.biblio_book_name', first=True).text
+            author = r.html.find('.biblio_book_author__link', first=True).text
+            description_list = r.html.find('.biblio_book_descr_publishers p')
+            description = str()
+
+            for i in range(len(description_list)):
+                description += description_list[i].text
+                description += '\n'
+
+            book = Book.objects.create( title=title, author=author, description=description , url=form.cleaned_data['url'])
+            return redirect('index')
+    else:
+        form = BookUrlForm()
+    return render(request, 'par/add-book.html', {'form': form})

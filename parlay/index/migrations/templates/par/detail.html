@@ -2,16 +2,15 @@
 {% load staticfiles %}
 {% block title %} {{book.title|truncatewords:3}} | Parlay {% endblock %}
 {% block content %}
-
-
         <br>
-        <div class ="row container-fluid">
+        <div class="card">
+            <div class ="row container-fluid">
                 <div class="col-12 col-md-10">
                         <h1> {{book.title}} </h1>
                 </div>
 
         </div>
-        <div class="row container-fluid">
+        <div class="row container-fluid ">
                 <div class = "col-12 col-md-10 container-fluid">
                       <h3> {{book.author}} </h3>
                 </div>
@@ -20,7 +19,7 @@
                                 {% if book in user.profile.books_read.all %}
                                     <p class="text-muted"> You have that book in list!</p>
                                 {% else %}
-                                    <a class="btn btn-primary bg-aqua white btn-block " href="{% url 'add-book' book_id=book.id  %}">  Add book </a>
+                                    <a class="btn btn-primary button bg-aqua white btn-block " href="{% url 'add-book' book_id=book.id  %}">  Add book </a>
                                 {% endif %}
                     {% endif %}
                 </div>
@@ -32,6 +31,14 @@
                 </div>
 
         </div>
+        <hr>
+        <div class="row container-fluid ">
+            <p class="lead  text-center"> Купить: <a href="{{book.url}}"> можно здесь! </a>  </p>
+        </div>
+        </div>
+
+
+
 
 
 

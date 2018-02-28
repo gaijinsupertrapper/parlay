@@ -5,8 +5,9 @@
 {% block content %}
     <br>
     <hr>
+{% if wagers %}
     {% for wager in wagers %}
-        <div class = "row">
+        <div class = "row card">
             <div class = "test-cont container-fluid col-10">
                 <h4>
                   Book: <a href="{% url 'detail-book' book_id=wager.book.id %}" class="info-anchors">{{ wager.book }}</a>
@@ -14,8 +15,9 @@
 
                 <p class="lead"> From: <a href = "{% url 'profile' user_id=wager.sender.id %}" class="info-anchors">{{ wager.sender }}</a> </p>
                 <p class="lead"> To: <a href = "{% url 'profile' user_id=wager.to.id %}" class="info-anchors">{{ wager.to }}</a> </p>
+                <p class="lead"> Duration: {{wager.duration}}</p>
             </div>
-            <div class = "col">
+            <div class = "row d-flex justify-content-center">
                 {% if user.username == wager.sender.username %}
                     {% if wager.status == 'true' %}
                         <p class="lead">Wager is accepted!</p>
@@ -33,8 +35,8 @@
                     {% elif wager.status == 'false' %}
                         <p>You declined this wager. <a href="{% url 'end-wager' wager_id=wager.id %}" class="btn btn-outline-success">Remove?</a> </p>
                      {% else %}
-                    <a href="{% url 'accept-wager' wager_id=wager.id  %}" class="btn btn-outline-success">Accept</a>
-                     or <a href="{% url 'decline-wager' wager_id=wager.id  %}" class="btn btn-outline-danger">Decline</a>
+                   <p> <a href="{% url 'accept-wager' wager_id=wager.id  %}" class="btn btn-outline-success">Accept</a>
+                       or <a href="{% url 'decline-wager' wager_id=wager.id  %}" class="btn btn-outline-danger">Decline</a> </p>
 
                     {% endif %}
                 {% endif %}
@@ -42,4 +44,10 @@
         </div>
     <hr>
     {% endfor %}
+{% else %}
+    <div class="card">
+            <h4 class="display-4 gray"> You have no wagers. <a href = "{% url 'add-wager' %}" class="black">Want to add some?</a></h4>
+
+    </div>
+{% endif %}
 {% endblock %}

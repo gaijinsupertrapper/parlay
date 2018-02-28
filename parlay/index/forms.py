@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import Profile, Wager
+from .models import Profile, Wager, Book
 
 
 class SignUpForm(UserCreationForm):
@@ -17,12 +17,19 @@ class ProfileForm(forms.ModelForm):
         model = Profile
         fields = ('bio', 'avatar' )
 
+
+class BookUrlForm(forms.ModelForm):
+    class Meta:
+        model = Book
+        fields = ('url',)
+
 class WagerForm(forms.ModelForm):
     class Meta:
         model = Wager
-        fields=('to','book')
+        fields=('to','book', 'duration')
         labels = {
             'to': 'Choose a user',
-            'book': 'Select a book'
+            'book': 'Select a book',
+            'duration': 'Select a duration of this wager in days'
         }
 

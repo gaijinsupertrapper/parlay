@@ -5,10 +5,10 @@
 
 {% block content %}
 <br>
-    <div class="container-fluid">
+    <div class="container-fluid card">
         <form method="POST" class="container-fluid post-form form-group d-flex justify-content-center flex-column align-items-center">
             {% csrf_token %}
-            <textarea class="textarea" type="text"  name="{{ form.bio.name }}" value="{{ form.bio.value }}" class = "form-control" rows="10">{{ user.profile.bio}}</textarea>
+            <textarea class="textarea container-fluid" type="text"  name="{{ form.bio.name }}" value="{{ form.bio.value }}" class = "form-control" rows="10">{{ user.profile.bio}}</textarea>
             <br><br>
             <button type="submit" class="save button btn btn-block bg-teal white">Save</button>
        </form>

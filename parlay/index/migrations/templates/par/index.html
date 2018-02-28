@@ -7,20 +7,40 @@
         <div class="row  justify-content-center">
                 {% for book in books %}
 
-                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 content-col content">
-                        <img src="{% static 'img/agenda.png' %}" class="type"/>
-                        <h2 class = "title "> {{ book.title|truncatewords:5}} </h2>
-                        <br>
-                        <h3 class = "author"> {{ book.author}}</h3>
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 d-flex-inline justify-content-center content-col content">
+
+                        <h2 class = "title text-center"> {{ book.title|truncatewords:5}} </h2>
+
+                        <h3 class = "author text-center"> {{ book.author}}</h3>
                         <p class = "description lead" > {{ book.description|truncatewords:20}}</p>
                         <br>
-                         <a href ="{% url 'detail-book' book.id %}"> <div class="col detail-button btn btn-block white bg-teal">Learn More </div> </a>
+                         <a href ="{% url 'detail-book' book.id %}"> <div class="btn-block btn detail-button white bg-teal">Learn More </div> </a>
                     </div>
 
                 {% endfor %}
 
         </div>
+        <div class="pagination card text-center lead">
+            <span class="step-links">
+                {% if books.has_previous %}
+                    <a href="?page=1">&laquo; first</a>
+                    &nbsp;
+                    &nbsp;
+                    <a href="?page={{ books.previous_page_number }}">previous</a>
+                {% endif %}
 
+                <span class="current">
+                    Page {{ books.number }} of {{ books.paginator.num_pages }}.
+                </span>
+
+                {% if books.has_next %}
+                    <a href="?page={{ books.next_page_number }}">next</a>
+                    &nbsp;
+                    &nbsp;
+                    <a href="?page={{ books.paginator.num_pages }}">last &raquo;</a>
+                {% endif %}
+            </span>
+        </div>
 
 
 {% endblock %}
