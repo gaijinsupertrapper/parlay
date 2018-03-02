@@ -2,23 +2,31 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4ca6b76e-45df-41e8-8913-ec46f1382348" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/parlay/index/templates/par/books.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/parlay/index/templates/par/detail.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/parlay/index/templates/par/edit_profile.html" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/parlay/index/migrations/templates/par/books.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/parlay/index/migrations/templates/par/detail.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/parlay/index/migrations/templates/par/edit_profile.html" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parlay/index/forms.py" afterPath="$PROJECT_DIR$/parlay/index/forms.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parlay/index/migrations/static/css/style.css" afterPath="$PROJECT_DIR$/parlay/index/migrations/static/css/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parlay/index/migrations/templates/par/add_wager.html" afterPath="$PROJECT_DIR$/parlay/index/migrations/templates/par/add_wager.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parlay/index/migrations/templates/par/base.html" afterPath="$PROJECT_DIR$/parlay/index/migrations/templates/par/base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parlay/index/migrations/templates/par/books.html" afterPath="$PROJECT_DIR$/parlay/index/migrations/templates/par/books.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parlay/index/migrations/templates/par/detail.html" afterPath="$PROJECT_DIR$/parlay/index/migrations/templates/par/detail.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parlay/index/migrations/templates/par/edit_profile.html" afterPath="$PROJECT_DIR$/parlay/index/migrations/templates/par/edit_profile.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parlay/index/migrations/templates/par/friends.html" afterPath="$PROJECT_DIR$/parlay/index/migrations/templates/par/friends.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parlay/index/migrations/templates/par/index.html" afterPath="$PROJECT_DIR$/parlay/index/migrations/templates/par/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parlay/index/migrations/templates/par/login.html" afterPath="$PROJECT_DIR$/parlay/index/migrations/templates/par/login.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parlay/index/migrations/templates/par/profile.html" afterPath="$PROJECT_DIR$/parlay/index/migrations/templates/par/profile.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parlay/index/migrations/templates/par/wager-list.html" afterPath="$PROJECT_DIR$/parlay/index/migrations/templates/par/wager-list.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parlay/index/models.py" afterPath="$PROJECT_DIR$/parlay/index/models.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parlay/index/urls.py" afterPath="$PROJECT_DIR$/parlay/index/urls.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parlay/index/views.py" afterPath="$PROJECT_DIR$/parlay/index/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parlay/parlay/settings.py" afterPath="$PROJECT_DIR$/parlay/parlay/settings.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parlay/parlay/urls.py" afterPath="$PROJECT_DIR$/parlay/parlay/urls.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/parlay/index/migrations/templates/par/add-book.html" afterPath="$PROJECT_DIR$/parlay/index/templates/par/add-book.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/parlay/index/migrations/templates/par/add_wager.html" afterPath="$PROJECT_DIR$/parlay/index/templates/par/add_wager.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/parlay/index/migrations/templates/par/base.html" afterPath="$PROJECT_DIR$/parlay/index/templates/par/base.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/parlay/index/migrations/templates/par/friends.html" afterPath="$PROJECT_DIR$/parlay/index/templates/par/friends.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/parlay/index/migrations/templates/par/index.html" afterPath="$PROJECT_DIR$/parlay/index/templates/par/index.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/parlay/index/migrations/templates/par/login.html" afterPath="$PROJECT_DIR$/parlay/index/templates/par/login.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/parlay/index/migrations/templates/par/name.html" afterPath="$PROJECT_DIR$/parlay/index/templates/par/name.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/parlay/index/migrations/templates/par/profile.html" afterPath="$PROJECT_DIR$/parlay/index/templates/par/profile.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/parlay/index/migrations/templates/par/search-results.html" afterPath="$PROJECT_DIR$/parlay/index/templates/par/search-results.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/parlay/index/migrations/templates/par/signup.html" afterPath="$PROJECT_DIR$/parlay/index/templates/par/signup.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/parlay/index/migrations/templates/par/wager-list.html" afterPath="$PROJECT_DIR$/parlay/index/templates/par/wager-list.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -33,8 +41,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/parlay/index/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="114" column="58" lean-forward="false" selection-start-line="114" selection-start-column="58" selection-end-line="114" selection-end-column="64" />
+            <state relative-caret-position="141">
+              <caret line="148" column="63" lean-forward="false" selection-start-line="148" selection-start-column="63" selection-end-line="148" selection-end-column="63" />
               <folding>
                 <element signature="e#0#63#0" expanded="true" />
               </folding>
@@ -42,32 +50,34 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="forms.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/parlay/index/forms.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="379">
-              <caret line="28" column="38" lean-forward="false" selection-start-line="28" selection-start-column="30" selection-end-line="28" selection-end-column="38" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/parlay/index/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="277">
-              <caret line="40" column="40" lean-forward="false" selection-start-line="40" selection-start-column="40" selection-end-line="40" selection-end-column="40" />
+            <state relative-caret-position="340">
+              <caret line="35" column="38" lean-forward="false" selection-start-line="35" selection-start-column="38" selection-end-line="35" selection-end-column="38" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/parlay/parlay/settings.py">
+      <file leaf-file-name="profile.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/parlay/index/templates/par/profile.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="400">
-              <caret line="47" column="0" lean-forward="true" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+            <state relative-caret-position="-17">
+              <caret line="11" column="77" lean-forward="false" selection-start-line="11" selection-start-column="71" selection-end-line="11" selection-end-column="77" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/parlay/parlay/urls.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="527">
+              <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="76" />
+              <folding>
+                <element signature="e#630#662#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -75,28 +85,58 @@
       <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/parlay/index/migrations/static/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2717">
-              <caret line="248" column="15" lean-forward="false" selection-start-line="248" selection-start-column="15" selection-end-line="248" selection-end-column="15" />
+            <state relative-caret-position="425">
+              <caret line="25" column="32" lean-forward="false" selection-start-line="25" selection-start-column="32" selection-end-line="25" selection-end-column="32" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="books.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/parlay/index/templates/par/books.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="235">
+              <caret line="17" column="34" lean-forward="false" selection-start-line="17" selection-start-column="34" selection-end-line="17" selection-end-column="34" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="base.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/parlay/index/migrations/templates/par/base.html">
+        <entry file="file://$PROJECT_DIR$/parlay/index/templates/par/base.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="44" column="63" lean-forward="true" selection-start-line="44" selection-start-column="16" selection-end-line="44" selection-end-column="63" />
+            <state relative-caret-position="408">
+              <caret line="40" column="128" lean-forward="false" selection-start-line="40" selection-start-column="128" selection-end-line="40" selection-end-column="128" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/parlay/index/templates/par/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="16" column="29" lean-forward="false" selection-start-line="16" selection-start-column="29" selection-end-line="16" selection-end-column="29" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="login.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/parlay/index/templates/par/login.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="493">
+              <caret line="29" column="88" lean-forward="false" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="88" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="wager-list.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/parlay/index/migrations/templates/par/wager-list.html">
+        <entry file="file://$PROJECT_DIR$/parlay/index/templates/par/wager-list.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="17" column="61" lean-forward="false" selection-start-line="17" selection-start-column="61" selection-end-line="17" selection-end-column="61" />
+            <state relative-caret-position="136">
+              <caret line="8" column="27" lean-forward="false" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -114,17 +154,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>User</find>
-      <find>col</find>
-      <find>fon</find>
-      <find>header</find>
-      <find>border</find>
-      <find>static</find>
-      <find>media</find>
-      <find>detai</find>
-      <find>hover</find>
-      <find>border-radius</find>
-      <find>butto</find>
       <find>ease</find>
       <find>tra</find>
       <find>navba</find>
@@ -134,16 +163,27 @@
       <find>content</find>
       <find>contain</find>
       <find>deta</find>
-      <find>profile</find>
-      <find>nav</find>
       <find>profi</find>
-      <find>card</find>
       <find>more-it</find>
       <find>conten</find>
-      <find>logo</find>
       <find>200</find>
       <find>detail</find>
+      <find>footer</find>
       <find>button</find>
+      <find>book-c</find>
+      <find>profile</find>
+      <find>nav</find>
+      <find>profile-list-book</find>
+      <find>cover</find>
+      <find>logo</find>
+      <find>sans</find>
+      <find>book-cover</find>
+      <find>avatar</find>
+      <find>more-</find>
+      <find>container</find>
+      <find>card</find>
+      <find>book</find>
+      <find>navi</find>
     </findStrings>
     <replaceStrings>
       <replace>staticfiles</replace>
@@ -161,27 +201,36 @@
         <option value="$PROJECT_DIR$/parlay/index/migrations/templates/par/account_activation_email.html" />
         <option value="$PROJECT_DIR$/parlay/index/migrations/templates/par/name.html" />
         <option value="$PROJECT_DIR$/parlay/myvenv/Lib/site-packages/django/contrib/auth/templates/registration/login.html" />
-        <option value="$PROJECT_DIR$/parlay/parlay/urls.py" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/parlay/index/admin.py" />
         <option value="$PROJECT_DIR$/parlay/index/migrations/templates/par/signup.html" />
-        <option value="$PROJECT_DIR$/parlay/index/migrations/templates/par/edit_profile.html" />
         <option value="$PROJECT_DIR$/parlay/index/migrations/templates/par/friends.html" />
-        <option value="$PROJECT_DIR$/parlay/index/migrations/templates/par/books.html" />
         <option value="$PROJECT_DIR$/parlay/index/migrations/templates/par/add_wager.html" />
         <option value="$PROJECT_DIR$/parlay/index/migrations/templates/par/login.html" />
-        <option value="$PROJECT_DIR$/parlay/index/urls.py" />
-        <option value="$PROJECT_DIR$/parlay/index/migrations/templates/par/profile.html" />
-        <option value="$PROJECT_DIR$/parlay/index/migrations/templates/par/detail.html" />
-        <option value="$PROJECT_DIR$/parlay/index/migrations/templates/par/search-results.html" />
-        <option value="$PROJECT_DIR$/parlay/index/migrations/static/css/style.css" />
         <option value="$PROJECT_DIR$/parlay/index/migrations/templates/par/add-book.html" />
-        <option value="$PROJECT_DIR$/parlay/index/migrations/templates/par/base.html" />
-        <option value="$PROJECT_DIR$/parlay/index/migrations/templates/par/index.html" />
-        <option value="$PROJECT_DIR$/parlay/parlay/settings.py" />
-        <option value="$PROJECT_DIR$/parlay/index/models.py" />
-        <option value="$PROJECT_DIR$/parlay/index/forms.py" />
         <option value="$PROJECT_DIR$/parlay/index/migrations/templates/par/wager-list.html" />
+        <option value="$PROJECT_DIR$/parlay/index/migrations/templates/par/base.html" />
+        <option value="$PROJECT_DIR$/parlay/index/migrations/templates/par/search-results.html" />
+        <option value="$PROJECT_DIR$/parlay/index/urls.py" />
+        <option value="D:/parse_text/requests_html_test.py" />
+        <option value="$PROJECT_DIR$/parlay/index/migrations/templates/par/books.html" />
+        <option value="$PROJECT_DIR$/parlay/index/migrations/templates/par/index.html" />
+        <option value="$PROJECT_DIR$/parlay/index/migrations/templates/par/detail.html" />
+        <option value="$PROJECT_DIR$/parlay/index/forms.py" />
+        <option value="$PROJECT_DIR$/parlay/index/migrations/templates/par/parse-error.html" />
+        <option value="$PROJECT_DIR$/parlay/index/migrations/templates/par/edit_profile.html" />
+        <option value="$PROJECT_DIR$/parlay/index/migrations/templates/par/profile.html" />
+        <option value="$PROJECT_DIR$/parlay/parlay/settings.py" />
+        <option value="$PROJECT_DIR$/parlay/parlay/urls.py" />
+        <option value="$PROJECT_DIR$/parlay/index/templates/par/edit_profile.html" />
+        <option value="$PROJECT_DIR$/parlay/index/templates/par/index.html" />
+        <option value="$PROJECT_DIR$/parlay/index/templates/par/detail.html" />
+        <option value="$PROJECT_DIR$/parlay/index/models.py" />
+        <option value="$PROJECT_DIR$/parlay/index/templates/par/profile.html" />
+        <option value="$PROJECT_DIR$/parlay/index/templates/par/books.html" />
+        <option value="$PROJECT_DIR$/parlay/index/migrations/static/css/style.css" />
+        <option value="$PROJECT_DIR$/parlay/index/templates/par/base.html" />
+        <option value="$PROJECT_DIR$/parlay/index/templates/par/wager-list.html" />
         <option value="$PROJECT_DIR$/parlay/index/views.py" />
       </list>
     </option>
@@ -207,7 +256,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -288,32 +336,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="migrations" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="site" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="site" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="parlay" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="index" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="migrations" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="templates" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -322,74 +344,21 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="site" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="site" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="parlay" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="index" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="migrations" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="site" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="site" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="parlay" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="index" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="migrations" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="D:/parse_text/requests_html_test.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\site\parlay\index\templates" />
+      <recent name="D:\site\parlay\index" />
       <recent name="D:\site\parlay\index\migrations\templates\par" />
     </key>
   </component>
@@ -405,7 +374,25 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.requests_html_test">
+    <configuration default="false" name="requests_html_test" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="D:/parse_text" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="site" />
+      <option name="SCRIPT_NAME" value="D:/parse_text/requests_html_test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <method />
+    </configuration>
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -470,6 +457,14 @@
       <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method />
     </configuration>
+    <list size="1">
+      <item index="0" class="java.lang.String" itemvalue="Python.requests_html_test" />
+    </list>
+    <recent_temporary>
+      <list size="1">
+        <item index="0" class="java.lang.String" itemvalue="Python.requests_html_test" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
@@ -494,13 +489,13 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2306003" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329653" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -524,13 +519,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/parlay/index/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="2" column="24" lean-forward="false" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/parlay/index/migrations/static/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -545,7 +533,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/parlay/index/migrations/templates/par/index.html">
+    <entry file="file://$PROJECT_DIR$/parlay/index/templates/par/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="25" lean-forward="false" selection-start-line="4" selection-start-column="25" selection-end-line="4" selection-end-column="25" />
@@ -573,7 +561,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/parlay/index/migrations/templates/par/base.html">
+    <entry file="file://$PROJECT_DIR$/parlay/index/templates/par/base.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="476">
           <caret line="28" column="0" lean-forward="true" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
@@ -595,7 +583,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/parlay/index/migrations/templates/par/index.html">
+    <entry file="file://$PROJECT_DIR$/parlay/index/templates/par/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="25" lean-forward="true" selection-start-line="4" selection-start-column="25" selection-end-line="4" selection-end-column="25" />
@@ -652,13 +640,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/parlay/parlay/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="21" column="60" lean-forward="false" selection-start-line="21" selection-start-column="60" selection-end-line="21" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/parlay/myvenv/Lib/site-packages/django/contrib/auth/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-3561">
@@ -666,7 +647,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/parlay/index/migrations/templates/par/name.html">
+    <entry file="file://$PROJECT_DIR$/parlay/index/templates/par/name.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
@@ -694,161 +675,171 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/parlay/index/migrations/templates/par/friends.html">
+    <entry file="file://$PROJECT_DIR$/parlay/index/templates/par/friends.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="14" column="48" lean-forward="false" selection-start-line="14" selection-start-column="48" selection-end-line="14" selection-end-column="48" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/parlay/index/migrations/templates/par/books.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="17" lean-forward="false" selection-start-line="12" selection-start-column="12" selection-end-line="12" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/parse_text/requests_html_test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="22" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="14" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/parlay/index/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="22" column="51" lean-forward="false" selection-start-line="22" selection-start-column="51" selection-end-line="22" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/parlay/index/migrations/templates/par/signup.html">
+    <entry file="file://$PROJECT_DIR$/parlay/index/templates/par/signup.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="218">
           <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="31" selection-end-column="23" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/parlay/index/migrations/templates/par/login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="29" column="88" lean-forward="false" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="88" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/parlay/index/migrations/templates/par/detail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="277">
-          <caret line="34" column="40" lean-forward="false" selection-start-line="34" selection-start-column="40" selection-end-line="34" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/parlay/index/migrations/templates/par/add-book.html">
+    <entry file="file://$PROJECT_DIR$/parlay/index/templates/par/add-book.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="14" column="38" lean-forward="false" selection-start-line="14" selection-start-column="38" selection-end-line="14" selection-end-column="38" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/parlay/index/migrations/templates/par/profile.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="433">
-          <caret line="50" column="39" lean-forward="false" selection-start-line="50" selection-start-column="39" selection-end-line="50" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/parlay/index/migrations/templates/par/edit_profile.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="101" lean-forward="false" selection-start-line="10" selection-start-column="101" selection-end-line="10" selection-end-column="101" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/parlay/index/migrations/templates/par/search-results.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="41" column="28" lean-forward="false" selection-start-line="41" selection-start-column="28" selection-end-line="41" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/parlay/index/migrations/templates/par/add_wager.html">
+    <entry file="file://$PROJECT_DIR$/parlay/index/templates/par/add_wager.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="7" column="24" lean-forward="true" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/parlay/index/templates/par/search-results.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="433">
+          <caret line="58" column="8" lean-forward="false" selection-start-line="58" selection-start-column="8" selection-end-line="58" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/parse_text/requests_html_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="82" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/parlay/index/migrations/templates/par/index.html">
+    <entry file="file://$PROJECT_DIR$/parlay/index/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="26" column="20" lean-forward="false" selection-start-line="26" selection-start-column="20" selection-end-line="26" selection-end-column="20" />
-          <folding>
-            <element signature="e#1033#1040#0" expanded="false" />
-            <element signature="e#1071#1077#0" expanded="false" />
-            <element signature="e#1098#1104#0" expanded="false" />
-            <element signature="e#1494#1500#0" expanded="false" />
-            <element signature="e#1521#1527#0" expanded="false" />
-            <element signature="e#1601#1608#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="136">
+          <caret line="10" column="60" lean-forward="false" selection-start-line="10" selection-start-column="60" selection-end-line="10" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/parlay/index/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="201">
+          <caret line="17" column="34" lean-forward="false" selection-start-line="17" selection-start-column="34" selection-end-line="17" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/parlay/index/templates/par/parse-error.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="116" lean-forward="false" selection-start-line="10" selection-start-column="116" selection-end-line="10" selection-end-column="116" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/parlay/parlay/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="47" column="0" lean-forward="true" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+        <state relative-caret-position="272">
+          <caret line="76" column="59" lean-forward="false" selection-start-line="76" selection-start-column="59" selection-end-line="76" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/parlay/parlay/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="76" />
+          <folding>
+            <element signature="e#630#662#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/parlay/index/templates/par/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="29" column="88" lean-forward="false" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="88" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/parlay/index/templates/par/detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="44" lean-forward="false" selection-start-line="7" selection-start-column="44" selection-end-line="7" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/parlay/index/templates/par/edit_profile.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="26" lean-forward="false" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/parlay/index/templates/par/profile.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-17">
+          <caret line="11" column="77" lean-forward="false" selection-start-line="11" selection-start-column="71" selection-end-line="11" selection-end-column="77" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/parlay/index/templates/par/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="16" column="29" lean-forward="false" selection-start-line="16" selection-start-column="29" selection-end-line="16" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/parlay/index/templates/par/books.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="235">
+          <caret line="17" column="34" lean-forward="false" selection-start-line="17" selection-start-column="34" selection-end-line="17" selection-end-column="34" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/parlay/index/migrations/static/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2717">
-          <caret line="248" column="15" lean-forward="false" selection-start-line="248" selection-start-column="15" selection-end-line="248" selection-end-column="15" />
+        <state relative-caret-position="425">
+          <caret line="25" column="32" lean-forward="false" selection-start-line="25" selection-start-column="32" selection-end-line="25" selection-end-column="32" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/parlay/index/migrations/templates/par/base.html">
+    <entry file="file://$PROJECT_DIR$/parlay/index/templates/par/base.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="44" column="63" lean-forward="true" selection-start-line="44" selection-start-column="16" selection-end-line="44" selection-end-column="63" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/parlay/index/migrations/templates/par/wager-list.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="61" lean-forward="false" selection-start-line="17" selection-start-column="61" selection-end-line="17" selection-end-column="61" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/parlay/index/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="379">
-          <caret line="28" column="38" lean-forward="false" selection-start-line="28" selection-start-column="30" selection-end-line="28" selection-end-column="38" />
+        <state relative-caret-position="408">
+          <caret line="40" column="128" lean-forward="false" selection-start-line="40" selection-start-column="128" selection-end-line="40" selection-end-column="128" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/parlay/index/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="277">
-          <caret line="40" column="40" lean-forward="false" selection-start-line="40" selection-start-column="40" selection-end-line="40" selection-end-column="40" />
+        <state relative-caret-position="340">
+          <caret line="35" column="38" lean-forward="false" selection-start-line="35" selection-start-column="38" selection-end-line="35" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/parlay/index/templates/par/wager-list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="27" lean-forward="false" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="27" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/parlay/index/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="114" column="58" lean-forward="false" selection-start-line="114" selection-start-column="58" selection-end-line="114" selection-end-column="64" />
+        <state relative-caret-position="141">
+          <caret line="148" column="63" lean-forward="false" selection-start-line="148" selection-start-column="63" selection-end-line="148" selection-end-column="63" />
           <folding>
             <element signature="e#0#63#0" expanded="true" />
           </folding>

@@ -48,8 +48,8 @@ INSTALLED_APPS = [
 
 ]
 
-MEDIA_ROOT = '/index/media/'
 MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -66,7 +66,7 @@ ROOT_URLCONF = 'parlay.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['index/migrations/templates/'],
+        'DIRS': ['index/templates/'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -74,7 +74,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-
+                'django.template.context_processors.media',
             ],
         },
     },
@@ -82,6 +82,7 @@ TEMPLATES = [
 
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.request',
+
 
 )
 

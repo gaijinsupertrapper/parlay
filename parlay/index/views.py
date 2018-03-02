@@ -12,6 +12,14 @@ import datetime
 
 from .forms import SignUpForm, ProfileForm, WagerForm, BookUrlForm
 
+def check_new_wagers(user):
+    received_wagers = Wager.objects.filter(to=user)
+    unchecked = int()
+    for wager in received_wagers:
+        if (wager.status == 'none'):
+            unchecked += 1
+    return unchecked
+
 def signup(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
@@ -31,25 +39,33 @@ def index(request):
     username = None
     if request.user.is_authenticated:
         username = request.user
-    books_list = Book.objects.all()
+        user = request.user
+        new = check_new_wagers(user)
+    else:
+        new=-1
+    books_list = Book.objects.order_by('title')
     paginate = Paginator(books_list,9)
     page = request.GET.get('page')
     books = paginate.get_page(page)
+
     return render(request, 'par/index.html', {'books': books,
-                                              'user': username
+                                              'user': username, 'new': new
                                               })
 
 
 def bdetail(request,book_id):
     book = Book.objects.get(pk=book_id)
-
-    return render(request, 'par/detail.html', {'book': book,})
+    user = request.user
+    new = check_new_wagers(user)
+    return render(request, 'par/detail.html', {'book': book, 'new':new,})
 
 def profile(request, user_id):
     username = None
     if request.user.is_authenticated:
         profile_user = User.objects.get(pk=user_id)
-    return render(request, 'par/profile.html', {'username': profile_user})
+    user = request.user
+    new = check_new_wagers(user)
+    return render(request, 'par/profile.html', {'username': profile_user, 'new':new,})
 
 
 @login_required
@@ -95,14 +111,16 @@ def remove_friend(request,user_id):
 def edit_profile(request,user_id):
     user = User.objects.get(pk = user_id)
     if request.method == "POST":
-        form = ProfileForm(request.POST, instance=request.user.profile)
+        form = ProfileForm(request.POST, request.FILES, instance=request.user.profile)
         if form.is_valid():
             user.profile = form.save(commit=False)
             user.profile.save()
             return redirect('profile', user_id = user.pk )
     else:
         form = ProfileForm(instance=request.user.profile)
-    return render(request, 'par/edit_profile.html', {'form' : form})
+    user = request.user
+    new = check_new_wagers(user)
+    return render(request, 'par/edit_profile.html', {'form' : form, 'new': new})
 
 
 @login_required
@@ -118,18 +136,28 @@ def add_wager(request):
             return redirect('wagers')
     else:
         form = WagerForm()
-    return render(request, 'par/add_wager.html', {'form': form})
+    user = request.user
+    new = check_new_wagers(user)
+
+    return render(request, 'par/add_wager.html', {'form': form, 'new': new})
 
 
 def wagers(request):
+    today = datetime.date.today()
+
     user = request.user
     wagers = Wager.objects.filter (Q(to=user) | Q(sender=user))
-    return render(request, 'par/wager-list.html', {'wagers': wagers})
+
+    received_wagers = Wager.objects.filter(to=user)
+    user = request.user
+    new = check_new_wagers(user)
+    return render(request, 'par/wager-list.html', {'wagers': wagers, 'today': today, 'new': new})
 
 
 def accept_wager(request, wager_id):
     wager = Wager.objects.get(pk=wager_id)
     wager.status = 'true'
+    wager.until = datetime.date.today() + wager.duration
     wager.save()
     return redirect('wagers')
 
@@ -149,12 +177,16 @@ def end_wager(request, wager_id):
 
 def friends_list(request, user_id):
     user = User.objects.get(pk=user_id)
-    return render(request, 'par/friends.html', {'username': user})
+    user_me = request.user
+    new = check_new_wagers(user_me)
+    return render(request, 'par/friends.html', {'username': user, 'new': new})
 
 
 def books_list(request, user_id):
     user = User.objects.get(pk=user_id)
-    return render(request, 'par/books.html', {'username': user})
+    user_me = request.user
+    new = check_new_wagers(user_me)
+    return render(request, 'par/books.html', {'username': user, 'new':new})
 
 
 def search(request):
@@ -165,34 +197,51 @@ def search(request):
         else:
             return redirect('index')
     else:
-        return redirect('profile')
+        return redirect('index')
 
 
 def search_results(request, search_query):
     users = User.objects.filter(username__icontains = search_query)[:5]
-    books = Book.objects.filter(title__icontains = search_query)[:5]
+    books = Book.objects.filter(Q(title__icontains = search_query) | Q(author__icontains = search_query))[:5]
+    user = request.user
+    new = check_new_wagers(user)
     return render(request, 'par/search-results.html', {'users': users,
                                               'books': books,
-                                            'q': search_query})
+                                            'q': search_query, 'new':new})
+
+
+def parse_errors(request):
+    return render(request, 'par/parse-error.html')
 
 
 def create_book(request):
     if request.method == "POST":
         form = BookUrlForm(request.POST)
         if form.is_valid():
+            url_string = str(form.cleaned_data['url'])
+            if url_string.find('litres.ru/')==-1:
+                return redirect('parse-errors')
+            else:
 
-            r = session.get(form.cleaned_data['url'])
-            title = r.html.find('.biblio_book_name', first=True).text
-            author = r.html.find('.biblio_book_author__link', first=True).text
-            description_list = r.html.find('.biblio_book_descr_publishers p')
-            description = str()
+                r = session.get(form.cleaned_data['url'])
+                title = r.html.find('.biblio_book_name', first=True).text
+                author = r.html.find('.biblio_book_author__link', first=True).text
+                description_list = r.html.find('.biblio_book_descr_publishers p')
+                cover_url = r.html.find('.cover img', first=True).attrs['data-original-image-url']
+                description = str()
 
-            for i in range(len(description_list)):
-                description += description_list[i].text
-                description += '\n'
-
-            book = Book.objects.create( title=title, author=author, description=description , url=form.cleaned_data['url'])
-            return redirect('index')
+                for i in range(len(description_list)):
+                    description += description_list[i].text
+                    description += ' \n '
+                if Book.objects.filter(url__icontains=form.cleaned_data['url']):
+                    return redirect('parse-errors')
+                else:
+                    book = Book.objects.create( title=title, author=author, description=description , url=form.cleaned_data['url'],
+                                                cover_url=cover_url)
+                    return redirect('index')
     else:
         form = BookUrlForm()
-    return render(request, 'par/add-book.html', {'form': form})
+    user = request.user
+    new = check_new_wagers(user)
+    return render(request, 'par/add-book.html', {'form': form, 'new': new})
+

@@ -20,5 +20,6 @@ urlpatterns = [
     path('id<int:user_id>/books', views.books_list, name="books-list"),
     path('search/', views.search, name="search"),
     path('q=<str:search_query>', views.search_results, name="search-results"),
-    path('book/add/', views.create_book, name="add-book")
+    path('book/add/', views.create_book, name="add-book"),
+    path('book/error', views.parse_errors, name='parse-errors')
 ]

@@ -6,17 +6,22 @@
 
         <div class="row  justify-content-center">
                 {% for book in books %}
+                <a href ="{% url 'detail-book' book.id %}" class="black col-lg-3 col-md-4 col-sm-6 col-xs-6 d-flex-inline justify-content-center align-items-center content-col content">
+                    <div class="">
 
-                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 d-flex-inline justify-content-center content-col content">
 
-                        <h2 class = "title text-center"> {{ book.title|truncatewords:5}} </h2>
-
-                        <h3 class = "author text-center"> {{ book.author}}</h3>
-                        <p class = "description lead" > {{ book.description|truncatewords:20}}</p>
                         <br>
-                         <a href ="{% url 'detail-book' book.id %}"> <div class="btn-block btn detail-button white bg-teal">Learn More </div> </a>
-                    </div>
+                        <h2 class = "title text-center"> {{ book.title|truncatewords:5}} </h2>
+                        <div class="col-12  d-flex justify-content-center align-items-center">
+                           <img src="{{book.cover_url}}" class="book-cover" alt="{{ book.name }}">
+                       </div>
+                        <h3 class = "author text-center"> {{ book.author}}</h3>
 
+                        <br>
+                    <!--    <div class="btn-block btn detail-button white bg-teal">Learn More </div> -->
+
+                    </div>
+                </a>
                 {% endfor %}
 
         </div>

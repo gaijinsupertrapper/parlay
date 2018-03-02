@@ -16,7 +16,7 @@
     <title>{% block title %} {% endblock %}</title>
 </head>
 <body class="">
-    <nav class="navbar navbar-default navbar-expand-md text-center text-md-left navigation black">
+    <nav class="navbar navbar-default navbar-expand-md text-center text-md-left navigation ">
       <div class="container-fluid">
         <div class="navbar-header  col-8 col-md-3">
           <a class="navbar-brand container-fluid  text-center" href="{% url 'index' %}" id="logo">Parlay</a>
@@ -38,7 +38,7 @@
 
             </div>
             <div class ="d-inline-flex nav-link col-12 col-md-2  justify-content-center">
-                    <a href="{% url 'wagers' %}"> My wagers</a>
+                    <a href="{% url 'wagers' %}"> My wagers {% if new != 0 %} <span id="new-wagers"> {{new}} </span> {% endif %}  </a>
 
             </div>
             <div class="d-inline-flex nav-link col-12 col-md-2  justify-content-center  ">
@@ -49,7 +49,7 @@
             <div class="0 col-md-10"></div>
 
         {% endif %}
-          <div class="d-inline-flex nav-link col-12 col-md-2   justify-content-center ">
+          <div class="d-inline-flex nav-link col-12 col-md-2   justify-content-center black">
 
           {% if user.get_username == none or not user.is_authenticated %}
 
@@ -74,6 +74,9 @@
     <br>
 
     </div>
+    <footer class="footer white text-center">
+        <p> (c) 2018. Parlay </p>
 
+    </footer>
 </body>
 </html>

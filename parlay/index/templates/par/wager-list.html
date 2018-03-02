@@ -8,19 +8,27 @@
 {% if wagers %}
     {% for wager in wagers %}
         <div class = "row card">
+
             <div class = "test-cont container-fluid col-10">
                 <h4>
                   Book: <a href="{% url 'detail-book' book_id=wager.book.id %}" class="info-anchors">{{ wager.book }}</a>
                 </h4>
 
-                <p class="lead"> From: <a href = "{% url 'profile' user_id=wager.sender.id %}" class="info-anchors">{{ wager.sender }}</a> </p>
-                <p class="lead"> To: <a href = "{% url 'profile' user_id=wager.to.id %}" class="info-anchors">{{ wager.to }}</a> </p>
-                <p class="lead"> Duration: {{wager.duration}}</p>
+                <p class="bigger"> From: <a href = "{% url 'profile' user_id=wager.sender.id %}" class="info-anchors">{{ wager.sender }}</a> </p>
+                <p class="bigger"> To: <a href = "{% url 'profile' user_id=wager.to.id %}" class="info-anchors">{{ wager.to }}</a> </p>
+                {% if wager.status == 'true' %}
+                    {% if wager.until == today %}
+                        <p class="bigger"> This wager is expired today!</p>
+                    {% else %}
+                        <p class="bigger">Time left: {{wager.until|timeuntil}}</p>
+                    {% endif %}
+                {% endif %}
             </div>
             <div class = "row d-flex justify-content-center">
                 {% if user.username == wager.sender.username %}
                     {% if wager.status == 'true' %}
                         <p class="lead">Wager is accepted!</p>
+
                     {% elif wager.status == 'false' %}
                         <p class="lead">Wager is declined. <a href="{% url 'end-wager' wager_id=wager.id %}" class="btn btn-outline-success">Remove?</a></p>
                      {% else %}
@@ -32,6 +40,7 @@
                     <br>
                     {% if wager.status == 'true' %}
                         <a href="{% url 'end-wager' wager_id=wager.id %}" class="btn btn-outline-success">End wager</a>
+
                     {% elif wager.status == 'false' %}
                         <p>You declined this wager. <a href="{% url 'end-wager' wager_id=wager.id %}" class="btn btn-outline-success">Remove?</a> </p>
                      {% else %}
