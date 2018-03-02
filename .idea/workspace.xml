@@ -2,31 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4ca6b76e-45df-41e8-8913-ec46f1382348" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/parlay/index/templates/par/books.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/parlay/index/templates/par/detail.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/parlay/index/templates/par/edit_profile.html" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/parlay/index/migrations/templates/par/books.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/parlay/index/migrations/templates/par/detail.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/parlay/index/migrations/templates/par/edit_profile.html" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parlay/index/forms.py" afterPath="$PROJECT_DIR$/parlay/index/forms.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parlay/index/migrations/static/css/style.css" afterPath="$PROJECT_DIR$/parlay/index/migrations/static/css/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parlay/index/models.py" afterPath="$PROJECT_DIR$/parlay/index/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parlay/index/urls.py" afterPath="$PROJECT_DIR$/parlay/index/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parlay/index/views.py" afterPath="$PROJECT_DIR$/parlay/index/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parlay/parlay/settings.py" afterPath="$PROJECT_DIR$/parlay/parlay/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parlay/parlay/urls.py" afterPath="$PROJECT_DIR$/parlay/parlay/urls.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/parlay/index/migrations/templates/par/add-book.html" afterPath="$PROJECT_DIR$/parlay/index/templates/par/add-book.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/parlay/index/migrations/templates/par/add_wager.html" afterPath="$PROJECT_DIR$/parlay/index/templates/par/add_wager.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/parlay/index/migrations/templates/par/base.html" afterPath="$PROJECT_DIR$/parlay/index/templates/par/base.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/parlay/index/migrations/templates/par/friends.html" afterPath="$PROJECT_DIR$/parlay/index/templates/par/friends.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/parlay/index/migrations/templates/par/index.html" afterPath="$PROJECT_DIR$/parlay/index/templates/par/index.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/parlay/index/migrations/templates/par/login.html" afterPath="$PROJECT_DIR$/parlay/index/templates/par/login.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/parlay/index/migrations/templates/par/name.html" afterPath="$PROJECT_DIR$/parlay/index/templates/par/name.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/parlay/index/migrations/templates/par/profile.html" afterPath="$PROJECT_DIR$/parlay/index/templates/par/profile.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/parlay/index/migrations/templates/par/search-results.html" afterPath="$PROJECT_DIR$/parlay/index/templates/par/search-results.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/parlay/index/migrations/templates/par/signup.html" afterPath="$PROJECT_DIR$/parlay/index/templates/par/signup.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/parlay/index/migrations/templates/par/wager-list.html" afterPath="$PROJECT_DIR$/parlay/index/templates/par/wager-list.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parlay/.gitignore" afterPath="$PROJECT_DIR$/parlay/.gitignore" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -38,7 +15,7 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/parlay/index/views.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="141">
@@ -46,6 +23,16 @@
               <folding>
                 <element signature="e#0#63#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/parlay/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="17" column="6" lean-forward="false" selection-start-line="17" selection-start-column="6" selection-end-line="17" selection-end-column="6" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -66,18 +53,6 @@
             <state relative-caret-position="-17">
               <caret line="11" column="77" lean-forward="false" selection-start-line="11" selection-start-column="71" selection-end-line="11" selection-end-column="77" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/parlay/parlay/urls.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="527">
-              <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="76" />
-              <folding>
-                <element signature="e#630#662#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -232,6 +207,7 @@
         <option value="$PROJECT_DIR$/parlay/index/templates/par/base.html" />
         <option value="$PROJECT_DIR$/parlay/index/templates/par/wager-list.html" />
         <option value="$PROJECT_DIR$/parlay/index/views.py" />
+        <option value="$PROJECT_DIR$/parlay/.gitignore" />
       </list>
     </option>
   </component>
@@ -654,24 +630,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="15" lean-forward="false" selection-start-line="1" selection-start-column="15" selection-end-line="1" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/parlay/index/admin.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="1" column="31" lean-forward="false" selection-start-line="1" selection-start-column="31" selection-end-line="1" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/parlay/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -836,6 +798,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="15" lean-forward="false" selection-start-line="1" selection-start-column="15" selection-end-line="1" selection-end-column="15" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="0">
+            <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/parlay/index/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="141">
@@ -843,6 +821,14 @@
           <folding>
             <element signature="e#0#63#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/parlay/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="6" lean-forward="false" selection-start-line="17" selection-start-column="6" selection-end-line="17" selection-end-column="6" />
+          <folding />
         </state>
       </provider>
     </entry>

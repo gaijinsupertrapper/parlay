@@ -12,3 +12,7 @@ db.sqlite3
 
 # pyCharm
 .idea/
+
+#avatars
+
+/index/media
