@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.db.models import Q
-from requests_html import session
+from requests_html import HTMLSession
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 import datetime
 
@@ -278,7 +278,7 @@ def create_book(request):
             if url_string.find('litres.ru/')==-1:
                 return redirect('parse-errors')
             else:
-
+                session = HTMLSession()
                 r = session.get(form.cleaned_data['url'])
                 title = r.html.find('.biblio_book_name', first=True).text
                 author = r.html.find('.biblio_book_author__link', first=True).text

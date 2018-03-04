@@ -2,22 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4ca6b76e-45df-41e8-8913-ec46f1382348" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parlay/index/forms.py" afterPath="$PROJECT_DIR$/parlay/index/forms.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parlay/index/migrations/static/css/style.css" afterPath="$PROJECT_DIR$/parlay/index/migrations/static/css/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parlay/index/models.py" afterPath="$PROJECT_DIR$/parlay/index/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parlay/index/templates/par/add-book.html" afterPath="$PROJECT_DIR$/parlay/index/templates/par/add-book.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parlay/index/templates/par/add_wager.html" afterPath="$PROJECT_DIR$/parlay/index/templates/par/add_wager.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parlay/index/templates/par/base.html" afterPath="$PROJECT_DIR$/parlay/index/templates/par/base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parlay/index/templates/par/detail.html" afterPath="$PROJECT_DIR$/parlay/index/templates/par/detail.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parlay/index/templates/par/index.html" afterPath="$PROJECT_DIR$/parlay/index/templates/par/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parlay/index/templates/par/login.html" afterPath="$PROJECT_DIR$/parlay/index/templates/par/login.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parlay/index/templates/par/profile.html" afterPath="$PROJECT_DIR$/parlay/index/templates/par/profile.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parlay/index/templates/par/signup.html" afterPath="$PROJECT_DIR$/parlay/index/templates/par/signup.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parlay/index/templates/par/wager-list.html" afterPath="$PROJECT_DIR$/parlay/index/templates/par/wager-list.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parlay/index/urls.py" afterPath="$PROJECT_DIR$/parlay/index/urls.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parlay/index/views.py" afterPath="$PROJECT_DIR$/parlay/index/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parlay/parlay/settings.py" afterPath="$PROJECT_DIR$/parlay/parlay/settings.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -29,11 +16,11 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/parlay/index/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="230">
-              <caret line="163" column="33" lean-forward="false" selection-start-line="163" selection-start-column="33" selection-end-line="163" selection-end-column="33" />
+            <state relative-caret-position="124">
+              <caret line="280" column="39" lean-forward="false" selection-start-line="280" selection-start-column="39" selection-end-line="280" selection-end-column="39" />
               <folding>
                 <element signature="e#0#63#0" expanded="true" />
               </folding>
@@ -64,8 +51,8 @@
       <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/parlay/index/migrations/static/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="52" column="13" lean-forward="false" selection-start-line="52" selection-start-column="13" selection-end-line="52" selection-end-column="13" />
+            <state relative-caret-position="221">
+              <caret line="127" column="4" lean-forward="true" selection-start-line="127" selection-start-column="4" selection-end-line="127" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -74,8 +61,8 @@
       <file leaf-file-name="signup.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/parlay/index/templates/par/signup.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="175">
-              <caret line="31" column="8" lean-forward="true" selection-start-line="31" selection-start-column="8" selection-end-line="41" selection-end-column="20" />
+            <state relative-caret-position="187">
+              <caret line="11" column="58" lean-forward="false" selection-start-line="11" selection-start-column="58" selection-end-line="11" selection-end-column="58" />
               <folding>
                 <element signature="n#style#0;n#p#0;n#div#0;n#form#0;n#div#0;n#!!top" expanded="true" />
               </folding>
@@ -83,11 +70,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="login.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="login.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/parlay/index/templates/par/login.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="243">
-              <caret line="33" column="24" lean-forward="false" selection-start-line="33" selection-start-column="24" selection-end-line="33" selection-end-column="24" />
+            <state relative-caret-position="362">
+              <caret line="43" column="13" lean-forward="false" selection-start-line="43" selection-start-column="13" selection-end-line="43" selection-end-column="13" />
               <folding>
                 <element signature="n#style#0;n#p#0;n#div#0;n#form#0;n#div#0;n#!!top" expanded="true" />
               </folding>
@@ -99,21 +86,9 @@
         <entry file="file://$PROJECT_DIR$/parlay/parlay/urls.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="373">
-              <caret line="22" column="68" lean-forward="true" selection-start-line="22" selection-start-column="68" selection-end-line="22" selection-end-column="68" />
+              <caret line="22" column="68" lean-forward="false" selection-start-line="22" selection-start-column="68" selection-end-line="22" selection-end-column="68" />
               <folding>
                 <element signature="e#630#662#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="forms.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/parlay/myvenv/Lib/site-packages/django/contrib/auth/forms.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1073">
-              <caret line="204" column="17" lean-forward="false" selection-start-line="204" selection-start-column="17" selection-end-line="204" selection-end-column="17" />
-              <folding>
-                <element signature="e#0#18#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -232,10 +207,10 @@
         <option value="$PROJECT_DIR$/parlay/index/templates/par/add-book.html" />
         <option value="$PROJECT_DIR$/parlay/index/migrations/static/css/style.css" />
         <option value="$PROJECT_DIR$/parlay/parlay/settings.py" />
-        <option value="$PROJECT_DIR$/parlay/index/templates/par/signup.html" />
-        <option value="$PROJECT_DIR$/parlay/index/templates/par/login.html" />
         <option value="$PROJECT_DIR$/parlay/index/templates/par/wager-list.html" />
         <option value="$PROJECT_DIR$/parlay/index/views.py" />
+        <option value="$PROJECT_DIR$/parlay/index/templates/par/signup.html" />
+        <option value="$PROJECT_DIR$/parlay/index/templates/par/login.html" />
       </list>
     </option>
   </component>
@@ -794,18 +769,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/parlay/index/migrations/static/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="52" column="13" lean-forward="false" selection-start-line="52" selection-start-column="13" selection-end-line="52" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/parlay/parlay/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="373">
-          <caret line="22" column="68" lean-forward="true" selection-start-line="22" selection-start-column="68" selection-end-line="22" selection-end-column="68" />
+          <caret line="22" column="68" lean-forward="false" selection-start-line="22" selection-start-column="68" selection-end-line="22" selection-end-column="68" />
           <folding>
             <element signature="e#630#662#0" expanded="true" />
           </folding>
@@ -832,26 +799,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/parlay/index/templates/par/signup.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="31" column="8" lean-forward="true" selection-start-line="31" selection-start-column="8" selection-end-line="41" selection-end-column="20" />
-          <folding>
-            <element signature="n#style#0;n#p#0;n#div#0;n#form#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/parlay/index/templates/par/login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="33" column="24" lean-forward="false" selection-start-line="33" selection-start-column="24" selection-end-line="33" selection-end-column="24" />
-          <folding>
-            <element signature="n#style#0;n#p#0;n#div#0;n#form#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/parlay/index/templates/par/wager-list.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -862,10 +809,38 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/parlay/index/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="163" column="33" lean-forward="false" selection-start-line="163" selection-start-column="33" selection-end-line="163" selection-end-column="33" />
+        <state relative-caret-position="124">
+          <caret line="280" column="39" lean-forward="false" selection-start-line="280" selection-start-column="39" selection-end-line="280" selection-end-column="39" />
           <folding>
             <element signature="e#0#63#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/parlay/index/migrations/static/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="127" column="4" lean-forward="true" selection-start-line="127" selection-start-column="4" selection-end-line="127" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/parlay/index/templates/par/signup.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="58" lean-forward="false" selection-start-line="11" selection-start-column="58" selection-end-line="11" selection-end-column="58" />
+          <folding>
+            <element signature="n#style#0;n#p#0;n#div#0;n#form#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/parlay/index/templates/par/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="362">
+          <caret line="43" column="13" lean-forward="false" selection-start-line="43" selection-start-column="13" selection-end-line="43" selection-end-column="13" />
+          <folding>
+            <element signature="n#style#0;n#p#0;n#div#0;n#form#0;n#div#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>

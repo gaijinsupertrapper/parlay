@@ -15,7 +15,7 @@
             }
             .footer{position:absolute;
             bottom: 5%;}
-            #container {background-color: #eee;
+            #container {background: rgba(255,255,255,0.8);
             position: absolute;
             top: 25%;
             height:50%;
@@ -26,7 +26,6 @@
 
             box-shadow: 0 0 100px 20px #888;
             }
-            .errorlist { color: #FF4136;}
   </style>
   <form method="post">
 
@@ -39,10 +38,14 @@
             {% if field.help_text %}
 
             {% endif %}
-            {% for error in field.errors %}
-              <p style="color: red">{{ error }}</p>
-            {% endfor %}
+
+
          {% endfor %}
+         <br>
+         {% for error in form.non_field_errors %}
+              <p style="color: #FF4136;">{{ error }}</p>
+            {% endfor %}
+
         <br>
          <button type="submit" class="button-small btn bg-teal white ">Login <i class="fas fa-arrow-right"></i></button>
      </div>
