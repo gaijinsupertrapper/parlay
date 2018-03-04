@@ -2,7 +2,7 @@
 body{
     height:100%;
     width:100%;
-    background: linear-gradient(45deg, #01ff70, #39cccc, #0074d9, #ff851b, #ff4136, #b10dc9) fixed;
+    background:  linear-gradient(45deg, #01ff70, #39cccc, #0074d9, #ff851b, #ff4136, #b10dc9)  fixed;
     background-size: 1200% 1200%;
     animation: AnimationName 60s ease infinite;
     font-family: 'Exo 2', sans-serif;
@@ -50,7 +50,7 @@ body{
 
 .avatar{
     position:relative;
-    width: 100%;
+    width: 200px;
     border: 5px solid white;
     box-shadow: 4px 4px 4px 1px rgba(0,0,0,0.25);
 }
@@ -62,11 +62,11 @@ body{
     border-radius: 8px;
     border: 1px solid #fff;
     box-shadow: 2px 2px 4px 1px rgba(0,0,0,0.3);
-    width: 100%;
+    width: 400px;
 
 }
 .book-cover{
-    width:65%;
+    width:200px;
     border-radius: 4px;
     border: 1px solid #fff;
     box-shadow: 2px 2px 4px 1px rgba(0,0,0,0.3);
@@ -74,7 +74,7 @@ body{
 
 }
 .book-cover-small{
-    width:200px;
+    width:100px;
     border-radius: 2px;
     border: 1px solid #fff;
     box-shadow: 2px 2px 4px 1px rgba(0,0,0,0.3);
@@ -221,12 +221,13 @@ textarea{
 .profile-list{
     border-radius: 8px;
     box-shadow: 2px 2px 20px 4px rgba(0,0,0,0.5);
-    padding: 1%;
+    padding: 2%;
 
 }
 .profile-list-book{
     border-radius: 8px;
     box-shadow: 2px 2px 20px 4px rgba(0,0,0,0.5);
+    padding: 2%;
 
 
 }
@@ -261,14 +262,13 @@ a:hover{
 }
 
 .content-col{
-    margin:2%;
     text-align: left;
-    padding:20px;
+    margin: 1%;
     position:relative;
     min-height: 30%;
-    padding:2%;
+    padding: 2%;
     border-radius: 8px;
-    box-shadow: 10px 10px 20px 8px rgba(0,0,0,0.25);
+    box-shadow: 10px 10px 20px 6px rgba(0,0,0,0.25);
     background: rgba(255,255,255,0.8);
 }
 

@@ -3,59 +3,82 @@
 {% block title %} {{user.username}}'s wagers {% endblock %}
 
 {% block content %}
-    <br>
-    <hr>
-{% if wagers %}
+<br>
+{% if active %}
     {% for wager in wagers %}
-        <div class = "row card">
 
-            <div class = "test-cont container-fluid col-10">
-                <h4>
-                  Book: <a href="{% url 'detail-book' book_id=wager.book.id %}" class="info-anchors">{{ wager.book }}</a>
-                </h4>
+        {% if user.username == wager.sender.username %}
+            {% if wager.sender_end == "no" %}
+                <div class="card text-left">
 
-                <p class="bigger"> From: <a href = "{% url 'profile' user_id=wager.sender.id %}" class="info-anchors">{{ wager.sender }}</a> </p>
-                <p class="bigger"> To: <a href = "{% url 'profile' user_id=wager.to.id %}" class="info-anchors">{{ wager.to }}</a> </p>
-                {% if wager.status == 'true' %}
-                    {% if wager.until == today %}
-                        <p class="bigger"> This wager is expired today!</p>
+                    <h2> Книга: <a href="{% url 'detail-book' book_id=wager.book.id %}" class="black">{{ wager.book }}</a>  </h2>
+                    <h4> От кого: <a href="{% url 'profile' user_id=wager.sender.id %}" class="black">{{ wager.sender }}</a></h4>
+                    <h4> Кому: <a href="{% url 'profile' user_id=wager.to.id %}" class="black">{{ wager.to }}</a></h4>
+                    {% if wager.status == "true" %}
+                        {% if wager.until > today %}
+                            <h4> Осталось времени: {{ wager.until|timeuntil }}</h4>
+                        {% else %}
+                            <h5>Время спора истекло.</h5>
+                        {% endif %}
+                    {% endif %}
+                    <h4> Ставка: {{ wager.bet }} <i class="fas fa-circle-notch"></i> </h4>
+                    {% if wager.status == "true" %}
+                        {% if wager.received_end == "yes" %}
+                            <h5> Вы проиграли этот вагер.
+                                <a href="{% url 'end-wager' wager_id=wager.id %}" class="btn btn-outline-secondary"> Удалить вагер? </a> </h5>
+                        {% elif wager.until <= today %}
+                            <h5> Вы выиграли этот вагер.
+                                <a href="{% url 'win-wager' wager_id=wager.id %}" class="btn btn-outline-success">Забрать награду?</a> </h5>
+                        {% else %}
+                            <h5> Скорее всего, получатель уже читает эту книгу!</h5>
+                        {% endif %}
+                    {% elif wager.status == "false" %}
+                        <h5> Получатель отклонил вагер. <a href="{% url 'end-wager' wager_id=wager.id %}" class="btn btn-outline-danger">Удалить?</a></h5>
                     {% else %}
-                        <p class="bigger">Time left: {{wager.until|timeuntil}}</p>
+                        <h5> Получатель пока что не проверил спор :( </h5>
                     {% endif %}
-                {% endif %}
-            </div>
-            <div class = "row d-flex justify-content-center">
-                {% if user.username == wager.sender.username %}
-                    {% if wager.status == 'true' %}
-                        <p class="lead">Wager is accepted!</p>
-
-                    {% elif wager.status == 'false' %}
-                        <p class="lead">Wager is declined. <a href="{% url 'end-wager' wager_id=wager.id %}" class="btn btn-outline-success">Remove?</a></p>
-                     {% else %}
-                         <p class="lead">Receiver didn't checked it yet :(</p>
-
+                </div>
+                 <br>
+            {% endif %}
+        {% else %}
+            {% if wager.received_end == "no" %}
+                <div class="card text-left">
+                    <h2> Книга: <a href="{% url 'detail-book' book_id=wager.book.id %}" class="black">{{ wager.book }}</a>  </h2>
+                    <h4> От кого: <a href="{% url 'profile' user_id=wager.sender.id %}" class="black">{{ wager.sender }}</a></h4>
+                    <h4> Кому: <a href="{% url 'profile' user_id=wager.to.id %}" class="black">{{ wager.to }}</a></h4>
+                    {% if wager.status == "true" %}
+                        {% if wager.until >= today %}
+                            <h4> Осталось времени: {{ wager.until|timeuntil }}</h4>
+                        {% else %}
+                            <h5>Время спора истекло.</h5>
+                        {% endif %}
                     {% endif %}
-                {% else %}
-
-                    <br>
-                    {% if wager.status == 'true' %}
-                        <a href="{% url 'end-wager' wager_id=wager.id %}" class="btn btn-outline-success">End wager</a>
-
-                    {% elif wager.status == 'false' %}
-                        <p>You declined this wager. <a href="{% url 'end-wager' wager_id=wager.id %}" class="btn btn-outline-success">Remove?</a> </p>
-                     {% else %}
-                   <p> <a href="{% url 'accept-wager' wager_id=wager.id  %}" class="btn btn-outline-success">Accept</a>
-                       or <a href="{% url 'decline-wager' wager_id=wager.id  %}" class="btn btn-outline-danger">Decline</a> </p>
-
+                    <h4> Ставка: {{ wager.bet }} <i class="fas fa-circle-notch"></i> </h4>
+                    {% if wager.status == "true" %}
+                        {% if wager.until > today %}
+                        <h5><a href="{% url 'win-wager' wager_id=wager.id %}" class="btn btn-outline-success">
+                            Я прочитал книгу! </a> </h5>
+                        {% else %}
+                            <h5> Вы не уложились во время.
+                            <a href="{% url 'end-wager' wager_id=wager.id %}" class="btn btn-outline-secondary"> Удалить вагер? </a> </h5>
+                        {% endif %}
+                    {% elif wager.status == "false" %}
+                        <h5> Вы отклонили вагер.
+                            <a href="{% url 'end-wager' wager_id=wager.id %}" class="btn btn-outline-secondary"> Удалить его? </a> </h5>
+                    {% else %}
+                        <h3> Новый вагер! </h3>
+                        <h5><a href="{% url 'accept-wager' wager_id=wager.id %}" class="btn btn-outline-success">Принять</a> или
+                            <a href="{% url 'decline-wager' wager_id=wager.id %}" class="btn btn-outline-danger">Отклонить</a> </h5>
                     {% endif %}
-                {% endif %}
-            </div>
-        </div>
-    <hr>
+                </div>
+                 <br>
+            {% endif %}
+        {% endif %}
+
     {% endfor %}
 {% else %}
     <div class="card">
-            <h4 class="display-4 gray"> You have no wagers. <a href = "{% url 'add-wager' %}" class="black">Want to add some?</a></h4>
+            <h4 class=" gray"> You have no wagers. <a href = "{% url 'add-wager' %}" class="black">Want to add some?</a></h4>
 
     </div>
 {% endif %}

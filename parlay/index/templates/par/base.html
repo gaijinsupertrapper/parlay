@@ -30,7 +30,7 @@
       <div class="collapse navbar-collapse navbar-expand-lg">
 
         {% if user.is_authenticated %}
-            <div class=" col-12 col-md-6 searchbar">
+            <div class=" col-12 col-md-5 searchbar">
                 <form action="{% url 'search' %}" method="get">
                     <input id="search" type="text" placeholder="Search" name="q">
                     <button type="submit" class="button-search btn bg-teal white "><i class="fas fa-search"></i></button>
@@ -46,17 +46,19 @@
 
             </div>
         {% else %}
-            <div class="0 col-md-10"></div>
+            <div class="0 col-md-9"></div>
 
         {% endif %}
-          <div class="d-inline-flex nav-link col-12 col-md-2   justify-content-center black">
+          <div class="d-inline-flex nav-link col-12 col-md-3   justify-content-center black">
 
           {% if user.get_username == none or not user.is_authenticated %}
 
           <p><a href = '{% url "login" %}'>Log in</a> or <a href = "{% url 'signup' %}">Register</a> </p>
           {% else %}
 
-              <p>Hi, <a href="{% url 'profile' user.id %}"> {{user.username}}</a><br> <a href = '{% url "logout" %}'> Log out</a></p>
+              <p>Hi, <a href="{% url 'profile' user.id %}"> {{user.username}}.  </a>
+                  {{ user.profile.tokens}} <i class="fas fa-circle-notch"></i>
+                  <br> <a href = '{% url "logout" %}'> Log out</a></p>
           {% endif %}
           </div>
         </div>

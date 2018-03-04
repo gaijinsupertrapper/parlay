@@ -13,6 +13,8 @@
 
 
             }
+            .footer{position:absolute;
+            bottom: 5%;}
             #container {background-color: #eee;
             position: absolute;
             top: 25%;
@@ -24,10 +26,12 @@
 
             box-shadow: 0 0 100px 20px #888;
             }
+            .errorlist { color: #FF4136;}
   </style>
   <form method="post">
-    {% csrf_token %}
+
      <div class="form-group d-flex flex-column justify-content-center align-items-center signup">
+        {% csrf_token %}
          {% for field in form %}
 
             {{ field.label_tag }}
@@ -38,10 +42,11 @@
             {% for error in field.errors %}
               <p style="color: red">{{ error }}</p>
             {% endfor %}
-        {% endfor %}
+         {% endfor %}
         <br>
          <button type="submit" class="button-small btn bg-teal white ">Login <i class="fas fa-arrow-right"></i></button>
      </div>
   </form>
+
 </div>
 {% endblock %}

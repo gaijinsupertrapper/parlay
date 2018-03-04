@@ -26,10 +26,13 @@ class BookUrlForm(forms.ModelForm):
 class WagerForm(forms.ModelForm):
     class Meta:
         model = Wager
-        fields=('to','book', 'duration')
+        fields=('to','book','bet', 'duration')
         labels = {
             'to': 'Choose a user',
             'book': 'Select a book',
-            'duration': 'Select a duration of this wager in days'
+            'bet': 'Place a bet',
+            'duration': 'Select a duration of this wager in days',
         }
-
+        widgets = {
+            'bet': forms.TextInput()
+        }

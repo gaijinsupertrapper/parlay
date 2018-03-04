@@ -11,6 +11,7 @@ class Book(models.Model):
     url = models.URLField(max_length=200, blank=True)
     description = models.TextField(default = r'Description for the book')
     cover_url=models.URLField(max_length=200, blank=True)
+    read_by = models.BigIntegerField(default=0)
 
     def __str__(self):
         return self.title
@@ -24,6 +25,7 @@ class Profile(models.Model):
     tokens  = models.IntegerField(default=100)
     avatar = models.ImageField(upload_to='avatars/', blank=True)
     books_read = models.ManyToManyField(Book,)
+    books_added = models.IntegerField(default=0)
     friends = models.ManyToManyField(User,  related_name='+',)
 
 
@@ -34,6 +36,9 @@ class Wager(models.Model):
     status = models.CharField(max_length=10, default='none')
     duration = models.DurationField(null=True)
     until = models.DateField(null=True)
+    bet = models.IntegerField(default=5)
+    received_end = models.CharField(max_length=10, default='no')
+    sender_end = models.CharField(max_length=10, default='no')
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):

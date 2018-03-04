@@ -43,7 +43,7 @@ def index(request):
         new = check_new_wagers(user)
     else:
         new=-1
-    books_list = Book.objects.order_by('title')
+    books_list = Book.objects.order_by('-read_by', 'title')
     paginate = Paginator(books_list,9)
     page = request.GET.get('page')
     books = paginate.get_page(page)
@@ -76,6 +76,9 @@ def add_book(request, book_id):
     else:
         user.profile.books_read.add(Book.objects.get(pk = book_id))
         user.profile.save()
+        book = Book.objects.get(pk=book_id)
+        book.read_by +=1
+        book.save()
 
     # return redirect('detail-book', Book.objects.get(pk = book_id))
     return HttpResponseRedirect(reverse('detail-book', args=(book_id,)))
@@ -126,42 +129,61 @@ def edit_profile(request,user_id):
 @login_required
 def add_wager(request):
     sender = request.user
+    too_much = int(0)
     if request.method == "POST":
         form = WagerForm(request.POST)
         if form.is_valid():
-            Wager = form.save(commit=False)
-            Wager.duration = form.cleaned_data['duration']*86400
-            Wager.sender = sender
-            Wager.save()
-            return redirect('wagers')
+            if form.cleaned_data['bet']>sender.profile.tokens:
+                too_much = 1
+            elif form.cleaned_data['bet']<=0:
+                too_much = 2
+            elif form.cleaned_data['duration']<datetime.timedelta(seconds=1):
+                too_much = 3
+            else:
+                Wager = form.save(commit=False)
+                Wager.duration = form.cleaned_data['duration']*86400
+                Wager.sender = sender
+                Wager.save()
+                sender.profile.tokens -= form.cleaned_data['bet']
+                sender.save()
+                return redirect('wagers')
     else:
         form = WagerForm()
     user = request.user
     new = check_new_wagers(user)
 
-    return render(request, 'par/add_wager.html', {'form': form, 'new': new})
+    return render(request, 'par/add_wager.html', {'form': form, 'new': new, 'tm': too_much})
 
 
+@login_required
 def wagers(request):
     today = datetime.date.today()
 
     user = request.user
     wagers = Wager.objects.filter (Q(to=user) | Q(sender=user))
+    active_wagers = Wager.objects.filter(sender_end='no')
 
-    received_wagers = Wager.objects.filter(to=user)
     user = request.user
     new = check_new_wagers(user)
-    return render(request, 'par/wager-list.html', {'wagers': wagers, 'today': today, 'new': new})
+    return render(request, 'par/wager-list.html', {'wagers': wagers, 'today': today, 'new': new, 'active': active_wagers,})
 
 
+@login_required
 def accept_wager(request, wager_id):
     wager = Wager.objects.get(pk=wager_id)
     wager.status = 'true'
     wager.until = datetime.date.today() + wager.duration
     wager.save()
+    player = request.user
+    if player.profile.tokens < wager.bet:
+        player.profile.tokens = 0
+    else:
+        player.profile.tokens -= wager.bet
+    player.save()
     return redirect('wagers')
 
 
+@login_required
 def decline_wager(request, wager_id):
     wager = Wager.objects.get(pk=wager_id)
     wager.status = 'false'
@@ -169,12 +191,45 @@ def decline_wager(request, wager_id):
     return redirect('wagers')
 
 
+@login_required
 def end_wager(request, wager_id):
-    Wager.objects.get(pk=wager_id).delete()
+    wager = Wager.objects.get(pk=wager_id)
+
+    if wager.sender == request.user:
+        wager.sender_end = "yes"
+        wager.save()
+    else:
+        wager.received_end = "yes"
+        wager.save()
+
+    if (wager.received_end == "yes") and (wager.sender_end == "yes"):
+        Wager.objects.get(pk=wager_id).delete()
 
     return redirect('wagers')
 
 
+@login_required
+def win_wager(request, wager_id):
+    wager = Wager.objects.get(pk=wager_id)
+    winner = request.user
+    if wager.sender == request.user:
+        wager.sender_end = "yes"
+        wager.save()
+        winner.profile.tokens += wager.bet*2
+        winner.save()
+    else:
+        wager.received_end = "yes"
+        wager.save()
+        winner.profile.tokens += wager.bet*2
+        winner.save()
+
+    if (wager.received_end == "yes") and (wager.sender_end == "yes"):
+        Wager.objects.get(pk=wager_id).delete()
+
+    return redirect('wagers')
+
+
+@login_required
 def friends_list(request, user_id):
     user = User.objects.get(pk=user_id)
     user_me = request.user
@@ -182,6 +237,7 @@ def friends_list(request, user_id):
     return render(request, 'par/friends.html', {'username': user, 'new': new})
 
 
+@login_required
 def books_list(request, user_id):
     user = User.objects.get(pk=user_id)
     user_me = request.user
@@ -238,6 +294,10 @@ def create_book(request):
                 else:
                     book = Book.objects.create( title=title, author=author, description=description , url=form.cleaned_data['url'],
                                                 cover_url=cover_url)
+                    adder = request.user
+                    adder.profile.books_added += 1
+                    adder.profile.tokens += 5
+                    adder.save()
                     return redirect('index')
     else:
         form = BookUrlForm()

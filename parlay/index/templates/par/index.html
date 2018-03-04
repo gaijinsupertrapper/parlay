@@ -9,13 +9,13 @@
                 <a href ="{% url 'detail-book' book.id %}" class="black col-lg-3 col-md-4 col-sm-6 col-xs-6 d-flex-inline justify-content-center align-items-center content-col content">
                     <div class="">
 
-
-                        <br>
-                        <h2 class = "title text-center"> {{ book.title|truncatewords:5}} </h2>
                         <div class="col-12  d-flex justify-content-center align-items-center">
                            <img src="{{book.cover_url}}" class="book-cover" alt="{{ book.name }}">
                        </div>
-                        <h3 class = "author text-center"> {{ book.author}}</h3>
+                        <br>
+                        <h3 class = "title text-center"> {{ book.title|truncatewords:5}} </h3>
+
+                        <h4 class = "author text-center"> {{ book.author}}</h4>
 
                         <br>
                     <!--    <div class="btn-block btn detail-button white bg-teal">Learn More </div> -->

@@ -16,6 +16,7 @@ urlpatterns = [
     path('wagers/<int:wager_id>/accept', views.accept_wager, name = 'accept-wager'),
     path('wagers/<int:wager_id>/decline', views.decline_wager, name = 'decline-wager'),
     path('wagers/<int:wager_id>/end', views.end_wager, name = 'end-wager'),
+    path('wagers/<int:wager_id>/reward', views.win_wager, name='win-wager'),
     path('id<int:user_id>/friends', views.friends_list, name="friends-list"),
     path('id<int:user_id>/books', views.books_list, name="books-list"),
     path('search/', views.search, name="search"),

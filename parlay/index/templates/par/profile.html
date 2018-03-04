@@ -1,6 +1,6 @@
 {% extends 'par/base.html' %}
 {% load staticfiles %}
-{% block title %} {{username.username}}'s profile {% endblock %}
+{% block title %} {{username.username}} {% endblock %}
 {% block content %}
     <br>
 
@@ -35,12 +35,10 @@
             </div>
             <div class="col-12 col-md-8">
                 <H1 id = "username" class="display-4">{{ username.username }}</H1>
-        {% if user.id == username.id %}
-            <h3 > {{username.profile.tokens}} <small> tokens </small></h3>
+            <h3 > {{username.profile.tokens}} <i class="fas fa-circle-notch"></i> </h3>
             <h4 >{{username.profile.bio}}</h4>
+            <h5 class="green">Добавлено книг: {{username.profile.books_added }}</h5>
 
-
-        {% endif %}
 
             </div>
         </div>
@@ -50,18 +48,18 @@
     <br>
     <div class="card">
         {% if username.profile.books_read.count %}
-            <h4 class="display-4 text-center"> Books read:</h4>
+            <h4 class="display-4 text-center"> Прочитано {{username.profile.books_read.count}} книг</h4>
             <br>
             <div class="row ">
                 {% for book in username.profile.books_read.all|slice:":4" %}
                 <div class="col-12 col-md-6 col-lg-3 mt-4 pd-4">
                         <a href="{% url 'detail-book' book_id=book.id %}" class="black">
                             <div class="container-fluid text-center profile-list-book bg-white ">
-
-                                <h4> {{ book.title|truncatewords:8 }}</h4>
-                                 <div class="col-12  d-flex justify-content-center align-items-center">
+                                <div class="col-12  d-flex justify-content-center align-items-center">
                                     <img src="{{book.cover_url}}" class="book-cover" alt="{{ book.name }}">
                                 </div>
+                                <h4> {{ book.title|truncatewords:8 }}</h4>
+
                                 <p> {{ book.author }}</p>
 
                             </div>
@@ -73,18 +71,18 @@
             </div>
             <br>
             <div class="row ">
-                    <a href="{% url 'books-list' user_id=username.id %}" class="col-12 more-button btn container-fluid bg-silver black">View all </a>
+                    <a href="{% url 'books-list' user_id=username.id %}" class="col-12 more-button btn container-fluid bg-silver black"> Смотреть все </a>
 
                 </div>
         {% else %}
-            <h4 class="lead text-center"> This user haven't read any books yet :(</h4>
+            <h4 class="lead text-center"> Пока что не прочитано ни одной книги :(</h4>
         {% endif %}
 
     </div>
     <br>
     <div class="card">
         {% if username.profile.friends.count %}
-            <h4 class="display-4 text-center"> Friends:</h4>
+            <h4 class="display-4 text-center">{{ username.profile.friends.count }} Друзей:</h4>
             <br>
             <div class="container-fluid  col-12 ">
 
@@ -106,7 +104,7 @@
             <br>
             <div class="row   text-center">
                            <a href="{% url 'friends-list' user_id=username.id %}"
-                                  class=" col-12 more-button  btn container-fluid bg-silver black">View all </a>
+                                  class=" col-12 more-button  btn container-fluid bg-silver black">Смотреть всех </a>
 
                 </div>
         {% else %}
