@@ -50,13 +50,13 @@
         {% if username.profile.books_read.count %}
             <h4 class="display-4 text-center"> Прочитано {{username.profile.books_read.count}} книг</h4>
             <br>
-            <div class="row ">
+            <div class="row container-fluid">
                 {% for book in username.profile.books_read.all|slice:":4" %}
-                <div class="col-12 col-md-6 col-lg-3 mt-4 pd-4">
+                <div class="col-12 col-md-6 col-lg-3 mt-4 pd-6">
                         <a href="{% url 'detail-book' book_id=book.id %}" class="black">
                             <div class="container-fluid text-center profile-list-book bg-white ">
                                 <div class="col-12  d-flex justify-content-center align-items-center">
-                                    <img src="{{book.cover_url}}" class="book-cover" alt="{{ book.name }}">
+                                    <img src="{{book.cover_url}}" class="book-cover-small" alt="{{ book.name }}">
                                 </div>
                                 <h4> {{ book.title|truncatewords:8 }}</h4>
 
@@ -87,7 +87,7 @@
             <div class="container-fluid  col-12 ">
 
                 {% for friend in username.profile.friends.all %}
-                <div class="row">
+                <div class="row ">
 
                         <div class="col-12  profile-list bg-white text-center">
                            <h4> <a href="{% url 'profile' user_id=friend.id %}"> {{ friend.username|truncatewords:8 }}</a></h4>

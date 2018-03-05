@@ -4,9 +4,9 @@
 {% block content %}
 
 
-        <div class="row  justify-content-center">
+        <div class="row  justify-content-center container-fluid">
                 {% for book in books %}
-                <a href ="{% url 'detail-book' book.id %}" class="black col-lg-3 col-md-4 col-sm-6 col-xs-6 d-flex-inline justify-content-center align-items-center content-col content">
+                <a href ="{% url 'detail-book' book.id %}" class="black  col-lg-3 col-md-4 col-sm-6 col-xs-6 d-flex-inline justify-content-center align-items-center content-col content">
                     <div class="">
 
                         <div class="col-12  d-flex justify-content-center align-items-center">

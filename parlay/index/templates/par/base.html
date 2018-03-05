@@ -28,15 +28,15 @@
           </button>
 
       <div class="collapse navbar-collapse navbar-expand-lg">
-
-        {% if user.is_authenticated %}
-            <div class=" col-12 col-md-5 searchbar">
+        <div class=" col-12 col-md-5 searchbar">
                 <form action="{% url 'search' %}" method="get">
                     <input id="search" type="text" placeholder="Search" name="q">
                     <button type="submit" class="button-search btn bg-teal white "><i class="fas fa-search"></i></button>
                 </form>
 
             </div>
+        {% if user.is_authenticated %}
+
             <div class ="d-inline-flex nav-link col-12 col-md-2  justify-content-center">
                     <a href="{% url 'wagers' %}"> My wagers {% if new != 0 %} <span id="new-wagers"> {{new}} </span> {% endif %}  </a>
 
@@ -46,7 +46,7 @@
 
             </div>
         {% else %}
-            <div class="0 col-md-9"></div>
+            <div class="0 col-md-4"></div>
 
         {% endif %}
           <div class="d-inline-flex nav-link col-12 col-md-3   justify-content-center black">

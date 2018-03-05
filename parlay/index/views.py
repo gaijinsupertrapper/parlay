@@ -131,7 +131,7 @@ def add_wager(request):
     sender = request.user
     too_much = int(0)
     if request.method == "POST":
-        form = WagerForm(request.POST)
+        form = WagerForm(request.user, request.POST)
         if form.is_valid():
             if form.cleaned_data['bet']>sender.profile.tokens:
                 too_much = 1
@@ -148,7 +148,7 @@ def add_wager(request):
                 sender.save()
                 return redirect('wagers')
     else:
-        form = WagerForm()
+        form = WagerForm(request.user)
     user = request.user
     new = check_new_wagers(user)
 

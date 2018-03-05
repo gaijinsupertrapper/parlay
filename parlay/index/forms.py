@@ -24,6 +24,11 @@ class BookUrlForm(forms.ModelForm):
         fields = ('url',)
 
 class WagerForm(forms.ModelForm):
+    def __init__(self, user, *args, **kwargs):
+        super(WagerForm, self).__init__(*args, **kwargs)
+        self.fields['to'].queryset = User.objects.get(username=user).profile.friends.all()
+        self.fields['book'].queryset = User.objects.get(username=user).profile.books_read.all()
+
     class Meta:
         model = Wager
         fields=('to','book','bet', 'duration')
@@ -36,3 +41,4 @@ class WagerForm(forms.ModelForm):
         widgets = {
             'bet': forms.TextInput()
         }
+
