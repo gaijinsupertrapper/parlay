@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-
+import datetime
 
 
 class Book(models.Model):
@@ -22,6 +22,9 @@ class Book(models.Model):
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
     bio = models.TextField(max_length=500, blank=True, default='')
+    favourite_genres = models.CharField(max_length=200, blank=True)
+    favourite_authors = models.CharField(max_length=200,blank=True)
+    favourite_books = models.CharField(max_length=200,blank=True)
     tokens  = models.IntegerField(default=100)
     avatar = models.ImageField(upload_to='avatars/', blank=True)
     books_read = models.ManyToManyField(Book,)
@@ -37,8 +40,18 @@ class Wager(models.Model):
     duration = models.DurationField(null=True)
     until = models.DateField(null=True)
     bet = models.IntegerField(default=5)
+    new_duration = models.DurationField(null=True)
+    new_bet = models.IntegerField(null=True)
     received_end = models.CharField(max_length=10, default='no')
     sender_end = models.CharField(max_length=10, default='no')
+    received_discuss = models.CharField(max_length=10, default='no')
+    sender_discuss = models.CharField(max_length=10, default='no')
+    questions = models.IntegerField(default=10)
+
+class WagerQuestion(models.Model):
+    wager = models.ForeignKey(Wager, on_delete=models.CASCADE)
+    question = models.CharField(max_length=150, default='your question')
+    answer = models.CharField(max_length=150, default='your answer')
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):

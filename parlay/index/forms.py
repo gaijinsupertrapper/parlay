@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import Profile, Wager, Book
+from .models import Profile, Wager, Book, WagerQuestion
 
 
 class SignUpForm(UserCreationForm):
@@ -15,7 +15,19 @@ class SignUpForm(UserCreationForm):
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ('bio', 'avatar', )
+        fields = ('avatar', 'bio', 'favourite_genres', 'favourite_authors',
+                  'favourite_books', )
+        labels = {
+            'favourite_genres': 'Любимые жанры',
+            'favourite_authors': 'Любимые авторы',
+            'favourite_books': 'Любимые книги',
+        }
+        widgets = {
+            'bio': forms.Textarea(),
+            'favourite_genres': forms.Textarea(),
+            'favourite_authors': forms.Textarea(),
+            'favourite_books': forms.Textarea(),
+        }
 
 
 class BookUrlForm(forms.ModelForm):
@@ -33,12 +45,42 @@ class WagerForm(forms.ModelForm):
         model = Wager
         fields=('to','book','bet', 'duration')
         labels = {
-            'to': 'Choose a user',
-            'book': 'Select a book',
-            'bet': 'Place a bet',
-            'duration': 'Select a duration of this wager in days',
+            'to': 'Кому',
+            'book': 'Книга',
+            'bet': 'Ставка',
+            'duration': 'Длительность',
         }
         widgets = {
             'bet': forms.TextInput()
         }
 
+
+class WagerEditForm(forms.ModelForm):
+    class Meta:
+        model = Wager
+        fields = ('new_bet', 'new_duration')
+        labels = {
+            'new_bet': 'Измените ставку',
+            'new_duration': 'Измените длительность',
+        }
+        widgets = {
+            'new_bet': forms.TextInput()
+        }
+
+
+class WagerQuestionForm(forms.ModelForm):
+    class Meta:
+        model = WagerQuestion
+        fields = {'question'}
+        labels = {
+            'question': 'Напишите вопрос по теме книги',
+        }
+
+
+class WagerAnswerForm(forms.ModelForm):
+    class Meta:
+        model = WagerQuestion
+        fields = {'answer'}
+        labels = {
+            'answer': 'Напишите ответ на данный вопрос',
+        }

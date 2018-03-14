@@ -1,0 +1,13 @@
+{% extends 'par/base.html' %}
+{% load staticfiles %}
+{% block title %} Вопросы {% endblock %}
+
+{% block content %}
+<div class="card text-center">
+    {% for question in questions %}
+        <h4> {{question.question}} </h4>
+        <p> ----------------------------------- </p>
+    {% endfor %}
+</div>
+
+{% endblock %}

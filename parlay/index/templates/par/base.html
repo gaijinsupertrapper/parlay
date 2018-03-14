@@ -13,12 +13,16 @@
     <link rel=stylesheet href="https://s3-us-west-2.amazonaws.com/colors-css/2.2.0/colors.min.css">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
     <title>{% block title %} {% endblock %}</title>
+    {% block additional %}
+
+    {% endblock %}
 </head>
 <body class="">
-    <nav class="navbar navbar-default navbar-expand-md text-center text-md-left navigation ">
+    <nav class="navbar navbar-default navbar-expand-lg text-center text-lg-left navigation ">
       <div class="container-fluid">
-        <div class="navbar-header  col-8 col-md-3">
+        <div class="navbar-header  col-8 col-md-2">
           <a class="navbar-brand container-fluid  text-center" href="{% url 'index' %}" id="logo">Parlay</a>
 
         </div>
@@ -27,38 +31,45 @@
             <span class="white"><i class="fas fa-bars"></i></span>
           </button>
 
-      <div class="collapse navbar-collapse navbar-expand-lg">
-        <div class=" col-12 col-md-5 searchbar">
+      <div class="collapse navbar-collapse col-12 col-lg-10 mt-3 mt-lg-0">
+
+        {% if user.is_authenticated %}
+            <div class=" col-12 col-lg-4  searchbar">
                 <form action="{% url 'search' %}" method="get">
-                    <input id="search" type="text" placeholder="Search" name="q">
+                    <input class="search" type="text" placeholder="Поиск..." name="q">
                     <button type="submit" class="button-search btn bg-teal white "><i class="fas fa-search"></i></button>
                 </form>
 
             </div>
-        {% if user.is_authenticated %}
-
-            <div class ="d-inline-flex nav-link col-12 col-md-2  justify-content-center">
-                    <a href="{% url 'wagers' %}"> My wagers {% if new != 0 %} <span id="new-wagers"> {{new}} </span> {% endif %}  </a>
+            <div class ="d-inline-flex nav-link col-12 col-md-3 col-lg-2 justify-content-center">
+                    <a href="{% url 'wagers' %}"> Мои пари {% if new != 0 %} <span id="new-wagers"> {{new}} </span> {% endif %}  </a>
 
             </div>
-            <div class="d-inline-flex nav-link col-12 col-md-2  justify-content-center  ">
-                <a href = "{% url 'add-wager' %}">Add wager</a>
+            <div class="d-inline-flex nav-link col-12 col-md-3 col-lg-2  justify-content-center  ">
+                <a href = "{% url 'add-wager' %}">Добавить пари</a>
 
             </div>
         {% else %}
-            <div class="0 col-md-4"></div>
+            <div class=" col-12 col-lg-8 searchbar">
+                <form action="{% url 'search' %}" method="get">
+                    <input class="search" type="text" placeholder="Поиск.." name="q">
+                    <button type="submit" class="button-search btn bg-teal white "><i class="fas fa-search"></i></button>
+                </form>
+
+            </div>
 
         {% endif %}
-          <div class="d-inline-flex nav-link col-12 col-md-3   justify-content-center black">
+          <div class="d-inline-flex nav-link col-12 col-md-3 col-lg-4  justify-content-center black">
 
           {% if user.get_username == none or not user.is_authenticated %}
 
-          <p><a href = '{% url "login" %}'>Log in</a> or <a href = "{% url 'signup' %}">Register</a> </p>
+          <p><a href = '{% url "login" %}'>Войти</a> или <a href = "{% url 'signup' %}">зарегистрироваться</a> </p>
           {% else %}
 
-              <p>Hi, <a href="{% url 'profile' user.id %}"> {{user.username}}.  </a>
+              <p>Хей, <a href="{% url 'profile' user.id %}"> {{user.username}}.  </a>
                   {{ user.profile.tokens}} <i class="fas fa-circle-notch"></i>
-                  <br> <a href = '{% url "logout" %}'> Log out</a></p>
+                  <br>
+                   <a href = '{% url "logout" %}'> Выйти</a></p>
           {% endif %}
           </div>
         </div>

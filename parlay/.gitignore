@@ -7,7 +7,7 @@ myvenv
 
 # Django, DB
 db.sqlite3
-/static
+
 .DS_Store
 
 # pyCharm

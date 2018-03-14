@@ -3,22 +3,16 @@
 {% block title %} Login {% endblock %}
 {% block content %}
 
-<div id = "" class ="container-fluid  ">
-  <h2 align="center">Login</h2>
+<div id = "" class ="row col-12 signup ">
+
     <style> .navigation{ display:none;}
-            body{
-            display : flex;
-            align-items: center;
 
-
-
-            }
             .footer{position:absolute;
             bottom: 5%;}
             #container {background: rgba(255,255,255,0.8);
             position: absolute;
-            top: 25%;
-            height:50%;
+            top: 20%;
+            height:60%;
             width:100%;
             left:0;
             padding-top: 3%;
@@ -26,10 +20,11 @@
 
             box-shadow: 0 0 100px 20px #888;
             }
-  </style>
-  <form method="post">
 
-     <div class="form-group d-flex flex-column justify-content-center align-items-center signup">
+  </style>
+  <form method="post" class=" text-center">
+    <h2 align="center">Войти</h2>
+     <div class="form-group d-flex flex-column col-12 container-fluid align-items-center ">
         {% csrf_token %}
          {% for field in form %}
 
@@ -47,7 +42,7 @@
             {% endfor %}
 
         <br>
-         <button type="submit" class="button-small btn bg-teal white ">Login <i class="fas fa-arrow-right"></i></button>
+         <button type="submit" class="button btn bg-teal white ">Login <i class="fas fa-arrow-right"></i></button>
      </div>
   </form>
 

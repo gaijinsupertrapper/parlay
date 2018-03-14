@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect, get_object_or_404
-from .models import Book, Wager
+from .models import Book, Wager, WagerQuestion
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -9,8 +9,9 @@ from django.db.models import Q
 from requests_html import HTMLSession
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 import datetime
+from django.forms import formset_factory, modelformset_factory
 
-from .forms import SignUpForm, ProfileForm, WagerForm, BookUrlForm
+from .forms import SignUpForm, ProfileForm, WagerForm, WagerEditForm, BookUrlForm, WagerQuestionForm, WagerAnswerForm
 
 def check_new_wagers(user):
     received_wagers = Wager.objects.filter(to=user)
@@ -55,16 +56,22 @@ def index(request):
 
 def bdetail(request,book_id):
     book = Book.objects.get(pk=book_id)
-    user = request.user
-    new = check_new_wagers(user)
+    if request.user.is_authenticated:
+        user = request.user
+        new = check_new_wagers(user)
+    else:
+        new=-1
     return render(request, 'par/detail.html', {'book': book, 'new':new,})
 
 def profile(request, user_id):
     username = None
     if request.user.is_authenticated:
         profile_user = User.objects.get(pk=user_id)
-    user = request.user
-    new = check_new_wagers(user)
+    if request.user.is_authenticated:
+        user = request.user
+        new = check_new_wagers(user)
+    else:
+        new=-1
     return render(request, 'par/profile.html', {'username': profile_user, 'new':new,})
 
 
@@ -121,8 +128,11 @@ def edit_profile(request,user_id):
             return redirect('profile', user_id = user.pk )
     else:
         form = ProfileForm(instance=request.user.profile)
-    user = request.user
-    new = check_new_wagers(user)
+    if request.user.is_authenticated:
+        user = request.user
+        new = check_new_wagers(user)
+    else:
+        new=-1
     return render(request, 'par/edit_profile.html', {'form' : form, 'new': new})
 
 
@@ -142,15 +152,21 @@ def add_wager(request):
             else:
                 Wager = form.save(commit=False)
                 Wager.duration = form.cleaned_data['duration']*86400
+                Wager.new_duration = Wager.duration
+                Wager.new_bet = Wager.bet
                 Wager.sender = sender
+                Wager.sender_discuss='no'
+                Wager.received_discuss='no'
                 Wager.save()
-                sender.profile.tokens -= form.cleaned_data['bet']
-                sender.save()
+
                 return redirect('wagers')
     else:
         form = WagerForm(request.user)
-    user = request.user
-    new = check_new_wagers(user)
+    if request.user.is_authenticated:
+        user = request.user
+        new = check_new_wagers(user)
+    else:
+        new=-1
 
     return render(request, 'par/add_wager.html', {'form': form, 'new': new, 'tm': too_much})
 
@@ -161,11 +177,55 @@ def wagers(request):
 
     user = request.user
     wagers = Wager.objects.filter (Q(to=user) | Q(sender=user))
-    active_wagers = Wager.objects.filter(sender_end='no')
+    active_wagers=int()
+    for wager in wagers:
+        if ((wager.sender == user) and (wager.sender_end == 'no')) or ((wager.to == user) and (wager.received_end == 'no')):
+            active_wagers+=1
 
-    user = request.user
-    new = check_new_wagers(user)
+
+    if request.user.is_authenticated:
+        user = request.user
+        new = check_new_wagers(user)
+    else:
+        new=-1
     return render(request, 'par/wager-list.html', {'wagers': wagers, 'today': today, 'new': new, 'active': active_wagers,})
+
+
+@login_required
+def edit_wager(request,wager_id):
+    wager = Wager.objects.get(pk=wager_id)
+    user = request.user
+
+    too_much = int(0)
+    if request.method == "POST":
+        form = WagerEditForm(request.POST, instance=wager)
+        if form.is_valid():
+            if (wager.sender == user and wager.sender_discuss == 'true') or (wager.to == user and wager.received_discuss == 'true'):
+                return redirect('index')
+            else:
+                if form.cleaned_data['new_bet']>user.profile.tokens:
+                    too_much = 1
+                elif form.cleaned_data['new_bet']<=0:
+                    too_much = 2
+                elif form.cleaned_data['new_duration']<datetime.timedelta(seconds=1):
+                    too_much = 3
+                else:
+                    wager = form.save(commit=False)
+                    wager.new_duration = form.cleaned_data['new_duration'] * 86400
+                    if wager.sender == user:
+                        wager.sender_discuss = 'true'
+                    else:
+                        wager.received_discuss = 'true'
+                    wager.save()
+                    return redirect('wagers')
+    else:
+        form = WagerEditForm()
+    if request.user.is_authenticated:
+        user = request.user
+        new = check_new_wagers(user)
+    else:
+        new = -1
+    return render(request, 'par/edit_wager.html', {'form': form, 'wager': wager, 'tm':too_much, 'new': new})
 
 
 @login_required
@@ -174,12 +234,18 @@ def accept_wager(request, wager_id):
     wager.status = 'true'
     wager.until = datetime.date.today() + wager.duration
     wager.save()
-    player = request.user
-    if player.profile.tokens < wager.bet:
+    player = wager.to
+    sender = wager.sender
+    if sender.profile.tokens < wager.new_bet:
+        sender.profile.tokens = 0
+    else:
+        sender.profile.tokens -= wager.new_bet
+    if player.profile.tokens < wager.new_bet:
         player.profile.tokens = 0
     else:
-        player.profile.tokens -= wager.bet
+        player.profile.tokens -= wager.new_bet
     player.save()
+    sender.save()
     return redirect('wagers')
 
 
@@ -215,12 +281,12 @@ def win_wager(request, wager_id):
     if wager.sender == request.user:
         wager.sender_end = "yes"
         wager.save()
-        winner.profile.tokens += wager.bet*2
+        winner.profile.tokens += wager.new_bet*2
         winner.save()
     else:
         wager.received_end = "yes"
         wager.save()
-        winner.profile.tokens += wager.bet*2
+        winner.profile.tokens += wager.new_bet*2
         winner.save()
 
     if (wager.received_end == "yes") and (wager.sender_end == "yes"):
@@ -232,16 +298,22 @@ def win_wager(request, wager_id):
 @login_required
 def friends_list(request, user_id):
     user = User.objects.get(pk=user_id)
-    user_me = request.user
-    new = check_new_wagers(user_me)
+    if request.user.is_authenticated:
+        user_me = request.user
+        new = check_new_wagers(user_me)
+    else:
+        new=-1
     return render(request, 'par/friends.html', {'username': user, 'new': new})
 
 
 @login_required
 def books_list(request, user_id):
     user = User.objects.get(pk=user_id)
-    user_me = request.user
-    new = check_new_wagers(user_me)
+    if request.user.is_authenticated:
+        user_me = request.user
+        new = check_new_wagers(user_me)
+    else:
+        new=-1
     return render(request, 'par/books.html', {'username': user, 'new':new})
 
 
@@ -259,15 +331,23 @@ def search(request):
 def search_results(request, search_query):
     users = User.objects.filter(username__icontains = search_query)[:5]
     books = Book.objects.filter(Q(title__icontains = search_query) | Q(author__icontains = search_query))[:5]
-    user = request.user
-    new = check_new_wagers(user)
+    if request.user.is_authenticated:
+        user = request.user
+        new = check_new_wagers(user)
+    else:
+        new=-1
     return render(request, 'par/search-results.html', {'users': users,
                                               'books': books,
                                             'q': search_query, 'new':new})
 
 
 def parse_errors(request):
-    return render(request, 'par/parse-error.html')
+    if request.user.is_authenticated:
+        user = request.user
+        new = check_new_wagers(user)
+    else:
+        new=-1
+    return render(request, 'par/parse-error.html', {'new':new})
 
 
 def create_book(request):
@@ -280,19 +360,25 @@ def create_book(request):
             else:
                 session = HTMLSession()
                 r = session.get(form.cleaned_data['url'])
+                if r.html.find('.biblio_book_type', first=True).text == "Аудиокнига":
+                    return redirect('parse-errors')
                 title = r.html.find('.biblio_book_name', first=True).text
-                author = r.html.find('.biblio_book_author__link', first=True).text
+                authors_raw = r.html.find('.biblio_book_author .biblio_book_author__link')
                 description_list = r.html.find('.biblio_book_descr_publishers p')
-                cover_url = r.html.find('.cover img', first=True).attrs['data-original-image-url']
+                cover_url = r.html.find('.cover img', first=True).attrs['src']
                 description = str()
-
+                authors = str()
+                for i in range(len(authors_raw)):
+                    authors += authors_raw[i].text
+                    authors += ' '
+                authors = authors[:-1]
                 for i in range(len(description_list)):
                     description += description_list[i].text
                     description += ' \n '
                 if Book.objects.filter(url__icontains=form.cleaned_data['url']):
                     return redirect('parse-errors')
                 else:
-                    book = Book.objects.create( title=title, author=author, description=description , url=form.cleaned_data['url'],
+                    book = Book.objects.create( title=title, author=authors, description=description , url=form.cleaned_data['url'],
                                                 cover_url=cover_url)
                     adder = request.user
                     adder.profile.books_added += 1
@@ -301,7 +387,66 @@ def create_book(request):
                     return redirect('index')
     else:
         form = BookUrlForm()
-    user = request.user
-    new = check_new_wagers(user)
+    if request.user.is_authenticated:
+        user = request.user
+        new = check_new_wagers(user)
+    else:
+        new=-1
     return render(request, 'par/add-book.html', {'form': form, 'new': new})
 
+
+def add_questions(request, wager_id):
+    user = request.user
+    max = Wager.objects.get(pk=wager_id).questions
+    WagerQuestionFormSet = formset_factory(WagerQuestionForm,extra=0, min_num=1, max_num=max,validate_max=True)
+
+    if request.method == "POST":
+        formset = WagerQuestionFormSet(request.POST)
+        if formset.is_valid():
+
+            for form in formset:
+                form.save(commit=False)
+                wagerQ =  WagerQuestion.objects.create(wager=Wager.objects.get(pk=wager_id),
+                                                      question=form.cleaned_data['question'])
+
+            wager = Wager.objects.get(pk=wager_id)
+            wager.questions -= int(formset.data['form-TOTAL_FORMS'])
+            wager.save()
+
+            return redirect('wagers')
+    else:
+        formset = WagerQuestionFormSet()
+    if request.user.is_authenticated:
+        user = request.user
+        new = check_new_wagers(user)
+    else:
+        new=-1
+    return render(request, 'par/add-questions.html', {'formset':formset, 'new': new, 'max':max})
+
+
+def view_questions(request, wager_id):
+    questions = WagerQuestion.objects.filter(wager=Wager.objects.get(pk=wager_id))
+    if request.user.is_authenticated:
+        user = request.user
+        new = check_new_wagers(user)
+    else:
+        new=-1
+    return render(request, 'par/questions.html', {'questions': questions, 'new': new})
+
+def answer_questions(request,wager_id):
+    WagerAnswerFormSet = formset_factory(WagerAnswerForm, extra = 0,
+                                         min_num = WagerQuestion.objects.filter(wager=Wager.objects.get(pk=wager_id)).count,
+                                         max_num = WagerQuestion.objects.filter(wager=Wager.objects.get(pk=wager_id)).count,)
+    questions = list(WagerQuestion.objects.filter(wager=Wager.objects.get(pk=wager_id)))
+    if request.method == "POST":
+        formset = WagerAnswerFormSet(request.POST)
+        i=int(0)
+        for form in formset:
+            form.field['answer'].label = questions[i].question
+            i+=1
+        if formset.is_valid():
+            return redirect('index')
+
+    else:
+        formset = WagerAnswerFormSet()
+    return render(request, 'par/answer-questions.html', {'formset': formset})          

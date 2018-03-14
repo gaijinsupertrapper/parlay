@@ -1,6 +1,10 @@
 {% extends 'par/base.html' %}
 {% load staticfiles %}
 {% block title %} {{username.username}} {% endblock %}
+{% block additional %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+{% endblock %}
 {% block content %}
     <br>
 
@@ -22,7 +26,8 @@
                 {% if user.id == username.id %}
 
 
-                    <a class="button col-12 btn  bg-teal white " href="{% url 'edit-profile' user_id=user.id %}">  <i class="fas fa-pencil-alt"></i>  Edit  </a>
+                    <a class="button col-12 btn  bg-teal white sticky-top" href="{% url 'edit-profile' user_id=user.id %}">
+                        <i class="fas fa-pencil-alt"></i>  Изменить  </a>
 
                 {% else %}
                     {% if username in user.profile.friends.all %}
@@ -38,6 +43,16 @@
             <h3 > {{username.profile.tokens}} <i class="fas fa-circle-notch"></i> </h3>
             <h4 >{{username.profile.bio}}</h4>
             <h5 class="green">Добавлено книг: {{username.profile.books_added }}</h5>
+            <a href="#" id="more-button" class="col-12 btn button-block bg-silver white" style="outline:none;">Дополнительная информация</a>
+            <div class="col-12 text-center" id="more" style="display:none;">
+                <p class="mt-2"> Любимые жанры: {% if username.profile.favourite_genres %} {{ username.profile.favourite_genres }}
+                                                {% else%} пока не отмечено {% endif %}</p>
+                <p class="mt-2"> Любимые писатели: {% if username.profile.favourite_authors %} {{ username.profile.favourite_authors }}
+                                                {% else%} пока не отмечено {% endif %}</p>
+                <p class="mt-2"> Любимые книги: {% if username.profile.favourite_books %} {{ username.profile.favourite_books }}
+                                                {% else%} пока не отмечено {% endif %}</p>
+
+            </div>
 
 
             </div>
@@ -48,7 +63,7 @@
     <br>
     <div class="card">
         {% if username.profile.books_read.count %}
-            <h4 class="display-4 text-center"> Прочитано {{username.profile.books_read.count}} книг</h4>
+            <h2 class=" text-center"> Прочитано {{username.profile.books_read.count}} книг</h2>
             <br>
             <div class="row container-fluid">
                 {% for book in username.profile.books_read.all|slice:":4" %}
@@ -58,7 +73,7 @@
                                 <div class="col-12  d-flex justify-content-center align-items-center">
                                     <img src="{{book.cover_url}}" class="book-cover-small" alt="{{ book.name }}">
                                 </div>
-                                <h4> {{ book.title|truncatewords:8 }}</h4>
+                                <h4> {{ book.title|truncatewords:4 }}</h4>
 
                                 <p> {{ book.author }}</p>
 
@@ -82,7 +97,7 @@
     <br>
     <div class="card">
         {% if username.profile.friends.count %}
-            <h4 class="display-4 text-center">{{ username.profile.friends.count }} Друзей:</h4>
+            <h2 class=" text-center">{{ username.profile.friends.count }} Друзей:</h2>
             <br>
             <div class="container-fluid  col-12 ">
 
@@ -108,7 +123,7 @@
 
                 </div>
         {% else %}
-            <h4 class="display-4"> This user has no friends :(</h4>
+            <h4 class=""> This user has no friends :(</h4>
         {% endif %}
     </div>
     <br>
@@ -116,7 +131,15 @@
         <p class="lead"> Не можете найти книгу на сайте и хотите ее добавить? <a href="{% url 'add-book' %}" class="black">Добавьте её с ЛитРеса!  </a></p>
 
     </div>
+    <script>
+        $("#more").hide();
+        $( "#more-button" ).click(function() {
+          $( "#more" ).slideToggle( 400, function() {
 
+          });
+        });
+
+    </script>
 
 
 

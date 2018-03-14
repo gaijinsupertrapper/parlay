@@ -1,0 +1,51 @@
+{% extends 'par/base.html' %}
+{% load staticfiles %}
+{% block title %} Добавление вопросов {% endblock %}
+
+{% block content %}
+<div class="card text-center">
+    <form method="post" action="">
+        {% csrf_token %}
+        <h5> Напишите здесь вопросы:</h5>
+        <div id="question-form">
+           {{ formset.management_form }}
+        {% for form in formset %}
+            {% for field in form %}
+                {{field}}
+
+            {% endfor %}
+            <hr>
+        {% endfor %}
+
+        </div>
+        <br>
+        <button type="button" id ='add-button'  class="btn btn-block btn-outline-success">Добавить ещё 1 вопрос</button>
+        <br>
+        <button type="submit" class="save button btn btn-block bg-teal white">Сохранить вопросы</button>
+    </form>
+</div>
+<script>
+    button = document.getElementById('add-button');
+    container = document.getElementById('question-form');
+    totalForms = document.getElementById('id_form-TOTAL_FORMS');
+    n=0;
+    max = {{max}};
+    button.onclick= function(){
+       if (n>=max-1){
+            alert('Вы не можете добавить больше 10 вопросов всего');
+       }else{
+           n++;
+           totalForms.setAttribute('value', n+1);
+           input = document.createElement('input');
+           input.setAttribute('type','text');
+           input.setAttribute('name','form-'+n+'-question');
+           input.setAttribute('value','your question');
+           input.setAttribute('maxlength','150');
+           input.setAttribute('id','id_form-'+n+'-question');
+           br = document.createElement('hr');
+           document.getElementById('question-form').appendChild(input);
+           document.getElementById('question-form').appendChild(br);
+           }
+    };
+</script>
+{% endblock %}

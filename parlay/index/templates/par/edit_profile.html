@@ -8,14 +8,15 @@
     <div class="container-fluid card text-center">
         <form method="POST" enctype="multipart/form-data" class="container-fluid post-form form-group d-flex justify-content-center flex-column align-items-center">
            {% csrf_token %}
-            <textarea class="textarea container-fluid" type="text"  name="{{ form.bio.name }}" value="{{ form.bio.value }}" class = "form-control" rows="10">{{ user.profile.bio}}</textarea>
+            {% for field in form %}
+
+            {{ field.label_tag }}
+            {{ field }}
             <br>
-            {{ form.avatar }}
-
-            <br>
 
 
-            <button type="submit" class="save button btn btn-block bg-teal white">Save</button>
+         {% endfor %}
+            <button type="submit" class="save button btn btn-block bg-teal white">Сохранить</button>
        </form>
     </div>
 
