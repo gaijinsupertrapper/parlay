@@ -4,10 +4,21 @@
 
 {% block content %}
 <div class="card text-center">
-    {% for question in questions %}
-        <h4> {{question.question}} </h4>
-        <p> ----------------------------------- </p>
-    {% endfor %}
+    <div class="row col-12">
+        <div class="col-8">
+            <div class="row d-flex flex-column">
+                {% for question in questions %}
+                    <h4>Question: {{question.question}} </h4>
+                    {% if question.answer %}
+                        <h5>Answer: {% if question.answer != 'your answer' %}{{question.answer }}{% else %} нет ответа{% endif %}</h5>
+                    {% endif %}
+                    <p> ----------------------------------- </p>
+                {% endfor %}
+            </div>
+        </div>
+
+    </div>
+
 </div>
 
 {% endblock %}

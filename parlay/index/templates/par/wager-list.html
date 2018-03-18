@@ -88,8 +88,8 @@
                         ( предложено: {{ wager.new_duration }}) {% endif %} </h4>
                     {% if wager.status == "true" %}
                         {% if wager.until > today %}
-                        <h5><a href="{% url 'win-wager' wager_id=wager.id %}" class="btn btn-outline-success">
-                            Я прочитал книгу! </a> </h5>
+                        <h5><a href="{% url 'answer-questions' wager_id=wager.id %}" class="btn btn-outline-success">
+                            Я готов ответить на вопросы! </a> </h5>
                         {% else %}
                             <h5> Вы не уложились во время.
                             <a href="{% url 'end-wager' wager_id=wager.id %}" class="btn btn-outline-secondary"> Удалить пари? </a> </h5>

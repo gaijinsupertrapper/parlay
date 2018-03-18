@@ -25,5 +25,6 @@ urlpatterns = [
     path('q=<str:search_query>', views.search_results, name="search-results"),
     path('book/add/', views.create_book, name="add-book"),
     path('book/error', views.parse_errors, name='parse-errors'),
-    path('wager/<int:wager_id>/questions', views.view_questions, name='questions')
+    path('wager/<int:wager_id>/questions', views.view_questions, name='questions'),
+    path('wager/<int:wager_id>/answer', views.answer_questions, name='answer-questions')
 ]

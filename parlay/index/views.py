@@ -10,8 +10,14 @@ from requests_html import HTMLSession
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 import datetime
 from django.forms import formset_factory, modelformset_factory
+from django.utils.functional import curry
 
-from .forms import SignUpForm, ProfileForm, WagerForm, WagerEditForm, BookUrlForm, WagerQuestionForm, WagerAnswerForm
+from .forms import SignUpForm,\
+    ProfileForm, WagerForm,\
+    WagerEditForm, BookUrlForm,\
+    WagerQuestionForm,\
+    WagerAnswerForm
+
 
 def check_new_wagers(user):
     received_wagers = Wager.objects.filter(to=user)
@@ -414,6 +420,7 @@ def add_questions(request, wager_id):
             wager.save()
 
             return redirect('wagers')
+
     else:
         formset = WagerQuestionFormSet()
     if request.user.is_authenticated:
@@ -433,20 +440,32 @@ def view_questions(request, wager_id):
         new=-1
     return render(request, 'par/questions.html', {'questions': questions, 'new': new})
 
-def answer_questions(request,wager_id):
-    WagerAnswerFormSet = formset_factory(WagerAnswerForm, extra = 0,
-                                         min_num = WagerQuestion.objects.filter(wager=Wager.objects.get(pk=wager_id)).count,
-                                         max_num = WagerQuestion.objects.filter(wager=Wager.objects.get(pk=wager_id)).count,)
-    questions = list(WagerQuestion.objects.filter(wager=Wager.objects.get(pk=wager_id)))
-    if request.method == "POST":
-        formset = WagerAnswerFormSet(request.POST)
-        i=int(0)
-        for form in formset:
-            form.field['answer'].label = questions[i].question
-            i+=1
-        if formset.is_valid():
-            return redirect('index')
 
+def answer_questions(request,wager_id):
+
+    questions = WagerQuestion.objects.filter(wager=Wager.objects.get(pk=wager_id))
+    qlist=list()
+    for question in questions:
+        qlist.append(question.question)
+    labels = iter(qlist)
+    WagerAnswerFormSet = formset_factory(WagerAnswerForm, extra=0,
+                                              min_num=len(qlist), max_num=len(qlist))
+
+    WagerAnswerFormSet.form = staticmethod(curry(WagerAnswerForm, item_iterator=labels))
+    if request.method == "POST":
+
+        formset = WagerAnswerFormSet(request.POST, request.FILES)
+
+        if formset.is_valid():
+            question = list(questions)
+            i=0
+            for form in formset:
+                    question[i].answer = form.cleaned_data['answer']
+                    question[i].save()
+                    i+=1
+            return redirect('wagers')
+        else:
+            return redirect('index')
     else:
         formset = WagerAnswerFormSet()
-    return render(request, 'par/answer-questions.html', {'formset': formset})          
+    return render(request, 'par/answer-questions.html', {'formset': formset})

@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from .models import Profile, Wager, Book, WagerQuestion
+from django.forms.formsets import BaseFormSet
 
 
 class SignUpForm(UserCreationForm):
@@ -78,6 +79,17 @@ class WagerQuestionForm(forms.ModelForm):
 
 
 class WagerAnswerForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        # Calling next() on the iterator/generator here:
+        try:
+            list_item = kwargs.pop('item_iterator').__next__()
+        except StopIteration:
+            list_item='1'
+        super(WagerAnswerForm, self).__init__(*args, **kwargs)
+
+        # Now you can assign whatever you passed in to an attribute
+        # on one of the form elements.
+        self.fields['answer'].label = list_item
     class Meta:
         model = WagerQuestion
         fields = {'answer'}
