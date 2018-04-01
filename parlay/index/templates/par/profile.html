@@ -42,8 +42,8 @@
                 <H1 id = "username" class="display-4">{{ username.username }}</H1>
             <h3 > {{username.profile.tokens}} <i class="fas fa-circle-notch"></i> </h3>
             <h4 >{{username.profile.bio}}</h4>
-            <h5 class="green">Добавлено книг: {{username.profile.books_added }}</h5>
-            <a href="#" id="more-button" class="col-12 btn button-block bg-silver white" style="outline:none;">Дополнительная информация</a>
+            <h5 class="green">Добавлено книг на сайт: {{username.profile.books_added }}</h5>
+            <button type='none' id="more-button" class="col-12 btn button-block bg-silver white" style="outline:none;">Дополнительная информация</button>
             <div class="col-12 text-center" id="more" style="display:none;">
                 <p class="mt-2"> Любимые жанры: {% if username.profile.favourite_genres %} {{ username.profile.favourite_genres }}
                                                 {% else%} пока не отмечено {% endif %}</p>

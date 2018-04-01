@@ -12,8 +12,10 @@
                     {% if question.answer %}
                         <h5>Answer: {% if question.answer != 'your answer' %}{{question.answer }}{% else %} нет ответа{% endif %}</h5>
                     {% endif %}
+                    {{ question.correct }}
                     <p> ----------------------------------- </p>
                 {% endfor %}
+
             </div>
         </div>
 

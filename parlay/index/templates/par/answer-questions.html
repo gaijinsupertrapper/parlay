@@ -11,13 +11,12 @@
         <div id="question-form">
             {{ formset.management_form }}
             {% for form in formset %}
-                <!--{% if form.answer.label != '1' %}-->
+
                 {% for field in form.visible_fields %}
                     <p> {{ field.label_tag}}</p>
                     {{field}}
                 {% endfor %}
                 <hr>
-                <!--{% endif %}-->
             {% endfor %}
 
         </div>

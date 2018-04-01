@@ -5,7 +5,7 @@ from . import views
 urlpatterns = [
     path(r'', views.index, name='index'),
     path('book/<int:book_id>/', views.bdetail, name='detail-book'),
-    path(r'^signup/$', views.signup, name='signup'),
+    path(r'signup', views.signup, name='signup'),
     path('id<int:user_id>/', views.profile, name='profile'),
     path('id<int:user_id>/edit', views.edit_profile, name = 'edit-profile'),
     path(r'book/<int:book_id>/add', views.add_book, name = 'add-book'),
@@ -26,5 +26,7 @@ urlpatterns = [
     path('book/add/', views.create_book, name="add-book"),
     path('book/error', views.parse_errors, name='parse-errors'),
     path('wager/<int:wager_id>/questions', views.view_questions, name='questions'),
-    path('wager/<int:wager_id>/answer', views.answer_questions, name='answer-questions')
+    path('wager/<int:wager_id>/answer', views.answer_questions, name='answer-questions'),
+    path('wager/<int:wager_id>/check', views.check_questions, name='check-questions'),
+    path('landing', views.landing_page, name='landing')
 ]

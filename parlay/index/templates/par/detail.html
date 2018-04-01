@@ -22,7 +22,9 @@
                             </div>
                         {% else %}
                             <div class="col-12 col-lg-4 d-flex  flex-column align-items-end ">
-                                <a href="{% url 'add-book' book_id=book.id %}" class="btn button bg-aqua white container-fluid">Add book</a>
+                                <a href="{% url 'add-book' book_id=book.id %}" class="btn button bg-aqua white container-fluid">
+                                  <i class="fas fa-plus"></i>  Добавить
+                                </a>
                             </div>
                         {% endif %}
                    {% endif %}

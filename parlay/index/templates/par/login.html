@@ -9,9 +9,9 @@
 
             .footer{position:absolute;
             bottom: 5%;}
-            #container {background: rgba(255,255,255,0.8);
+            #container {background: rgba(255,255,255,0.5);
             position: absolute;
-            top: 20%;
+            top: 0%;
             height:60%;
             width:100%;
             left:0;
@@ -20,11 +20,16 @@
 
             box-shadow: 0 0 100px 20px #888;
             }
+            .footer{
+                color: #111;
+                position:absolute;
+            bottom: 0%;
+            }
 
   </style>
-  <form method="post" class=" text-center">
+  <form method="post" class="text-center container-fluid">
     <h2 align="center">Войти</h2>
-     <div class="form-group d-flex flex-column col-12 container-fluid align-items-center ">
+     <div class=" col-12 form-group d-flex flex-column align-items-center">
         {% csrf_token %}
          {% for field in form %}
 
@@ -42,7 +47,7 @@
             {% endfor %}
 
         <br>
-         <button type="submit" class="button btn bg-teal white ">Login <i class="fas fa-arrow-right"></i></button>
+         <button type="submit" class="button col-8 col-md-4 col-lg-2 btn bg-teal white ">Login <i class="fas fa-arrow-right"></i></button>
      </div>
   </form>
 

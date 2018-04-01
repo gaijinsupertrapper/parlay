@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 import datetime
-
+from cloudinary.models import CloudinaryField
 
 class Book(models.Model):
     title = models.CharField(max_length = 150, default = r'Yet another book')
@@ -26,10 +26,13 @@ class Profile(models.Model):
     favourite_authors = models.CharField(max_length=200,blank=True)
     favourite_books = models.CharField(max_length=200,blank=True)
     tokens  = models.IntegerField(default=100)
-    avatar = models.ImageField(upload_to='avatars/', blank=True)
+    avatar = CloudinaryField('image')
     books_read = models.ManyToManyField(Book,)
     books_added = models.IntegerField(default=0)
     friends = models.ManyToManyField(User,  related_name='+',)
+
+    def __str__(self):
+        return str(self.user)
 
 
 class Wager(models.Model):
@@ -38,20 +41,29 @@ class Wager(models.Model):
     book = models.ForeignKey(Book, on_delete=models.CASCADE)
     status = models.CharField(max_length=10, default='none')
     duration = models.DurationField(null=True)
-    until = models.DateField(null=True)
+    until = models.DateTimeField(null=True)
     bet = models.IntegerField(default=5)
     new_duration = models.DurationField(null=True)
     new_bet = models.IntegerField(null=True)
+    sender_new_bet = models.IntegerField(null=True)
+    sender_new_duration = models.DurationField(null=True)
+    received_new_bet = models.IntegerField(null=True)
+    received_new_duration = models.DurationField(null=True)
     received_end = models.CharField(max_length=10, default='no')
     sender_end = models.CharField(max_length=10, default='no')
     received_discuss = models.CharField(max_length=10, default='no')
     sender_discuss = models.CharField(max_length=10, default='no')
     questions = models.IntegerField(default=10)
+    questions_answered = models.CharField(max_length=10, default='false')
+    questions_checked = models.CharField(max_length=10, default='false')
+    questions_right = models.IntegerField(default=0)
+    winner = models.CharField(max_length=5, default='none')
 
 class WagerQuestion(models.Model):
     wager = models.ForeignKey(Wager, on_delete=models.CASCADE)
     question = models.CharField(max_length=150, default='your question')
     answer = models.CharField(max_length=150, default='your answer')
+    correct = models.NullBooleanField(null=True)
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):

@@ -9,14 +9,19 @@ from django.db.models import Q
 from requests_html import HTMLSession
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 import datetime
-from django.forms import formset_factory, modelformset_factory
+from django.forms import formset_factory
 from django.utils.functional import curry
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+import pytz
 
 from .forms import SignUpForm,\
     ProfileForm, WagerForm,\
     WagerEditForm, BookUrlForm,\
     WagerQuestionForm,\
-    WagerAnswerForm
+    WagerAnswerForm, \
+    WagerCheckForm
 
 
 def check_new_wagers(user):
@@ -27,6 +32,11 @@ def check_new_wagers(user):
             unchecked += 1
     return unchecked
 
+cloudinary.config(
+  cloud_name = "parlay",
+  api_key = "426334496788595",
+  api_secret = "JDuFH0AnBrGMSmJGVb5ARFue1mQ")
+
 def signup(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
@@ -36,7 +46,7 @@ def signup(request):
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
             login(request, user)
-            return redirect('index')
+            return redirect('profile', user_id=user.id)
     else:
         form = SignUpForm()
     return render(request, 'par/signup.html', {'form': form})
@@ -129,7 +139,9 @@ def edit_profile(request,user_id):
     if request.method == "POST":
         form = ProfileForm(request.POST, request.FILES, instance=request.user.profile)
         if form.is_valid():
+            form.save()
             user.profile = form.save(commit=False)
+
             user.profile.save()
             return redirect('profile', user_id = user.pk )
     else:
@@ -160,11 +172,13 @@ def add_wager(request):
                 Wager.duration = form.cleaned_data['duration']*86400
                 Wager.new_duration = Wager.duration
                 Wager.new_bet = Wager.bet
+
                 Wager.sender = sender
                 Wager.sender_discuss='no'
                 Wager.received_discuss='no'
                 Wager.save()
-
+                sender.profile.tokens -= Wager.bet
+                sender.profile.save()
                 return redirect('wagers')
     else:
         form = WagerForm(request.user)
@@ -179,12 +193,13 @@ def add_wager(request):
 
 @login_required
 def wagers(request):
-    today = datetime.date.today()
+    today = datetime.datetime.now(tz=pytz.utc)
 
     user = request.user
-    wagers = Wager.objects.filter (Q(to=user) | Q(sender=user))
+    wagers = Wager.objects.filter (Q(to=user) | Q(sender=user)).order_by('until')
     active_wagers=int()
     for wager in wagers:
+
         if ((wager.sender == user) and (wager.sender_end == 'no')) or ((wager.to == user) and (wager.received_end == 'no')):
             active_wagers+=1
 
@@ -201,7 +216,6 @@ def wagers(request):
 def edit_wager(request,wager_id):
     wager = Wager.objects.get(pk=wager_id)
     user = request.user
-
     too_much = int(0)
     if request.method == "POST":
         form = WagerEditForm(request.POST, instance=wager)
@@ -220,8 +234,12 @@ def edit_wager(request,wager_id):
                     wager.new_duration = form.cleaned_data['new_duration'] * 86400
                     if wager.sender == user:
                         wager.sender_discuss = 'true'
+                        wager.sender_new_bet = form.cleaned_data['new_bet']
+                        wager.sender_new_duration = form.cleaned_data['new_duration'] * 86400
                     else:
                         wager.received_discuss = 'true'
+                        wager.received_new_bet = form.cleaned_data['new_bet']
+                        wager.received_new_duration = form.cleaned_data['new_duration'] * 86400
                     wager.save()
                     return redirect('wagers')
     else:
@@ -238,18 +256,14 @@ def edit_wager(request,wager_id):
 def accept_wager(request, wager_id):
     wager = Wager.objects.get(pk=wager_id)
     wager.status = 'true'
-    wager.until = datetime.date.today() + wager.duration
+    wager.until = datetime.datetime.now() + wager.new_duration
     wager.save()
     player = wager.to
     sender = wager.sender
-    if sender.profile.tokens < wager.new_bet:
-        sender.profile.tokens = 0
-    else:
-        sender.profile.tokens -= wager.new_bet
-    if player.profile.tokens < wager.new_bet:
-        player.profile.tokens = 0
-    else:
-        player.profile.tokens -= wager.new_bet
+    player.profile.tokens -= wager.new_bet
+    sender.profile.tokens -= (wager.new_bet - wager.bet)
+
+
     player.save()
     sender.save()
     return redirect('wagers')
@@ -364,8 +378,10 @@ def create_book(request):
             if url_string.find('litres.ru/')==-1:
                 return redirect('parse-errors')
             else:
+                url_string='https://'+url_string[url_string.find('litres')::]
+
                 session = HTMLSession()
-                r = session.get(form.cleaned_data['url'])
+                r = session.get(url_string)
                 if r.html.find('.biblio_book_type', first=True).text == "Аудиокнига":
                     return redirect('parse-errors')
                 title = r.html.find('.biblio_book_name', first=True).text
@@ -412,8 +428,11 @@ def add_questions(request, wager_id):
 
             for form in formset:
                 form.save(commit=False)
-                wagerQ =  WagerQuestion.objects.create(wager=Wager.objects.get(pk=wager_id),
-                                                      question=form.cleaned_data['question'])
+                if not 'question' in form.cleaned_data:
+                    wagerq = WagerQuestion.objects.create(wager=Wager.objects.get(pk=wager_id))
+                else:
+                    wagerq =  WagerQuestion.objects.create(wager=Wager.objects.get(pk=wager_id),
+                                                        question=form.cleaned_data['question'])
 
             wager = Wager.objects.get(pk=wager_id)
             wager.questions -= int(formset.data['form-TOTAL_FORMS'])
@@ -463,9 +482,58 @@ def answer_questions(request,wager_id):
                     question[i].answer = form.cleaned_data['answer']
                     question[i].save()
                     i+=1
+            wager = Wager.objects.get(pk=wager_id)
+            wager.questions_answered = 'true'
+            wager.save()
             return redirect('wagers')
         else:
             return redirect('index')
     else:
         formset = WagerAnswerFormSet()
-    return render(request, 'par/answer-questions.html', {'formset': formset})
+    if request.user.is_authenticated:
+        user = request.user
+        new = check_new_wagers(user)
+    else:
+        new = -1
+    return render(request, 'par/answer-questions.html', {'new':new, 'formset': formset, })
+
+
+def check_questions(request, wager_id):
+    questions = WagerQuestion.objects.filter(wager = Wager.objects.get(pk=wager_id))
+
+    WagerCheckFormSet = formset_factory(WagerCheckForm, extra=0, min_num=len(questions), max_num=len(questions))
+    if request.method == "POST":
+        formset = WagerCheckFormSet(request.POST, request.FILES)
+        i=0
+        if formset.is_valid():
+            qlist = list(questions)
+            for form in formset:
+                qlist[i].correct = form.cleaned_data['correct']
+                qlist[i].save()
+                i+=1
+            wager = Wager.objects.get(pk=wager_id)
+            wager.questions_checked = 'true'
+            for question in questions:
+                if question.correct == True:
+                    wager.questions_right+=1
+            if wager.questions_right/(10-wager.questions)>=0.7:
+                wager.winner = 'r'
+            else:
+                wager.winner = 's'
+            wager.save()
+            return redirect('wagers')
+        else:
+            return redirect('index')
+    else:
+        formset = WagerCheckFormSet()
+    if request.user.is_authenticated:
+        user = request.user
+        new = check_new_wagers(user)
+    else:
+        new = -1
+    return render(request, 'par/check.html', {'new':new, 'formsets': zip(questions, formset), 'formset': formset})
+
+
+def landing_page(request):
+
+    return render(request,'par/landing.html')

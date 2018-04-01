@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 
 import os
 import django_heroku
-
+import cloudinary
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -26,7 +26,8 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'sfff*+no&%)wmz(&z^h9qz$briw365
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
+
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.herokuapp.com',]
 
@@ -36,7 +37,7 @@ ADMINS = [('zyyme', 'gredbla@gmail.com')]
 
 SITE_ID = 1
 
-LOGIN_REDIRECT_URL = 'index'
+LOGIN_REDIRECT_URL = 'wagers'
 
 # Application definition
 
@@ -52,6 +53,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'easy_thumbnails',
     'image_cropping',
+    'mathfilters',
 
 ]
 
@@ -150,7 +152,7 @@ AUTHENTICATION_BACKENDS = (
 
 LANGUAGE_CODE = 'ru-ru'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Omsk'
 
 USE_I18N = True
 

@@ -2,7 +2,7 @@
 <!doctype html>
 {% load staticfiles %}
 
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -42,7 +42,7 @@
 
             </div>
             <div class ="d-inline-flex nav-link col-12 col-md-3 col-lg-2 justify-content-center">
-                    <a href="{% url 'wagers' %}"> Мои пари {% if new != 0 %} <span id="new-wagers"> {{new}} </span> {% endif %}  </a>
+                    <a href="{% url 'wagers' %}" class="text-center"> Мои пари {% if new != 0 %} <span id="new-wagers"> {{new}} </span> {% endif %}  </a>
 
             </div>
             <div class="d-inline-flex nav-link col-12 col-md-3 col-lg-2  justify-content-center  ">
@@ -75,7 +75,6 @@
         </div>
       </div>
     </nav>
-
 
     <div id="container" class = "container-fluid">
     {% block content %}

@@ -25,9 +25,9 @@ class ProfileForm(forms.ModelForm):
         }
         widgets = {
             'bio': forms.Textarea(),
-            'favourite_genres': forms.Textarea(),
-            'favourite_authors': forms.Textarea(),
-            'favourite_books': forms.Textarea(),
+            'favourite_genres': forms.Textarea(attrs={'rows':5}),
+            'favourite_authors': forms.Textarea(attrs={'rows':5}),
+            'favourite_books': forms.Textarea(attrs={'rows':5}),
         }
 
 
@@ -96,3 +96,10 @@ class WagerAnswerForm(forms.ModelForm):
         labels = {
             'answer': 'Напишите ответ на данный вопрос',
         }
+
+
+class WagerCheckForm(forms.ModelForm):
+
+    class Meta:
+        model = WagerQuestion
+        fields = {'correct'}

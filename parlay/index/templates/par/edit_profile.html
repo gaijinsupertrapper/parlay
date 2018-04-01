@@ -5,8 +5,9 @@
 
 {% block content %}
 <br>
-    <div class="container-fluid card text-center">
-        <form method="POST" enctype="multipart/form-data" class="container-fluid post-form form-group d-flex justify-content-center flex-column align-items-center">
+    <div class="container-fluid card text-center row col-12">
+        <form method="POST" enctype="multipart/form-data"
+              class="col-12 form-group post-form d-flex flex-column">
            {% csrf_token %}
             {% for field in form %}
 

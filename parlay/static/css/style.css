@@ -1,16 +1,18 @@
 @import url('https://fonts.googleapis.com/css?family=Exo+2:300,400|Merriweather:300|Poppins:900i');
+html,body{
+    min-height: 100%;
+    height: auto;
+}
 body{
-    height:100%;
-    min-height: 400px;
     width:100%;
-    background:linear-gradient(217deg, rgba(0,255,0,.5), rgba(0,255,0,0) 70.71%),
-            linear-gradient(127deg, rgba(0,0,255,.5), rgba(0,0,255,0) 70.71%),
-            linear-gradient(336deg, rgba(255,0,0,.5), rgba(255,0,0,0) 70.71%);
+    background-color: #08AEEA;
+background-image: linear-gradient(160deg, #08AEEA 0%, #2AF598 100%);
 
 
     font-family: 'Exo 2', sans-serif;
     font-weight: 300;
-
+    margin:0;
+    padding:0;
 
 
 }
@@ -68,10 +70,11 @@ body{
 }
 footer{
 
-    margin-top: 5%;
+    margin-top: 2%;
     padding:2%;
     width: 100%;
 }
+
 #logo{
     font-size: 2.5em;
     font-family: 'Poppins', sans-serif;
@@ -109,6 +112,97 @@ footer{
 }
 .navigation a:hover{
     color: #111111;
+}
+.bogo-box{
+    position:fixed;
+    min-height: 102%;
+    background-color: #111;
+    z-index: 989;
+    top: -3px;
+    position:fixed;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 100%;
+}
+.landing-header{
+    z-index: 1123;
+    position:fixed;
+    top: 0;
+    padding-top: 2%;
+    background: #111;
+}
+.bogo{
+    z-index: 990;
+
+    font-size: 4em;
+    font-family: 'Poppins', sans-serif;
+    font-weight:900; font-style:italic;
+    transition: all 0.8s ease;
+    color:rgba(57, 204, 204, 0.6);
+    text-shadow:0 -180px 0px currentColor, 0 -120px 0px currentColor,  0 -60px 0px currentColor,
+     0 60px  0px currentColor,
+     0 120px  0px currentColor,
+     0 180px  0px currentColor,
+     0 240px  0px currentColor,
+     0 300px  0px currentColor,
+     0 360px  0px currentColor,
+     0 420px  0px currentColor,
+     0 480px  0px currentColor,
+     0 540px  0px currentColor,
+     0 600px  0px currentColor,0 660px  0px currentColor,0 720px  0px currentColor,0 780px  0px currentColor,0 840px  0px currentColor,
+     0 900px  0px currentColor,0 960px  0px currentColor,0 1020px  0px currentColor,0 1080px  0px currentColor,0 1140px  0px currentColor,
+     0 1200px  0px currentColor,0 1260px  0px currentColor,0 1320px  0px currentColor,0 1380px  0px currentColor,
+     0 1440px  0px currentColor
+    ;
+}
+.sogo{
+    font-family: 'Poppins', sans-serif;
+    font-weight:900; font-style:italic;
+    color:white;
+    text-shadow: 0 1px 0px #378ab4,
+    1px 0 0px #5dabcd,
+    1px 2px 1px #378ab4,
+    2px 1px 1px #5dabcd,
+    2px 3px 2px #378ab4,
+    3px 2px 2px #5dabcd,
+    3px 4px 2px #378ab4,
+    4px 3px 3px #5dabcd,
+    4px 5px 3px #378ab4,
+    5px 4px 2px #5dabcd,
+    5px 6px 2px #378ab4,
+    6px 5px 2px #5dabcd,
+    6px 7px 1px #378ab4,
+    7px 6px 1px #5dabcd,
+    7px 8px 0px #378ab4,
+    8px 7px 0px #5dabcd;
+}
+.landing-main{
+    z-index: 1000;
+    margin-top: 700px;
+}
+.landing-card{
+    padding: 2%;
+    border-radius: 3px;
+}
+.landing-card h2{
+    text-indent: 15px;
+}
+.landing-img{
+    position:relative;
+    width:100%;
+    min-width: 200px;
+    height: auto;
+    z-index: 1000;
+}
+
+.more{
+    z-index: 1001;
+    position: absolute;
+    bottom: 2%;
+    left: 0;
+    cursor: pointer;
+
 }
 .search{
     max-width: 10000px !important;
@@ -247,7 +341,8 @@ a:hover{
     position:relative;
     top: 10%;
     width:100%;
-    height: 100%;
+    min-height: 100%;
+    height: auto;
     display: inline-flex;
     flex-direction: column;
     align-items: center;
