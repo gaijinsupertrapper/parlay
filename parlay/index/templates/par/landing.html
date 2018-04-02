@@ -30,7 +30,7 @@
         <div class=" landing-main col-12">
 
             <div class="row">
-                <div class="col-1 col-md-2"></div>
+                <div class="col-1 col-md-3"></div>
                 <div class=" landing-card col-10 col-md-4 bg-white">
                     <div class="col-12 "> <img class="landing-img" src="{% static 'img/books.png' %} "> </div>
                     <div class="col-12  "> ​
@@ -54,7 +54,26 @@
 
                 </div>
             </div>
+            <br>
+            <div class="row">
+                <div class="col-1 col-md-2"></div>
+                <div class=" landing-card col-10 col-md-8 bg-white">
+                    <div class="row col-12">
+                        <div class="col-6 navy send-toggle"> <h4 class="text-right"> Я хочу отправить спор </h4> </div>
+                        <div class="col-6 navy receive-toggle"> <h4 class="text-right"> Мне кинули спор </h4> </div>
+                        <div class="col-12 sender text-center">
 
+                            <h2> Действия для отправки спора</h2>
+                        </div>
+                        <div class="col-12 receiver text-center">
+
+                            <h2> Действия для принятия спора</h2>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
         </div>
         <div class="col-2">
 
@@ -62,6 +81,16 @@
         <br>
         <br>
         <br>
-
+        <script>
+            $(".receiver").hide();
+            $(".send-toggle").click(function(){
+                $(".receiver").hide();
+                $(".sender").show();
+            });
+            $(".receive-toggle").click(function(){
+                $(".sender").hide();
+                $(".receiver").show();
+            });
+        </script>
 </body>
 </html>
