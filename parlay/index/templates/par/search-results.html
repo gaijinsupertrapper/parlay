@@ -1,13 +1,13 @@
 {% extends 'par/base.html' %}
 {% load staticfiles %}
 
-{% block title %} Search by {{q}} {% endblock %}
+{% block title %} Результаты поиска по: {{q}} {% endblock %}
 
 {% block content %}
     <br>
     {% if users %}
     <div class="card">
-        <h3 class="display-3 text-center">Users:</h3>
+        <h3 class="  text-center">Пользователи:</h3>
     </div>
     <br><br>
         {% for user in users %}
@@ -26,7 +26,7 @@
 
     {% else %}
     <div class="card">
-        <h5 class="text-center">No users found :(</h5>
+        <h5 class="text-center">Не найдено пользователей :(</h5>
 
     </div>
 
@@ -35,7 +35,7 @@
     <br>
     {% if books %}
     <div class="card">
-        <h3 class="display-3 text-center">Books:</h3>
+        <h3 class=" text-center">Книги:</h3>
     </div>
     <br>
     <br>
@@ -51,7 +51,7 @@
 
     {% else %}
     <div class="card">
-        <h5 class="text-center">No books found :(</h5>
+        <h5 class="text-center">Не найдено книг :(</h5>
     </div>
     {% endif %}
     <br>

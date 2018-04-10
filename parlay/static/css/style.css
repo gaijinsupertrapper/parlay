@@ -116,7 +116,7 @@ footer{
 .bogo-box{
     position:fixed;
     min-height: 102%;
-    background-color: #111;
+    background: linear-gradient(135deg, #0074D9 0% , #39CCCC 33%,#7FDBFF 90%);
     z-index: 989;
     top: -3px;
     position:fixed;
@@ -130,7 +130,10 @@ footer{
     position:fixed;
     top: 0;
     padding-top: 2%;
-    background: #111;
+    text-decoration: underline;
+}
+.toggler{
+    z-index: 1200;
 }
 .bogo{
     z-index: 990;
@@ -139,7 +142,7 @@ footer{
     font-family: 'Poppins', sans-serif;
     font-weight:900; font-style:italic;
     transition: all 0.8s ease;
-    color:rgba(57, 204, 204, 0.6);
+    color:rgba(16, 16, 64, 0.6);
     text-shadow:0 -180px 0px currentColor, 0 -120px 0px currentColor,  0 -60px 0px currentColor,
      0 60px  0px currentColor,
      0 120px  0px currentColor,
@@ -183,19 +186,53 @@ footer{
 }
 .landing-card{
     padding: 2%;
-    border-radius: 3px;
+    border-radius: 8px;
+    box-shadow: 10px 15px 20px 8px rgba(0,0,0,0.25);
 }
-.landing-card h2{
+.landing-card h2, .landing-card h3{
     text-indent: 15px;
 }
 .landing-img{
     position:relative;
-    width:100%;
+    width:80%;
     min-width: 200px;
     height: auto;
     z-index: 1000;
 }
-
+.signin{
+    position:absolute;
+    left: 0;
+    top:0;
+    height: 100%;
+    width: 50%;
+    background: #01FF70;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px 0px 0px 8px;
+}
+.signup{
+    position: absolute;
+    left: 50%;
+    top: 0;
+    background: #01FF70;
+    height: 100%;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0px 8px 8px 0px;
+}
+.signin:hover, .signup:hover{
+    background: #2ECC40;
+    color: #ddd;
+}
+.send-toggle{
+    border-radius: 8px 0px 0px 8px;
+}
+.receive-toggle{
+    border-radius: 0px 8px 8px 0px;
+}
 .more{
     z-index: 1001;
     position: absolute;

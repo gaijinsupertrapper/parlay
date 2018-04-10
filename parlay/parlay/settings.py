@@ -26,7 +26,11 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'sfff*+no&%)wmz(&z^h9qz$briw365
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
+
+from django.utils.log import DEFAULT_LOGGING
+
+DEFAULT_LOGGING['handlers']['console']['filters'] = []
 
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.herokuapp.com',]

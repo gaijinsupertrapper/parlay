@@ -58,16 +58,17 @@ def index(request):
         username = request.user
         user = request.user
         new = check_new_wagers(user)
-    else:
-        new=-1
-    books_list = Book.objects.order_by('-read_by', 'title')
-    paginate = Paginator(books_list,9)
-    page = request.GET.get('page')
-    books = paginate.get_page(page)
+        books_list = Book.objects.order_by('-read_by', 'title')
+        paginate = Paginator(books_list, 9)
+        page = request.GET.get('page')
+        books = paginate.get_page(page)
 
-    return render(request, 'par/index.html', {'books': books,
-                                              'user': username, 'new': new
-                                              })
+        return render(request, 'par/index.html', {'books': books,
+                                                  'user': username, 'new': new
+                                                  })
+    else:
+        return render(request, 'par/landing.html')
+
 
 
 def bdetail(request,book_id):
@@ -533,7 +534,3 @@ def check_questions(request, wager_id):
         new = -1
     return render(request, 'par/check.html', {'new':new, 'formsets': zip(questions, formset), 'formset': formset})
 
-
-def landing_page(request):
-
-    return render(request,'par/landing.html')

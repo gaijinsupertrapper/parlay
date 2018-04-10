@@ -28,5 +28,4 @@ urlpatterns = [
     path('wager/<int:wager_id>/questions', views.view_questions, name='questions'),
     path('wager/<int:wager_id>/answer', views.answer_questions, name='answer-questions'),
     path('wager/<int:wager_id>/check', views.check_questions, name='check-questions'),
-    path('landing', views.landing_page, name='landing')
 ]

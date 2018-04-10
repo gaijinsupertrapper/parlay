@@ -5,9 +5,8 @@ html,body{
 }
 body{
     width:100%;
-    background: linear-gradient(217deg, rgba(0,255,0,.5), rgba(0,255,0,0) 70.71%),
-            linear-gradient(127deg, rgba(0,0,255,.5), rgba(0,0,255,0) 70.71%),
-            linear-gradient(336deg, rgba(255,0,0,.5), rgba(255,0,0,0) 70.71%);
+    background-color: #08AEEA;
+background-image: linear-gradient(160deg, #08AEEA 0%, #2AF598 100%);
 
 
     font-family: 'Exo 2', sans-serif;
@@ -75,6 +74,7 @@ footer{
     padding:2%;
     width: 100%;
 }
+
 #logo{
     font-size: 2.5em;
     font-family: 'Poppins', sans-serif;
@@ -112,6 +112,134 @@ footer{
 }
 .navigation a:hover{
     color: #111111;
+}
+.bogo-box{
+    position:fixed;
+    min-height: 102%;
+    background: linear-gradient(135deg, #0074D9 0% , #39CCCC 33%,#7FDBFF 90%);
+    z-index: 989;
+    top: -3px;
+    position:fixed;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 100%;
+}
+.landing-header{
+    z-index: 1123;
+    position:fixed;
+    top: 0;
+    padding-top: 2%;
+    text-decoration: underline;
+}
+.toggler{
+    z-index: 1200;
+}
+.bogo{
+    z-index: 990;
+
+    font-size: 4em;
+    font-family: 'Poppins', sans-serif;
+    font-weight:900; font-style:italic;
+    transition: all 0.8s ease;
+    color:rgba(16, 16, 64, 0.6);
+    text-shadow:0 -180px 0px currentColor, 0 -120px 0px currentColor,  0 -60px 0px currentColor,
+     0 60px  0px currentColor,
+     0 120px  0px currentColor,
+     0 180px  0px currentColor,
+     0 240px  0px currentColor,
+     0 300px  0px currentColor,
+     0 360px  0px currentColor,
+     0 420px  0px currentColor,
+     0 480px  0px currentColor,
+     0 540px  0px currentColor,
+     0 600px  0px currentColor,0 660px  0px currentColor,0 720px  0px currentColor,0 780px  0px currentColor,0 840px  0px currentColor,
+     0 900px  0px currentColor,0 960px  0px currentColor,0 1020px  0px currentColor,0 1080px  0px currentColor,0 1140px  0px currentColor,
+     0 1200px  0px currentColor,0 1260px  0px currentColor,0 1320px  0px currentColor,0 1380px  0px currentColor,
+     0 1440px  0px currentColor
+    ;
+}
+.sogo{
+    font-family: 'Poppins', sans-serif;
+    font-weight:900; font-style:italic;
+    color:white;
+    text-shadow: 0 1px 0px #378ab4,
+    1px 0 0px #5dabcd,
+    1px 2px 1px #378ab4,
+    2px 1px 1px #5dabcd,
+    2px 3px 2px #378ab4,
+    3px 2px 2px #5dabcd,
+    3px 4px 2px #378ab4,
+    4px 3px 3px #5dabcd,
+    4px 5px 3px #378ab4,
+    5px 4px 2px #5dabcd,
+    5px 6px 2px #378ab4,
+    6px 5px 2px #5dabcd,
+    6px 7px 1px #378ab4,
+    7px 6px 1px #5dabcd,
+    7px 8px 0px #378ab4,
+    8px 7px 0px #5dabcd;
+}
+.landing-main{
+    z-index: 1000;
+    margin-top: 700px;
+}
+.landing-card{
+    padding: 2%;
+    border-radius: 8px;
+    box-shadow: 10px 15px 20px 8px rgba(0,0,0,0.25);
+}
+.landing-card h2, .landing-card h3{
+    text-indent: 15px;
+}
+.landing-img{
+    position:relative;
+    width:80%;
+    min-width: 200px;
+    height: auto;
+    z-index: 1000;
+}
+.signin{
+    position:absolute;
+    left: 0;
+    top:0;
+    height: 100%;
+    width: 50%;
+    background: #01FF70;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px 0px 0px 8px;
+}
+.signup{
+    position: absolute;
+    left: 50%;
+    top: 0;
+    background: #01FF70;
+    height: 100%;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0px 8px 8px 0px;
+}
+.signin:hover, .signup:hover{
+    background: #2ECC40;
+    color: #ddd;
+}
+.send-toggle{
+    border-radius: 8px 0px 0px 8px;
+}
+.receive-toggle{
+    border-radius: 0px 8px 8px 0px;
+}
+.more{
+    z-index: 1001;
+    position: absolute;
+    bottom: 2%;
+    left: 0;
+    cursor: pointer;
+
 }
 .search{
     max-width: 10000px !important;

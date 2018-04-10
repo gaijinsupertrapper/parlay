@@ -2,36 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4ca6b76e-45df-41e8-8913-ec46f1382348" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/parlay/staticfiles/css/style.2aae83bafc1b.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/parlay/staticfiles/css/style.2aae83bafc1b.css.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/parlay/staticfiles/css/style.fe67e51a55c1.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/parlay/staticfiles/css/style.fe67e51a55c1.css.gz" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/parlay/staticfiles/css/style.bf66794db1f4.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/parlay/staticfiles/css/style.bf66794db1f4.css.gz" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parlay/mydatabase" afterPath="$PROJECT_DIR$/parlay/mydatabase" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parlay/staticfiles/css/style.css.gz" afterPath="$PROJECT_DIR$/parlay/staticfiles/css/style.css.gz" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parlay/index/admin.py" afterPath="$PROJECT_DIR$/parlay/index/admin.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parlay/index/forms.py" afterPath="$PROJECT_DIR$/parlay/index/forms.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parlay/index/models.py" afterPath="$PROJECT_DIR$/parlay/index/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parlay/index/templates/par/add-book.html" afterPath="$PROJECT_DIR$/parlay/index/templates/par/add-book.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parlay/index/templates/par/answer-questions.html" afterPath="$PROJECT_DIR$/parlay/index/templates/par/answer-questions.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parlay/index/templates/par/base.html" afterPath="$PROJECT_DIR$/parlay/index/templates/par/base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parlay/index/templates/par/books.html" afterPath="$PROJECT_DIR$/parlay/index/templates/par/books.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parlay/index/templates/par/detail.html" afterPath="$PROJECT_DIR$/parlay/index/templates/par/detail.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parlay/index/templates/par/edit_profile.html" afterPath="$PROJECT_DIR$/parlay/index/templates/par/edit_profile.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parlay/index/templates/par/friends.html" afterPath="$PROJECT_DIR$/parlay/index/templates/par/friends.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parlay/index/templates/par/index.html" afterPath="$PROJECT_DIR$/parlay/index/templates/par/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parlay/index/templates/par/login.html" afterPath="$PROJECT_DIR$/parlay/index/templates/par/login.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parlay/index/templates/par/parse-error.html" afterPath="$PROJECT_DIR$/parlay/index/templates/par/parse-error.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parlay/index/templates/par/profile.html" afterPath="$PROJECT_DIR$/parlay/index/templates/par/profile.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parlay/index/templates/par/questions.html" afterPath="$PROJECT_DIR$/parlay/index/templates/par/questions.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parlay/index/templates/par/landing.html" afterPath="$PROJECT_DIR$/parlay/index/templates/par/landing.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parlay/index/templates/par/search-results.html" afterPath="$PROJECT_DIR$/parlay/index/templates/par/search-results.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parlay/index/templates/par/signup.html" afterPath="$PROJECT_DIR$/parlay/index/templates/par/signup.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parlay/index/templates/par/wager-list.html" afterPath="$PROJECT_DIR$/parlay/index/templates/par/wager-list.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parlay/index/urls.py" afterPath="$PROJECT_DIR$/parlay/index/urls.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parlay/index/views.py" afterPath="$PROJECT_DIR$/parlay/index/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parlay/parlay/settings.py" afterPath="$PROJECT_DIR$/parlay/parlay/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parlay/parlay/urls.py" afterPath="$PROJECT_DIR$/parlay/parlay/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parlay/requirements.txt" afterPath="$PROJECT_DIR$/parlay/requirements.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parlay/static/css/style.css" afterPath="$PROJECT_DIR$/parlay/static/css/style.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parlay/staticfiles/css/style.css" afterPath="$PROJECT_DIR$/parlay/staticfiles/css/style.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parlay/staticfiles/staticfiles.json" afterPath="$PROJECT_DIR$/parlay/staticfiles/staticfiles.json" />
@@ -52,8 +32,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/parlay/index/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="8721">
-              <caret line="536" column="4" lean-forward="false" selection-start-line="536" selection-start-column="4" selection-end-line="536" selection-end-column="4" />
+            <state relative-caret-position="782">
+              <caret line="69" column="50" lean-forward="false" selection-start-line="69" selection-start-column="50" selection-end-line="69" selection-end-column="50" />
               <folding>
                 <element signature="e#0#63#0" expanded="true" />
               </folding>
@@ -64,10 +44,12 @@
       <file leaf-file-name="landing.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/parlay/index/templates/par/landing.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="21" column="16" lean-forward="false" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="16" />
+            <state relative-caret-position="2465">
+              <caret line="145" column="0" lean-forward="false" selection-start-line="145" selection-start-column="0" selection-end-line="145" selection-end-column="0" />
               <folding>
-                <element signature="e#1815#1822#0" expanded="true" />
+                <element signature="e#1960#1967#0" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#3;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#1;n#div#3;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -76,8 +58,8 @@
       <file leaf-file-name="style.css" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/parlay/static/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="187" column="16" lean-forward="false" selection-start-line="187" selection-start-column="16" selection-end-line="187" selection-end-column="16" />
+            <state relative-caret-position="136">
+              <caret line="8" column="54" lean-forward="false" selection-start-line="8" selection-start-column="54" selection-end-line="8" selection-end-column="61" />
               <folding />
             </state>
           </provider>
@@ -126,21 +108,31 @@
       <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/parlay/index/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="30" column="53" lean-forward="false" selection-start-line="30" selection-start-column="53" selection-end-line="30" selection-end-column="53" />
+            <state relative-caret-position="459">
+              <caret line="29" column="86" lean-forward="false" selection-start-line="29" selection-start-column="86" selection-end-line="29" selection-end-column="86" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/parlay/index/models.py">
+      <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/parlay/parlay/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="28" column="4" lean-forward="false" selection-start-line="28" selection-start-column="4" selection-end-line="28" selection-end-column="37" />
+            <state relative-caret-position="442">
+              <caret line="28" column="13" lean-forward="false" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
               <folding>
-                <element signature="e#0#28#0" expanded="true" />
+                <element signature="e#307#316#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="search-results.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/parlay/index/templates/par/search-results.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="9" column="20" lean-forward="false" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -157,7 +149,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>navi</find>
       <find>content-</find>
       <find>content-c</find>
       <find>book</find>
@@ -187,6 +178,7 @@
       <find>rgba(255,255,255,0.6)</find>
       <find>rgba(0,0,0,0.6)</find>
       <find>box-sh</find>
+      <find>png</find>
     </findStrings>
     <replaceStrings>
       <replace>staticfiles</replace>
@@ -226,7 +218,6 @@
         <option value="$PROJECT_DIR$/parlay/requirements.txt" />
         <option value="$PROJECT_DIR$/parlay/index/templates/par/edit_profile.html" />
         <option value="$PROJECT_DIR$/parlay/index/admin.py" />
-        <option value="$PROJECT_DIR$/parlay/index/templates/par/search-results.html" />
         <option value="$PROJECT_DIR$/parlay/index/templates/par/friends.html" />
         <option value="$PROJECT_DIR$/parlay/index/templates/par/add-book.html" />
         <option value="$PROJECT_DIR$/parlay/index/templates/par/books.html" />
@@ -238,17 +229,18 @@
         <option value="$PROJECT_DIR$/parlay/index/templates/par/check.html" />
         <option value="$PROJECT_DIR$/parlay/index/models.py" />
         <option value="$PROJECT_DIR$/parlay/index/templates/par/wager-list.html" />
-        <option value="$PROJECT_DIR$/parlay/parlay/settings.py" />
         <option value="$PROJECT_DIR$/parlay/index/templates/par/base.html" />
         <option value="$PROJECT_DIR$/parlay/index/templates/par/signup.html" />
         <option value="$PROJECT_DIR$/parlay/index/templates/par/login.html" />
         <option value="$PROJECT_DIR$/parlay/parlay/urls.py" />
-        <option value="$PROJECT_DIR$/parlay/index/urls.py" />
-        <option value="$PROJECT_DIR$/parlay/index/views.py" />
         <option value="$PROJECT_DIR$/parlay/index/templates/par/index.html" />
         <option value="$PROJECT_DIR$/parlay/index/templates/par/profile.html" />
-        <option value="$PROJECT_DIR$/parlay/index/templates/par/landing.html" />
+        <option value="$PROJECT_DIR$/parlay/index/views.py" />
+        <option value="$PROJECT_DIR$/parlay/index/urls.py" />
+        <option value="$PROJECT_DIR$/parlay/index/templates/par/search-results.html" />
         <option value="$PROJECT_DIR$/parlay/static/css/style.css" />
+        <option value="$PROJECT_DIR$/parlay/index/templates/par/landing.html" />
+        <option value="$PROJECT_DIR$/parlay/parlay/settings.py" />
       </list>
     </option>
   </component>
@@ -276,8 +268,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -319,6 +309,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="staticfiles" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="site" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="site" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="parlay" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="staticfiles" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="img" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -426,6 +438,8 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -613,22 +627,14 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/parlay/index/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8755">
-          <caret line="538" column="31" lean-forward="false" selection-start-line="538" selection-start-column="31" selection-end-line="538" selection-end-column="31" />
-          <folding>
-            <element signature="e#0#63#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/parlay/index/templates/par/landing.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="578">
           <caret line="34" column="43" lean-forward="false" selection-start-line="34" selection-start-column="43" selection-end-line="34" selection-end-column="43" />
           <folding>
-            <element signature="e#1815#1822#0" expanded="true" />
+            <element signature="e#1960#1967#0" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#3;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#1;n#div#3;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -677,9 +683,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="476">
           <caret line="28" column="4" lean-forward="false" selection-start-line="28" selection-start-column="4" selection-end-line="28" selection-end-column="37" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -744,9 +747,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
           <caret line="28" column="4" lean-forward="false" selection-start-line="28" selection-start-column="4" selection-end-line="28" selection-end-column="37" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -755,7 +755,9 @@
         <state relative-caret-position="136">
           <caret line="8" column="45" lean-forward="false" selection-start-line="8" selection-start-column="45" selection-end-line="8" selection-end-column="45" />
           <folding>
-            <element signature="e#1815#1822#0" expanded="true" />
+            <element signature="e#1960#1967#0" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#3;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#1;n#div#3;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -819,9 +821,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="476">
           <caret line="28" column="4" lean-forward="false" selection-start-line="28" selection-start-column="4" selection-end-line="28" selection-end-column="37" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -892,9 +891,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="476">
           <caret line="28" column="4" lean-forward="false" selection-start-line="28" selection-start-column="4" selection-end-line="28" selection-end-column="37" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -928,9 +924,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="476">
           <caret line="28" column="4" lean-forward="false" selection-start-line="28" selection-start-column="4" selection-end-line="28" selection-end-column="37" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -945,16 +938,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
           <caret line="28" column="4" lean-forward="false" selection-start-line="28" selection-start-column="4" selection-end-line="28" selection-end-column="37" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/parlay/parlay/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="28" column="12" lean-forward="false" selection-start-line="28" selection-start-column="12" selection-end-line="28" selection-end-column="12" />
         </state>
       </provider>
     </entry>
@@ -962,14 +945,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="23" column="17" lean-forward="false" selection-start-line="23" selection-start-column="17" selection-end-line="23" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/parlay/index/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="30" column="53" lean-forward="false" selection-start-line="30" selection-start-column="53" selection-end-line="30" selection-end-column="53" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1004,10 +979,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/parlay/index/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="29" column="86" lean-forward="false" selection-start-line="29" selection-start-column="86" selection-end-line="29" selection-end-column="86" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/parlay/index/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8721">
-          <caret line="536" column="4" lean-forward="false" selection-start-line="536" selection-start-column="4" selection-end-line="536" selection-end-column="4" />
+        <state relative-caret-position="782">
+          <caret line="69" column="50" lean-forward="false" selection-start-line="69" selection-start-column="50" selection-end-line="69" selection-end-column="50" />
           <folding>
             <element signature="e#0#63#0" expanded="true" />
           </folding>
@@ -1022,20 +1005,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/parlay/index/templates/par/landing.html">
+    <entry file="file://$PROJECT_DIR$/parlay/index/templates/par/search-results.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
-          <caret line="21" column="16" lean-forward="false" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="16" />
+          <caret line="9" column="20" lean-forward="false" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/parlay/index/templates/par/landing.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2465">
+          <caret line="145" column="0" lean-forward="false" selection-start-line="145" selection-start-column="0" selection-end-line="145" selection-end-column="0" />
           <folding>
-            <element signature="e#1815#1822#0" expanded="true" />
+            <element signature="e#1960#1967#0" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#3;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#1;n#div#3;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/parlay/parlay/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="28" column="13" lean-forward="false" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
+          <folding>
+            <element signature="e#307#316#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/parlay/static/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="187" column="16" lean-forward="false" selection-start-line="187" selection-start-column="16" selection-end-line="187" selection-end-column="16" />
+        <state relative-caret-position="136">
+          <caret line="8" column="54" lean-forward="false" selection-start-line="8" selection-start-column="54" selection-end-line="8" selection-end-column="61" />
           <folding />
         </state>
       </provider>
