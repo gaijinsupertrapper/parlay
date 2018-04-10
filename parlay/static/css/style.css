@@ -187,7 +187,10 @@ footer{
 .landing-card{
     padding: 2%;
     border-radius: 8px;
+<<<<<<< HEAD
     box-shadow: 10px 15px 20px 8px rgba(0,0,0,0.25);
+=======
+>>>>>>> d7fc29f7f9c39cbf99265eb9e548bf92d508f9fa
 }
 .landing-card h2, .landing-card h3{
     text-indent: 15px;
