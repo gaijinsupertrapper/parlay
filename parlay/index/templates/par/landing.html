@@ -32,14 +32,14 @@
 
         <div class=" landing-main col-12">
             <div class="row">
-<<<<<<< HEAD
+
                 <div class="col-1"></div>
                 <div class=" landing-card col-10 bg-white">
-                    <div class="row col-12">
-                        <div class="col-6 d-flex flex-column align-items-center">
+                    <div class="row col-12 d-flex align-items-center">
+                        <div class="col-12 col-md-6 mb-4 mb-md-0 d-flex flex-column align-items-center">
                             <img class="landing-img" src="{% static 'img/main.png' %} ">
                         </div>
-                        <div class="col-6 d-flex flex-column align-items-center">
+                        <div class="col-12 col-md-6 mb-4 mb-md-0 d-flex flex-column align-items-center">
                             <img class="landing-img" src="{% static 'img/search-books.png' %} ">
                         </div>
                         <div class="col-12">
@@ -48,16 +48,6 @@
                                 определнные книги по имени автора или названию книги. </h2>
                         </div>
                     </div>
-
-=======
-                <div class="col-1 col-md-3"></div>
-                <div class=" landing-card col-10 col-md-4 bg-white">
-                    <div class="col-12 "> <img class="landing-img" src="{% static 'img/books.png' %} "> </div>
-                    <div class="col-12  "> ​
-                        <h1 class="navy text-center"> Книги</h1>
-                        <h2> Добавляйте любую из доступных книг в список прочитанных. </h2>     </div>
->>>>>>> d7fc29f7f9c39cbf99265eb9e548bf92d508f9fa
-
                 </div>
             </div>
             <br>
@@ -75,24 +65,24 @@
                 </div>
             </div>
             <br>
-<<<<<<< HEAD
+
             <br>
             <div class="row">
                 <div class="col-1"></div>
                 <div class="landing-card col-10 bg-white">
                     <div class="row">
-                        <div class="row col-12">
-                            <div class="col-6 d-flex flex-column align-items-center">
+                        <div class="row col-12 d-flex align-items-center">
+                            <div class="col-12 col-md-6 mb-4 mb-md-0 d-flex flex-column align-items-center">
                                 <img class="landing-img" src="{% static 'img/search-friends.png' %}">
                             </div>
-                            <div class="col-6 d-flex flex-column align-items-center">
+                            <div class="col-12 col-md-6 mb-4 mb-md-0 d-flex flex-column align-items-center">
                                 <img class="landing-img" src="{% static 'img/profile.png' %}">
                             </div>
                         </div>
 
                         <div class="col-12">
                             <h1 class="navy text-center"> Друзья. Профиль </h1>
-                            <h2>  Находите ваших друзей с помощью поиска. Списсок добавленных друзей и <прочитанных></прочитанных> книг вы сможете посмотреть в своем профиле. </h2>
+                            <h2>  Находите ваших друзей с помощью поиска. Списсок добавленных друзей и прочитанных книг вы сможете посмотреть в своем профиле. </h2>
                         </div>
                     </div>
 
@@ -156,38 +146,19 @@
 
             <div class="row">
                 <div class="col-1"></div>
-                <div class="landing-card col-10 bg-white  text-center">
+                <div class="landing-card col-10 bg-white  text-center" style="min-height: 50px;">
 
 
-                             <a href = '{% url "login" %}' class="signin white">Войти</a>
-                             <a href = "{% url 'signup' %}" class="signup white">Зарегистрироваться</a>
+                             <a href = '{% url "login" %}' class="signin-sugg white">Войти</a>
+                             <a href = "{% url 'signup' %}" class="signup-sugg white">Зарегистрироваться</a>
 
 
-
-
-                </div>
-            </div>
-=======
-            <div class="row">
-                <div class="col-1 col-md-2"></div>
-                <div class=" landing-card col-10 col-md-8 bg-white">
-                    <div class="row col-12">
-                        <div class="col-6 navy send-toggle"> <h4 class="text-right"> Я хочу отправить спор </h4> </div>
-                        <div class="col-6 navy receive-toggle"> <h4 class="text-right"> Мне кинули спор </h4> </div>
-                        <div class="col-12 sender text-center">
-
-                            <h2> Действия для отправки спора</h2>
-                        </div>
-                        <div class="col-12 receiver text-center">
->>>>>>> d7fc29f7f9c39cbf99265eb9e548bf92d508f9fa
-
-                            <h2> Действия для принятия спора</h2>
-                        </div>
-                    </div>
 
 
                 </div>
             </div>
+
+
         </div>
         <div class="col-2">
 
@@ -197,7 +168,6 @@
         <br>
         <script>
             $(".receiver").hide();
-<<<<<<< HEAD
             $(".send-toggle").addClass("disabled");
             $(".send-toggle").click(function(){
                 $(".send-toggle").addClass("disabled");
@@ -210,15 +180,7 @@
                 $(".receive-toggle").addClass("disabled");
                 $(".sender").slideUp();
                 $(".receiver").slideDown();
-=======
-            $(".send-toggle").click(function(){
-                $(".receiver").hide();
-                $(".sender").show();
-            });
-            $(".receive-toggle").click(function(){
-                $(".sender").hide();
-                $(".receiver").show();
->>>>>>> d7fc29f7f9c39cbf99265eb9e548bf92d508f9fa
+
             });
         </script>
 </body>

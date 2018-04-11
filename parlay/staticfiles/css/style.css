@@ -199,7 +199,7 @@ footer{
     height: auto;
     z-index: 1000;
 }
-.signin{
+.signin-sugg{
     position:absolute;
     left: 0;
     top:0;
@@ -211,7 +211,7 @@ footer{
     align-items: center;
     border-radius: 8px 0px 0px 8px;
 }
-.signup{
+.signup-sugg{
     position: absolute;
     left: 50%;
     top: 0;
@@ -223,7 +223,7 @@ footer{
     align-items: center;
     border-radius: 0px 8px 8px 0px;
 }
-.signin:hover, .signup:hover{
+.signin-sugg:hover, .signup-sugg:hover{
     background: #2ECC40;
     color: #ddd;
 }
