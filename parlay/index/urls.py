@@ -29,3 +29,5 @@ urlpatterns = [
     path('wager/<int:wager_id>/answer', views.answer_questions, name='answer-questions'),
     path('wager/<int:wager_id>/check', views.check_questions, name='check-questions'),
 ]
+
+

@@ -23,7 +23,10 @@
                     </div>
 
                 {% endif %}
-                {% if user.id == username.id %}
+                {% if user == None %}
+                    <p> Авторизируйтесь чтобы взаимодействовать с пользователем.</p>
+
+                {% elif user.id == username.id %}
 
 
                     <a class="button col-12 btn  bg-teal white sticky-top" href="{% url 'edit-profile' user_id=user.id %}">

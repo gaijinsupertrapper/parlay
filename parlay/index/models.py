@@ -61,8 +61,8 @@ class Wager(models.Model):
 
 class WagerQuestion(models.Model):
     wager = models.ForeignKey(Wager, on_delete=models.CASCADE)
-    question = models.CharField(max_length=150, default='your question')
-    answer = models.CharField(max_length=150, default='your answer')
+    question = models.CharField(max_length=150, default=r'')
+    answer = models.CharField(max_length=150, default=r'')
     correct = models.NullBooleanField(null=True)
 
 @receiver(post_save, sender=User)

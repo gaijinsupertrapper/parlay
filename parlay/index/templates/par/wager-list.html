@@ -57,7 +57,7 @@
                             <h5> Вы выиграли это пари.
                                 <a href="{% url 'win-wager' wager_id=wager.id %}" class="btn btn-outline-success">Забрать награду?</a> </h5>
                         {% else %}
-                         {% if wager.questions != 0 and wager.questions_answered == 'false' %}   <h5> <a href="{% url 'add-questions' wager_id=wager.id %}">Добавьте вопросы читателю
+                         {% if wager.questions != 0 and wager.questions_answered == 'false' %}   <h5> <a href="{% url 'add-questions' wager_id=wager.id %}" class="btn btn-outline-success">Добавьте вопросы читателю
                                 ( можно добавить еще {{wager.questions }}
                             {% if wager.questions > 4 %}
                                 вопросов
@@ -69,7 +69,11 @@
                         )</a></h5> {% endif %}
 
                           {% if wager.questions_checked != 'true' %}
-                            <h5> <a href="{% url 'check-questions' wager_id=wager.id %}">Проверить вопросы</a></h5>
+                            {% if wager.questions_answered == 'true' %}
+                            <h5> <a href="{% url 'check-questions' wager_id=wager.id %}" class="btn btn-outline-success">Проверить вопросы</a></h5>
+                            {% else %}
+
+                            {% endif %}
                         {% else %}
                             <h5> Правильно {{wager.questions_right }} {% if wager.questions_right > 4 %}
                                 вопросов

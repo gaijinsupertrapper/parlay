@@ -52,7 +52,8 @@ class WagerForm(forms.ModelForm):
             'duration': 'Длительность',
         }
         widgets = {
-            'bet': forms.TextInput()
+            'bet': forms.TextInput(attrs={'placeholder': 'Ставка в ридах'}),
+            'duration': forms.TextInput(attrs={'placeholder': 'В днях'})
         }
 
 
@@ -65,7 +66,8 @@ class WagerEditForm(forms.ModelForm):
             'new_duration': 'Измените длительность',
         }
         widgets = {
-            'new_bet': forms.TextInput()
+            'new_bet': forms.TextInput(),
+            'new_duration': forms.TextInput(attrs={'placeholder': 'в днях'})
         }
 
 
@@ -75,6 +77,10 @@ class WagerQuestionForm(forms.ModelForm):
         fields = {'question'}
         labels = {
             'question': 'Напишите вопрос по теме книги',
+        }
+        widgets = {
+            'question': forms.TextInput(attrs={'placeholder': 'ваш вопрос'})
+
         }
 
 
@@ -95,6 +101,10 @@ class WagerAnswerForm(forms.ModelForm):
         fields = {'answer'}
         labels = {
             'answer': 'Напишите ответ на данный вопрос',
+        }
+        widgets = {
+            'answer': forms.TextInput(attrs={'placeholder': 'ваш ответ'})
+
         }
 
 

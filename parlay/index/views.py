@@ -81,15 +81,19 @@ def bdetail(request,book_id):
     return render(request, 'par/detail.html', {'book': book, 'new':new,})
 
 def profile(request, user_id):
-    username = None
+    profile_user = User.objects.get(pk=user_id)
+
     if request.user.is_authenticated:
-        profile_user = User.objects.get(pk=user_id)
+        user = request.user
+    else:
+        user = None
+
     if request.user.is_authenticated:
         user = request.user
         new = check_new_wagers(user)
     else:
         new=-1
-    return render(request, 'par/profile.html', {'username': profile_user, 'new':new,})
+    return render(request, 'par/profile.html', {'username': profile_user, 'user': user, 'new':new,})
 
 
 @login_required
@@ -362,6 +366,7 @@ def search_results(request, search_query):
                                             'q': search_query, 'new':new})
 
 
+@login_required
 def parse_errors(request):
     if request.user.is_authenticated:
         user = request.user
@@ -371,6 +376,7 @@ def parse_errors(request):
     return render(request, 'par/parse-error.html', {'new':new})
 
 
+@login_required
 def create_book(request):
     if request.method == "POST":
         form = BookUrlForm(request.POST)
@@ -407,7 +413,7 @@ def create_book(request):
                     adder.profile.books_added += 1
                     adder.profile.tokens += 5
                     adder.save()
-                    return redirect('index')
+                    return redirect('detail-book', book_id=book.id)
     else:
         form = BookUrlForm()
     if request.user.is_authenticated:
@@ -418,6 +424,7 @@ def create_book(request):
     return render(request, 'par/add-book.html', {'form': form, 'new': new})
 
 
+@login_required
 def add_questions(request, wager_id):
     user = request.user
     max = Wager.objects.get(pk=wager_id).questions
@@ -451,6 +458,7 @@ def add_questions(request, wager_id):
     return render(request, 'par/add-questions.html', {'formset':formset, 'new': new, 'max':max})
 
 
+@login_required
 def view_questions(request, wager_id):
     questions = WagerQuestion.objects.filter(wager=Wager.objects.get(pk=wager_id))
     if request.user.is_authenticated:
@@ -461,6 +469,7 @@ def view_questions(request, wager_id):
     return render(request, 'par/questions.html', {'questions': questions, 'new': new})
 
 
+@login_required
 def answer_questions(request,wager_id):
 
     questions = WagerQuestion.objects.filter(wager=Wager.objects.get(pk=wager_id))
@@ -499,6 +508,7 @@ def answer_questions(request,wager_id):
     return render(request, 'par/answer-questions.html', {'new':new, 'formset': formset, })
 
 
+@login_required
 def check_questions(request, wager_id):
     questions = WagerQuestion.objects.filter(wager = Wager.objects.get(pk=wager_id))
 
@@ -534,3 +544,6 @@ def check_questions(request, wager_id):
         new = -1
     return render(request, 'par/check.html', {'new':new, 'formsets': zip(questions, formset), 'formset': formset})
 
+
+def errors(request):
+    return render(request, 'par/errors.html')

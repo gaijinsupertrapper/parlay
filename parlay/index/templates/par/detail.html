@@ -9,8 +9,8 @@
                    <img src="{{book.cover_url}}" id="book-cover" alt="{{ book.name }}">
                </div>
                <div class="row col-12 col-md-8 container-fluid">
-                   <div class="col-12 col-md-8 ">
-                       <h2 class="text-center text-md-right">{{book.title}} </h2>
+                   <div class="col-12 {% if user.is_authenticated %} col-md-8 {% endif %}">
+                       <h2 class="text-center {% if user.is_authenticated %} text-md-right {% endif %}">{{book.title}} </h2>
                        <h4 class="text-center">{{ book.author }}</h4>
 
 
