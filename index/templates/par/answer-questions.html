@@ -1,0 +1,27 @@
+{% extends 'par/base.html' %}
+{% load staticfiles %}
+
+{% block title %} Ответьте на вопросы! {% endblock %}
+
+{% block content %}
+    <div class="card text-center">
+    <form method="post" action="">
+        {% csrf_token %}
+        <h5> Ответьте на вопросы:</h5>
+        <div id="question-form">
+            {{ formset.management_form }}
+            {% for form in formset %}
+
+                {% for field in form.visible_fields %}
+                    <p> {{ field.label_tag}}</p>
+                    {{field}}
+                {% endfor %}
+                <hr>
+            {% endfor %}
+
+        </div>
+        <br>
+        <button type="submit" class="save button btn btn-block bg-teal white">Отправить</button>
+    </form>
+</div>
+{% endblock %}

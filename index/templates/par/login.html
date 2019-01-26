@@ -1,0 +1,55 @@
+{% extends 'par/base.html' %}
+{% load staticfiles %}
+{% block title %} Login {% endblock %}
+{% block content %}
+
+<div id = "" class ="row col-12 signup ">
+
+    <style> .navigation{ display:none;}
+
+            .footer{position:absolute;
+            bottom: 5%;}
+            #container {background: rgba(255,255,255,0.5);
+            position: absolute;
+            top: 0%;
+            height:60%;
+            width:100%;
+            left:0;
+            padding-top: 3%;
+            padding-bottom:3%;
+
+            box-shadow: 0 0 100px 20px #888;
+            }
+            .footer{
+                color: #111;
+                position:absolute;
+            bottom: 0%;
+            }
+
+  </style>
+  <form method="post" class="text-center container-fluid">
+    <h2 align="center">Войти</h2>
+     <div class=" col-12 form-group d-flex flex-column align-items-center">
+        {% csrf_token %}
+         {% for field in form %}
+
+            {{ field.label_tag }}
+            {{ field }}
+            {% if field.help_text %}
+
+            {% endif %}
+
+
+         {% endfor %}
+         <br>
+         {% for error in form.non_field_errors %}
+              <p style="color: #FF4136;">{{ error }}</p>
+            {% endfor %}
+
+        <br>
+         <button type="submit" class="button col-8 col-md-4 col-lg-2 btn bg-teal white ">Login <i class="fas fa-arrow-right"></i></button>
+     </div>
+  </form>
+
+</div>
+{% endblock %}

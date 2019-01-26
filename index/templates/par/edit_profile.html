@@ -1,0 +1,33 @@
+{% extends 'par/base.html' %}
+{% load staticfiles %}
+
+{% block title %} Edit profile {% endblock %}
+
+{% block content %}
+<br>
+    <style>
+        input[type=file]{
+            text-align:center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+    <div class="container-fluid card text-center row col-12">
+        <form method="POST" enctype="multipart/form-data"
+              class="col-12 form-group post-form d-flex flex-column">
+           {% csrf_token %}
+            {% for field in form %}
+
+            {{ field.label_tag }}
+            {{ field }}
+            <br>
+
+
+         {% endfor %}
+            <button type="submit" class="save button btn btn-block bg-teal white">Сохранить</button>
+       </form>
+    </div>
+
+
+{% endblock %}

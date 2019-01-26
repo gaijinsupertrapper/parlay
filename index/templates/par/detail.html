@@ -1,0 +1,53 @@
+{% extends 'par/base.html' %}
+{% load staticfiles %}
+{% block title %} {{book.title|truncatewords:3}} | Parlay {% endblock %}
+{% block content %}
+        <br>
+        <div class="card">
+           <div class="row container-fluid col-12">
+               <div class="col-12 col-md-4  ">
+                   <img src="{{book.cover_url}}" id="book-cover" alt="{{ book.name }}">
+               </div>
+               <div class="row col-12 col-md-8 container-fluid">
+                   <div class="col-12 {% if user.is_authenticated %} col-md-8 {% endif %}">
+                       <h2 class="text-center {% if user.is_authenticated %} text-md-right {% endif %}">{{book.title}} </h2>
+                       <h4 class="text-center">{{ book.author }}</h4>
+
+
+                   </div>
+                   {% if user.is_authenticated %}
+                        {% if book in user.profile.books_read.all %}
+                            <div class="col-12 col-lg-4 btn-block d-flex flex-column align-items-end ">
+                               <p class="btn btn-block bg-lime black" disabled> <i class="fas fa-check"></i> Прочитано! </p>
+                            </div>
+                        {% else %}
+                            <div class="col-12 col-lg-4 d-flex  flex-column align-items-end ">
+                                <a href="{% url 'add-book' book_id=book.id %}" class="btn button bg-aqua white container-fluid">
+                                  <i class="fas fa-plus"></i>  Добавить
+                                </a>
+                            </div>
+                        {% endif %}
+                   {% endif %}
+                   <p class="lead col-12 sans-text ">
+                           {{book.description|linebreaksbr}}
+                   </p>
+
+                   <hr>
+                   <p class="col-12 text-center sans-text">
+                       Купить: <a href="{{book.url}}">здесь</a>
+                   </p>
+               </div>
+
+
+               </div>
+           </div>
+
+        </div>
+
+
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends 'par/base.html' %}
+{% load staticfiles %}
+
+{% block title %} Результаты поиска по: {{q}} {% endblock %}
+
+{% block content %}
+    <br>
+    {% if users %}
+    <div class="card">
+        <h3 class="  text-center">Пользователи:</h3>
+    </div>
+    <br><br>
+        {% for user in users %}
+            <div class = 'row card bg-white'>
+                <div class="row flex-column text-center">
+                    <a href="{% url 'profile' user_id=user.id %}" class="info-anchors"><h4 class=""> {{ user.username|truncatewords:8 }}</h4></a>
+                    <p class="lead"> {{ user.profile.bio}}</p>
+
+                </div>
+
+
+            </div>
+            <br>
+        {% endfor %}
+
+
+    {% else %}
+    <div class="card">
+        <h5 class="text-center">Не найдено пользователей :(</h5>
+
+    </div>
+
+    {% endif %}
+    <br>
+    <br>
+    {% if books %}
+    <div class="card">
+        <h3 class=" text-center">Книги:</h3>
+    </div>
+    <br>
+    <br>
+        {% for book in books %}
+            <div class = 'row card bg-white'>
+                <div class="col-12  text-left">
+                    <a href="{% url 'detail-book' book_id=book.id %}" class="info-anchors"><h4> {{ book.title|truncatewords:8 }}</h4></a>
+                    <p class="lead"> {{ book.author }}</p>
+                </div>
+            </div>
+            <br>
+        {% endfor %}
+
+    {% else %}
+    <div class="card">
+        <h5 class="text-center">Не найдено книг :(</h5>
+    </div>
+    {% endif %}
+    <br>
+    <br>
+    <br>
+    <div class="add-books card  text-center gray">
+        <p class="lead"> Не можете найти книгу на сайте и хотите ее добавить? <a href="{% url 'add-book' %}" class="black">Добавьте её с ЛитРеса!  </a></p>
+
+    </div>
+{% endblock %}

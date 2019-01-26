@@ -1,0 +1,280 @@
+{% extends 'par/base.html' %}
+{% load staticfiles %}
+{% load mathfilters %}
+{% block title %} {{user.username}} | Пари {% endblock %}
+{% block additional %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+{% endblock %}
+{% block content %}
+<br>
+<style>
+    #sent-toggler, #received-toggler{
+        cursor: pointer;
+    }
+
+</style>
+{% if active != 0 %}
+    <div class="card text-center">
+        <h2 class="black"> Отправленные пари </h2>
+    </div>
+    <br>
+    <div class="col-12 sent-list container-fluid flex-column align-items-center" style="display:flex;">
+    {% for wager in wagers %}
+        <!-- Отправитель -->
+        {% if user.username == wager.sender.username %}
+            {% if wager.sender_end == "no" %}
+                <div class="card text-left">
+
+                    <h2> Книга: <a href="{% url 'detail-book' book_id=wager.book.id %}" class="black">{{ wager.book }}</a>  </h2>
+                    <h4> От кого: <a href="{% url 'profile' user_id=wager.sender.id %}" class="black">{{ wager.sender }}</a></h4>
+                    <h4> Кому: <a href="{% url 'profile' user_id=wager.to.id %}" class="black">{{ wager.to }}</a></h4>
+                    <h4> Ставка: {% if wager.status != 'true' %} {{ wager.bet }} <i class="fas fa-circle-notch"></i>
+                        {% if wager.sender_discuss == 'true' or wager.received_discuss == 'true' %}
+                            ( предложено:
+                                {% if wager.received_discuss == 'true' %}
+                                    получателем  &ndash; {{ wager.received_new_bet }} <i class="fas fa-circle-notch"></i>
+                                {% endif %}
+                                {% if wager.sender_discuss == 'true' %}
+                                    , вами  &ndash; {{ wager.sender_new_bet }} <i class="fas fa-circle-notch"></i>
+                                {% endif %}
+                        )
+
+                        {% endif %}
+                    {% else %} {{ wager.new_bet }} <i class="fas fa-circle-notch"></i>
+                    {% endif %}</h4>
+                    {% if wager.status == "true" %}
+
+                        {% if wager.until > today %}
+                            <h4> Осталось времени: {{ wager.until|timeuntil }}</h4>
+                        {% else %}
+                            <h5>Время спора истекло. {{ wager.until}} {{today}}</h5>
+                        {% endif %}
+                    {% else %}
+                        <h4>Длительность пари: {{wager.duration|truncatewords:2}}
+                         {% if wager.sender_discuss == 'true' or wager.received_discuss == 'true' %}
+                        ( предложено: {% if wager.received_discuss == 'true' %}
+                                    получателем  &ndash; {{ wager.received_new_duration }}
+                                {% endif %}
+                                {% if wager.sender_discuss == 'true' %}
+                                    , вами  &ndash; {{ wager.sender_new_duration }}
+                                {% endif %}   )
+                            {% endif %} </h4>
+                    {% endif %}
+
+                    {% if wager.status == "true" %}
+                        {% if wager.received_end == "yes" %}
+                            <h5> Вы проиграли это пари.
+                                <a href="{% url 'end-wager' wager_id=wager.id %}" class="btn btn-outline-secondary"> Удалить пари? </a> </h5>
+                        {% elif wager.until <= today %}
+                            <h5> Вы выиграли это пари.
+                                <a href="{% url 'win-wager' wager_id=wager.id %}" class="btn btn-outline-success">Забрать награду?</a> </h5>
+                        {% else %}
+                         {% if wager.questions != 0 and wager.questions_answered == 'false' %}   <h5> <a href="{% url 'add-questions' wager_id=wager.id %}" class="btn btn-outline-success">Добавьте вопросы читателю
+                                ( можно добавить еще {{wager.questions }}
+                            {% if wager.questions > 4 %}
+                                вопросов
+                            {% elif wager.questions > 1 %}
+                                вопроса
+                            {% else %}
+                                вопрос
+                            {% endif %}
+                        )</a></h5> {% endif %}
+
+                          {% if wager.questions_checked != 'true' %}
+                            {% if wager.questions_answered == 'true' %}
+                            <h5> <a href="{% url 'check-questions' wager_id=wager.id %}" class="btn btn-outline-success">Проверить вопросы</a></h5>
+                            {% else %}
+
+                            {% endif %}
+                        {% else %}
+                            <h5> Правильно {{wager.questions_right }} {% if wager.questions_right > 4 %}
+                                вопросов
+                            {% elif wager.questions_right > 1 %}
+                                вопроса
+                            {% else %}
+                                вопрос
+                            {% endif %} из {{10|sub:wager.questions}}</h5>
+                            {% if wager.winner == 's' %}
+                                <h3> Вы победили!
+                                    <a href="{% url 'win-wager' wager_id=wager.id %}" class="btn btn-outline-success">Забрать награду?</a>
+                                </h3>
+                            {% elif wager.winner == 'r' %}
+                                <h3> Вы проиграли!
+                                    <a href="{% url 'end-wager' wager_id=wager.id %}" class="btn btn-outline-secondary">Удалить пари?</a>
+                                </h3>
+                            {% else %}
+
+                            {% endif %}
+                        {% endif %}
+                        {% endif %}
+                    {% elif wager.status == "false" %}
+                        <h5> Получатель отклонил пари. <a href="{% url 'end-wager' wager_id=wager.id %}" class="btn btn-outline-danger">Удалить?</a></h5>
+                    {% else %}
+                        {% if wager.received_discuss != 'no' %}
+                            {% if wager.sender_discuss == 'no' %}
+                                <h5> Получатель предложил поменять условия! <a href="{% url 'accept-wager' wager_id=wager.id %}" class="btn btn-outline-success">Принять</a>
+                                <a href="{% url 'edit-wager' wager_id=wager.id %}" class="btn btn-outline-warning">Предложить изменения</a></h5>
+                            {% else %}
+                                <h5> Получатель пока что не проверил новые условия :( </h5>
+                            {% endif %}
+                        {% else %}
+                            <h5> Получатель пока что не проверил пари :(</h5>
+                        {% endif %}
+                    {% endif %}
+                </div>
+                 <br>
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+    </div>
+    <div class="card  text-center" id="sent-toggler" style="background:#01FF70">
+        <i class="fas fa-caret-up" id="sent-caret" style="transition: all 0.3s ease;"></i>
+    </div>
+    <br>
+    <br>
+    <br>
+    <div class="card text-center">
+        <h2 class="black"> Полученные пари </h2>
+    </div>
+    <br>
+    <div class="col-12 container-fluid flex-column align-items-center" style="display:flex;">
+    {% for wager in wagers %}
+        <!-- Получатель -->
+        {% if wager.sender.username != user.username %}
+            {% if wager.received_end == "no" %}
+                <div class="card text-left">
+                    <h2> Книга: <a href="{% url 'detail-book' book_id=wager.book.id %}" class="black">{{ wager.book }}</a>  </h2>
+                    <h4> От кого: <a href="{% url 'profile' user_id=wager.sender.id %}" class="black">{{ wager.sender }}</a></h4>
+                    <h4> Кому: <a href="{% url 'profile' user_id=wager.to.id %}" class="black">{{ wager.to }}</a></h4>
+                    <h4> Ставка:{% if wager.status != 'true' %} {{ wager.bet }} <i class="fas fa-circle-notch"></i>
+                        {% if wager.sender_discuss == 'true' or wager.received_discuss == 'true' %}
+                        (предложено: {% if wager.received_discuss == 'true' %}
+                                    вами  &ndash; {{ wager.received_new_bet }} <i class="fas fa-circle-notch"></i>
+                                {% endif %}
+                                {% if wager.sender_discuss == 'true' %}
+                                    , отправителем  &ndash; {{ wager.sender_new_bet }} <i class="fas fa-circle-notch"></i>
+                                {% endif %}  ){% endif %}
+                        {% else %} {{ wager.new_bet }} <i class="fas fa-circle-notch"></i>
+                    {% endif %}</h4>
+                    {% if wager.status == "true" %}
+                        {% if wager.until > today %}
+                            <h4> Осталось времени: {{ wager.until|timeuntil }}</h4>
+                        {% else %}
+                            <h5>Время спора истекло.</h5>
+                        {% endif %}
+                    {% endif %}
+
+                    {% if wager.status != 'true' %}
+                    <h4>Длительность пари: {{wager.duration|truncatewords:2}}
+                        {% if wager.sender_discuss == 'true' or wager.received_discuss == 'true' %}
+                        ( предложено: {% if wager.received_discuss == 'true' %}
+                                    вами  &ndash; {{ wager.received_new_duration }}
+                                {% endif %}
+                                {% if wager.sender_discuss == 'true' %}
+                                    , отправителем  &ndash; {{ wager.sender_new_duration }}
+                                {% endif %}
+                        ){% endif %} </h4>
+                    {% endif %}
+                    {% if wager.status == "true" %}
+                        {% if wager.until > today %}
+                            {% if wager.questions <= 5 %}
+                                {% if wager.questions_answered == 'false' %}
+                                    <h5><a href="{% url 'answer-questions' wager_id=wager.id %}" class="btn btn-outline-success">
+                                    Я готов ответить на вопросы! </a> </h5>
+                                {% else %}
+                                    {% if wager.questions_checked == 'true' %}
+
+                                        <h5> Правильно {{wager.questions_right }} {% if wager.questions_right > 4 %}
+                                            вопросов
+                                        {% elif wager.questions_right > 1 %}
+                                            вопроса
+                                        {% else %}
+                                            вопрос
+                                        {% endif %} из {{10|sub:wager.questions}}</h5>
+                                        {% if wager.winner == 'r' %}
+                                            <h3> Вы победили!
+                                                <a href="{% url 'win-wager' wager_id=wager.id %}" class="btn btn-outline-success">Забрать награду?</a>
+                                            </h3>
+                                        {% elif wager.winner == 's' %}
+                                            <h3> Вы проиграли!
+                                                <a href="{% url 'end-wager' wager_id=wager.id %}" class="btn btn-outline-secondary">Удалить пари?</a>
+                                            </h3>
+                                        {% else %}
+
+                                        {% endif %}
+
+                                    {% else %}
+                                        <h5> Вопросы пока не проверены..</h5>
+                                    {% endif %}
+                                {% endif %}
+                            {% else %}
+                            <h5> Вопросы ещё не готовы...</h5>
+                            {% endif %}
+                        {% else %}
+                            <h5> Вы не уложились во время.
+                            <a href="{% url 'end-wager' wager_id=wager.id %}" class="btn btn-outline-secondary"> Удалить пари? </a> </h5>
+                        {% endif %}
+                    {% elif wager.status == "false" %}
+                        <h5> Вы отклонили пари.
+                            <a href="{% url 'end-wager' wager_id=wager.id %}" class="btn btn-outline-secondary"> Удалить его? </a> </h5>
+                    {% else %}
+                        {% if wager.sender_discuss != 'no' %}
+                            <h5> Отправитель предложил изменить ещё раз. </h5>
+                            <h5><a href="{% url 'accept-wager' wager_id=wager.id %}" class="btn btn-outline-success">Принять</a>
+
+                                <a href="{% url 'decline-wager' wager_id=wager.id %}" class="btn btn-outline-danger">Отклонить</a> </h5>
+
+                        {% else %}
+
+                            {% if wager.received_discuss == 'no' %}
+                                <h5><a href="{% url 'accept-wager' wager_id=wager.id %}" class="btn btn-outline-success">Принять</a>
+                                    <a href="{% url 'edit-wager' wager_id=wager.id %}" class="btn btn-outline-warning">Предложить изменения</a>
+                                <a href="{% url 'decline-wager' wager_id=wager.id %}" class="btn btn-outline-danger">Отклонить</a> </h5>
+                            {% else %}
+                                <h5> Отправитель ещё не посмотрел ваше предложение!</h5>
+                            {% endif %}
+                        {% endif %}
+                    {% endif %}
+                </div>
+                 <br>
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+    </div>
+    <div class="card  text-center" id="received-toggler" style="background:#01FF70">
+        <i class="fas fa-caret-up" id="received-caret" style="transition: all 0.3s ease;"></i>
+    </div>
+{% else %}
+    <div class="card">
+            <h4 class=" gray"> Нет активных пари. <a href = "{% url 'add-wager' %}" class="black">Хотите начать новый?</a></h4>
+
+    </div>
+{% endif %}
+<script>
+    let i=0
+    let j=0
+    $( "#sent-toggler" ).click(function(){
+        $( ".sent-list" ).slideToggle(400);
+        i++;
+
+        if (i%2==0){
+            $( "#sent-caret" ).css('transform', 'rotate(0deg)');
+        }else{
+            $( "#sent-caret" ).css('transform', 'rotate(180deg)');
+        }
+
+    });
+    $( "#received-toggler" ).click(function(){
+        $( ".received-list" ).slideToggle(400);
+        j++;
+
+        if (j%2==0){
+            $( "#received-caret" ).css('transform', 'rotate(0deg)');
+        }else{
+            $( "#received-caret" ).css('transform', 'rotate(180deg)');
+        }
+
+    });
+</script>
+{% endblock %}

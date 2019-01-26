@@ -1,0 +1,94 @@
+
+<!doctype html>
+{% load staticfiles %}
+
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link rel=stylesheet href="https://s3-us-west-2.amazonaws.com/colors-css/2.2.0/colors.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+    <title>{% block title %} {% endblock %}</title>
+    {% block additional %}
+
+    {% endblock %}
+</head>
+<body class="">
+    <nav class="navbar navbar-default navbar-expand-lg text-center text-lg-left navigation ">
+      <div class="container-fluid">
+        <div class="navbar-header  col-8 col-md-2">
+          <a class="navbar-brand container-fluid  text-center" href="{% url 'index' %}" id="logo">Parlay</a>
+
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".collapse" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="white"><i class="fas fa-bars"></i></span>
+          </button>
+
+      <div class="collapse navbar-collapse col-12 col-lg-10 mt-3 mt-lg-0">
+
+        {% if user.is_authenticated %}
+            <div class=" col-12 col-lg-4  searchbar">
+                <form action="{% url 'search' %}" method="get">
+                    <input class="search" type="text" placeholder="Поиск..." name="q">
+                    <button type="submit" class="button-search btn bg-teal white "><i class="fas fa-search"></i></button>
+                </form>
+
+            </div>
+            <div class ="d-inline-flex nav-link col-12 col-md-3 col-lg-2 justify-content-center">
+                    <a href="{% url 'wagers' %}" class="text-center"> Мои пари {% if new != 0 %} <span id="new-wagers"> {{new}} </span> {% endif %}  </a>
+
+            </div>
+            <div class="d-inline-flex nav-link col-12 col-md-3 col-lg-2  justify-content-center  ">
+                <a href = "{% url 'add-wager' %}">Добавить пари</a>
+
+            </div>
+        {% else %}
+            <div class=" col-12 col-lg-8 searchbar">
+                <form action="{% url 'search' %}" method="get">
+                    <input class="search" type="text" placeholder="Поиск.." name="q">
+                    <button type="submit" class="button-search btn bg-teal white "><i class="fas fa-search"></i></button>
+                </form>
+
+            </div>
+
+        {% endif %}
+          <div class="d-inline-flex nav-link col-12 col-md-3 col-lg-4  justify-content-center black">
+
+          {% if user.get_username == none or not user.is_authenticated %}
+
+          <p><a href = '{% url "login" %}'>Войти</a> или <a href = "{% url 'signup' %}">зарегистрироваться</a> </p>
+          {% else %}
+
+              <p>Хей, <a href="{% url 'profile' user.id %}"> {{user.username}}.  </a>
+                  {{ user.profile.tokens}} <i class="fas fa-circle-notch"></i>
+                  <br>
+                   <a href = '{% url "logout" %}'> Выйти</a></p>
+          {% endif %}
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div id="container" class = "container-fluid">
+    {% block content %}
+
+
+
+
+    {% endblock %}
+    <br>
+
+    </div>
+    <footer class="footer white text-center">
+        <p> (c) 2018. Parlay </p>
+
+    </footer>
+</body>
+</html>

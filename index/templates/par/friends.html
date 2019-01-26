@@ -1,0 +1,24 @@
+{% extends 'par/base.html' %}
+{% load staticfiles %}
+
+{% block title %} {{ username.username }}'s friends {% endblock %}
+
+{% block content %}
+    <br>
+
+    <div class="card">
+        <h3 class="display-4 text-center"> {{username.username}}'s friends: </h3>
+    </div>
+    <br> <br>
+
+
+    {% for friend in username.profile.friends.all %}
+    <div class="col-12 card text-center bg-white">
+        <a href="{% url 'profile' user_id=friend.id %}" class="display-4  black">{{ friend.username }}</a>
+        <p class="lead text-center">{{friend.profile.bio|truncatewords:20}}</p>
+
+    </div>
+    <br>
+    {% endfor %}
+
+{% endblock %}
