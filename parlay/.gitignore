@@ -1,0 +1,18 @@
+*.pyc
+*~
+__pycache__
+/pip-update
+# virtualenv
+myvenv
+
+# Django, DB
+db.sqlite3
+
+.DS_Store
+
+# pyCharm
+.idea/
+
+#avatars
+
+/media
