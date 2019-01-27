@@ -1,12 +1,12 @@
 {% extends 'par/base.html' %}
 {% load staticfiles %}
 
-{% block title %} Добавить книгу {% endblock %}
+{% block title %} Добавить автора{% endblock %}
 
 {% block content %}
             <form class="form-group card" method="post">
                 {% csrf_token %}
-                <h4>За каждую новую добавленную книгу вы получите 5 <i class="fas fa-circle-notch"></i></h4>
+                <h4>Здесь можно добавить все книги автора, доступные на Литрес</h4>
                 <div class=" container-fluid d-flex flex-column align-items-center select-group ">
                 {% for field in form %}
                     {{ field.label_tag }}

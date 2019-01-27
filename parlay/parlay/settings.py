@@ -43,7 +43,11 @@ SITE_ID = 1
 
 LOGIN_REDIRECT_URL = 'wagers'
 
+LOGOUT_REDIRECT_URL = "/"
+
 # Application definition
+RECAPTCHA_PUBLIC_KEY = '6LflB40UAAAAAJfa-jeNaNGkQ6x0Mo9Qmm-fOfdZ'
+RECAPTCHA_PRIVATE_KEY = '6LflB40UAAAAAEhzcBwWmvOR-8FfliN4_jK5280f'
 
 INSTALLED_APPS = [
     'django.contrib.auth',
@@ -58,7 +62,7 @@ INSTALLED_APPS = [
     'easy_thumbnails',
     'image_cropping',
     'mathfilters',
-
+    'captcha',
 ]
 
 

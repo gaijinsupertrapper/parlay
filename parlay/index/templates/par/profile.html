@@ -43,6 +43,11 @@
             </div>
             <div class="col-12 col-md-8">
                 <H1 id = "username" class="display-4">{{ username.username }}</H1>
+            <h3> {{username.profile.level}} ({{username.profile.experience}} из {{username.profile.next_experience}})</h3>
+            <h3> {% if username.profile.streak != 0 %} {{ username.profile.streak }} {% if username.profile.streak < 2 %} победа
+                {% elif username.profile.streak < 5 %} победы {% else %} побед {% endif %}
+                подряд
+                {% else %}  {% endif %}</h3>
             <h3 > {{username.profile.tokens}} <i class="fas fa-circle-notch"></i> </h3>
             <h4 >{{username.profile.bio}}</h4>
             <h5 class="green">Добавлено книг на сайт: {{username.profile.books_added }}</h5>
@@ -126,7 +131,7 @@
 
                 </div>
         {% else %}
-            <h4 class=""> This user has no friends :(</h4>
+            <h4 class=""> У этого пользователя нет друзей </h4>
         {% endif %}
     </div>
     <br>

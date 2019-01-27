@@ -30,7 +30,10 @@ class Profile(models.Model):
     books_read = models.ManyToManyField(Book,)
     books_added = models.IntegerField(default=0)
     friends = models.ManyToManyField(User,  related_name='+',)
-
+    experience = models.IntegerField(default=0)
+    next_experience = models.IntegerField(default=100)
+    level = models.CharField(max_length=80, default = "Новичок")
+    streak = models.IntegerField(default=0)
     def __str__(self):
         return str(self.user)
 

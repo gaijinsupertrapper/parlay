@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect, get_object_or_404
 from .models import Book, Wager, WagerQuestion
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import authenticate, login
+from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
@@ -50,7 +51,6 @@ def signup(request):
     else:
         form = SignUpForm()
     return render(request, 'par/signup.html', {'form': form})
-
 
 def index(request):
     username = None
@@ -103,6 +103,7 @@ def add_book(request, book_id):
         pass
     else:
         user.profile.books_read.add(Book.objects.get(pk = book_id))
+        user.profile.experience += 5
         user.profile.save()
         book = Book.objects.get(pk=book_id)
         book.read_by +=1
@@ -183,6 +184,7 @@ def add_wager(request):
                 Wager.received_discuss='no'
                 Wager.save()
                 sender.profile.tokens -= Wager.bet
+                sender.profile.experience += 3
                 sender.profile.save()
                 return redirect('wagers')
     else:
@@ -267,7 +269,21 @@ def accept_wager(request, wager_id):
     sender = wager.sender
     player.profile.tokens -= wager.new_bet
     sender.profile.tokens -= (wager.new_bet - wager.bet)
-
+    player.profile.experience += 3
+    if player.profile.experience >= player.profile.next_experience :
+        player.profile.experience -= player.profile.next_experience
+        if player.profile.next_experience == 100:
+            player.profile.next_experience = 400
+            player.profile.level = "Читатель"
+        elif player.profile.next_experience == 400:
+            player.profile.next_experience = 1600
+            player.profile.level = "Завсегдатай библиотеки"
+        elif player.profile.next_experience == 1600:
+            player.profile.next_experience = 6400
+            player.profile.level = "Книжный червь"
+        else:
+            player.profile.next_experience = 10000000
+            player.profile.level = "Высший разум"
 
     player.save()
     sender.save()
@@ -303,17 +319,27 @@ def end_wager(request, wager_id):
 def win_wager(request, wager_id):
     wager = Wager.objects.get(pk=wager_id)
     winner = request.user
+    
     if wager.sender == request.user:
         wager.sender_end = "yes"
         wager.save()
         winner.profile.tokens += wager.new_bet*2
+        winner.profile.experience += 7
+        winner.profile.streak+=1
         winner.save()
+        loser = User.objects.get(pk = wager.to.id)
+        loser.profile.streak = 0
+        loser.save()
     else:
         wager.received_end = "yes"
         wager.save()
         winner.profile.tokens += wager.new_bet*2
+        winner.profile.experience += 7
+        winner.profile.streak+=1
         winner.save()
-
+        loser = User.objects.get(pk = wager.sender.id)
+        loser.profile.streak = 0
+        loser.save()
     if (wager.received_end == "yes") and (wager.sender_end == "yes"):
         Wager.objects.get(pk=wager_id).delete()
 
@@ -423,6 +449,52 @@ def create_book(request):
         new=-1
     return render(request, 'par/add-book.html', {'form': form, 'new': new})
 
+def add_author(request):
+    if request.method == "POST":
+        form = BookUrlForm(request.POST)
+        if form.is_valid():
+            url_start = str(form.cleaned_data['url'])
+            if url_start.find('litres.ru/')==-1:
+                return redirect('parse-errors')
+            else:
+                session = HTMLSession()
+                n = session.get(url_start)
+                books = n.html.find('.art_name_link ')
+                session.close()
+                for book in books:
+                    session = HTMLSession()
+                    r = session.get(book.absolute_links.pop())
+                    title = r.html.find('.biblio_book_name', first=True).text
+                    authors_raw = r.html.find('.biblio_book_author .biblio_book_author__link')
+                    description_list = r.html.find('.biblio_book_descr_publishers p')
+                    cover_url = r.html.find('.cover img', first=True).attrs['src']
+                    description = str()
+                    authors = str()
+                    for i in range(len(authors_raw)):
+                        authors += authors_raw[i].text
+                        authors += ' '
+                    authors = authors[:-1]
+                    for i in range(len(description_list)):
+                        description += description_list[i].text
+                        description += ' \n '
+                    if Book.objects.filter(url__icontains=form.cleaned_data['url']):
+                        pass
+                    else:
+                        book = Book.objects.create( title=title, author=authors, description=description , url=form.cleaned_data['url'],
+                                                cover_url=cover_url)
+                    adder = request.user
+                    adder.profile.books_added += 1
+                    adder.profile.tokens += 5
+                    adder.save()
+                    session.close()
+    else:
+        form = BookUrlForm()
+    if request.user.is_authenticated:
+        user = request.user
+        new = check_new_wagers(user)
+    else:
+        new=-1
+    return render(request, 'par/add-author.html', {'form': form, 'new': new})
 
 @login_required
 def add_questions(request, wager_id):

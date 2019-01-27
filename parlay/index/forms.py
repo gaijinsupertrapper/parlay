@@ -1,17 +1,21 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from .models import Profile, Wager, Book, WagerQuestion
 from django.forms.formsets import BaseFormSet
+from captcha.fields import ReCaptchaField
 
 
 class SignUpForm(UserCreationForm):
     email = forms.EmailField(max_length=254, help_text='Required. Inform a valid email address.')
-
+    captcha = ReCaptchaField()
 
     class Meta:
         model = User
-        fields = ('username', 'email', 'password1', 'password2', )
+        fields = ('username', 'email', 'password1', 'password2', 'captcha')
+        labels = {
+            'captcha': ' ',
+        }
 
 class ProfileForm(forms.ModelForm):
     class Meta:
