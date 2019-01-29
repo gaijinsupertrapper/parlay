@@ -171,11 +171,11 @@ def add_wager(request):
                 too_much = 1
             elif form.cleaned_data['bet']<=0:
                 too_much = 2
-            elif form.cleaned_data['duration']<datetime.timedelta(seconds=1):
+            elif form.cleaned_data['duration']<1:
                 too_much = 3
             else:
                 Wager = form.save(commit=False)
-                Wager.duration = form.cleaned_data['duration']*86400
+                Wager.duration = form.cleaned_data['duration']
                 Wager.new_duration = Wager.duration
                 Wager.new_bet = Wager.bet
 
@@ -234,19 +234,19 @@ def edit_wager(request,wager_id):
                     too_much = 1
                 elif form.cleaned_data['new_bet']<=0:
                     too_much = 2
-                elif form.cleaned_data['new_duration']<datetime.timedelta(seconds=1):
+                elif form.cleaned_data['new_duration']<1:
                     too_much = 3
                 else:
                     wager = form.save(commit=False)
-                    wager.new_duration = form.cleaned_data['new_duration'] * 86400
+                    wager.new_duration = form.cleaned_data['new_duration']
                     if wager.sender == user:
                         wager.sender_discuss = 'true'
                         wager.sender_new_bet = form.cleaned_data['new_bet']
-                        wager.sender_new_duration = form.cleaned_data['new_duration'] * 86400
+                        wager.sender_new_duration = form.cleaned_data['new_duration']
                     else:
                         wager.received_discuss = 'true'
                         wager.received_new_bet = form.cleaned_data['new_bet']
-                        wager.received_new_duration = form.cleaned_data['new_duration'] * 86400
+                        wager.received_new_duration = form.cleaned_data['new_duration'] 
                     wager.save()
                     return redirect('wagers')
     else:
@@ -263,7 +263,7 @@ def edit_wager(request,wager_id):
 def accept_wager(request, wager_id):
     wager = Wager.objects.get(pk=wager_id)
     wager.status = 'true'
-    wager.until = datetime.datetime.now() + wager.new_duration
+    wager.until = datetime.datetime.now() + datetime.timedelta(days = wager.new_duration)
     wager.save()
     player = wager.to
     sender = wager.sender

@@ -48,10 +48,17 @@
                         {% if wager.until > today %}
                             <h4> Осталось времени: {{ wager.until|timeuntil }}</h4>
                         {% else %}
-                            <h5>Время спора истекло. {{ wager.until}} {{today}}</h5>
+                            <h5>Время спора истекло.</h5>
                         {% endif %}
                     {% else %}
-                        <h4>Длительность пари: {{wager.duration|truncatewords:2}}
+                        <h4>Длительность пари: {{wager.duration}} {% if wager.duration|mod:100|intdiv:10 != 1 %}  
+                                {% if wager.duration|mod:10 == 1 %} день 
+                                {% elif wager.duration|mod:10 > 1 and wager.duration|mod:10 < 5 %} дня 
+                                {% else %} дней {% endif %}
+                            {% else %} дней {% endif %}
+                            
+                            
+                            
                          {% if wager.sender_discuss == 'true' or wager.received_discuss == 'true' %}
                         ( предложено: {% if wager.received_discuss == 'true' %}
                                     получателем  &ndash; {{ wager.received_new_duration }}
@@ -166,7 +173,11 @@
                     {% endif %}
 
                     {% if wager.status != 'true' %}
-                    <h4>Длительность пари: {{wager.duration|truncatewords:2}}
+                    <h4>Длительность пари: {{wager.duration}} {% if wager.duration|mod:100|intdiv:10 != 1 %}  
+                        {% if wager.duration|mod:10 == 1 %} день 
+                        {% elif wager.duration|mod:10 > 1 and wager.duration|mod:10 < 5 %} дня 
+                        {% else %} дней {% endif %}
+                    {% else %} дней {% endif %}
                         {% if wager.sender_discuss == 'true' or wager.received_discuss == 'true' %}
                         ( предложено: {% if wager.received_discuss == 'true' %}
                                     вами  &ndash; {{ wager.received_new_duration }}
