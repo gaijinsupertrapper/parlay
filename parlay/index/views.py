@@ -175,7 +175,7 @@ def add_wager(request):
                 too_much = 3
             else:
                 Wager = form.save(commit=False)
-                Wager.duration = form.cleaned_data['duration']
+                Wager.duration = form.cleaned_data['duration'] *86400
                 Wager.new_duration = Wager.duration
                 Wager.new_bet = Wager.bet
 
@@ -263,7 +263,7 @@ def edit_wager(request,wager_id):
 def accept_wager(request, wager_id):
     wager = Wager.objects.get(pk=wager_id)
     wager.status = 'true'
-    wager.until = datetime.datetime.now() + datetime.timedelta(days = wager.new_duration)
+    wager.until = datetime.datetime.now() +  wager.new_duration
     wager.save()
     player = wager.to
     sender = wager.sender

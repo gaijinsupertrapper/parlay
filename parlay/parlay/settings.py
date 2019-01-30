@@ -26,7 +26,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'sfff*+no&%)wmz(&z^h9qz$briw365
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 from django.utils.log import DEFAULT_LOGGING
 
