@@ -26,7 +26,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'sfff*+no&%)wmz(&z^h9qz$briw365
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 from django.utils.log import DEFAULT_LOGGING
 
@@ -127,8 +127,10 @@ DATABASES = {
 # Heroku: Взять конфигурацию БД из $DATABASE_URL.
 
 import dj_database_url
+
 db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(db_from_env)
+if db_from_env:
+    DATABASES['default'].update(db_from_env)
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators

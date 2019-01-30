@@ -56,7 +56,7 @@ class WagerForm(forms.ModelForm):
             'duration': 'Длительность',
         }
         widgets = {
-            'bet': forms.TextInput(attrs={'placeholder': 'Ставка в ридах'}),
+            'bet': forms.TextInput(),
             'duration': forms.TextInput(attrs={'placeholder': 'В днях'})
         }
 

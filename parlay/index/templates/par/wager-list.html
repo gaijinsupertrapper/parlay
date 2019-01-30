@@ -145,7 +145,7 @@
         <h2 class="black"> Полученные пари </h2>
     </div>
     <br>
-    <div class="col-12 container-fluid flex-column align-items-center" style="display:flex;">
+    <div class="col-12 container-fluid flex-column align-items-center received-list" style="display:flex;">
     {% for wager in wagers %}
         <!-- Получатель -->
         {% if wager.sender.username != user.username %}
@@ -277,6 +277,7 @@
 
     });
     $( "#received-toggler" ).click(function(){
+        
         $( ".received-list" ).slideToggle(400);
         j++;
 

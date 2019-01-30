@@ -175,7 +175,7 @@ def add_wager(request):
                 too_much = 3
             else:
                 Wager = form.save(commit=False)
-                Wager.duration = form.cleaned_data['duration'] *86400
+                Wager.duration = form.cleaned_data['duration']
                 Wager.new_duration = Wager.duration
                 Wager.new_bet = Wager.bet
 
@@ -263,7 +263,7 @@ def edit_wager(request,wager_id):
 def accept_wager(request, wager_id):
     wager = Wager.objects.get(pk=wager_id)
     wager.status = 'true'
-    wager.until = datetime.datetime.now() +  wager.new_duration
+    wager.until = datetime.datetime.now() + datetime.timedelta(days = wager.new_duration)
     wager.save()
     player = wager.to
     sender = wager.sender
@@ -462,8 +462,11 @@ def add_author(request):
                 books = n.html.find('.art_name_link ')
                 session.close()
                 for book in books:
+                    link = book.absolute_links.pop()
+                    #print(link)
                     session = HTMLSession()
-                    r = session.get(book.absolute_links.pop())
+                    #print("opened")
+                    r = session.get(link)
                     title = r.html.find('.biblio_book_name', first=True).text
                     authors_raw = r.html.find('.biblio_book_author .biblio_book_author__link')
                     description_list = r.html.find('.biblio_book_descr_publishers p')
@@ -477,16 +480,22 @@ def add_author(request):
                     for i in range(len(description_list)):
                         description += description_list[i].text
                         description += ' \n '
-                    if Book.objects.filter(url__icontains=form.cleaned_data['url']):
+                    #print("info retrieved")
+                    if Book.objects.filter(url__icontains=link):
+                        #print('exists')
                         pass
+
                     else:
                         book = Book.objects.create( title=title, author=authors, description=description , url=form.cleaned_data['url'],
                                                 cover_url=cover_url)
+                    #    print("created")
                     adder = request.user
                     adder.profile.books_added += 1
                     adder.profile.tokens += 5
                     adder.save()
+                    #print("saved")
                     session.close()
+                    #print("closed")
     else:
         form = BookUrlForm()
     if request.user.is_authenticated:
